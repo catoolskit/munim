@@ -3,23 +3,15 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>How to Use — MUNIM Accounting Software</title>
+<title>How to Use MUNIM — Step by Step Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --navy:#071B49;--navy-light:#0D2560;
-  --gold:#F4C430;--gold-dark:#D4A820;
-  --offwhite:#F7F8FC;--white:#FFFFFF;
-  --charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;
-  --border:#E2E8F0;--radius:10px;--radius-lg:16px;
-}
+:root{--navy:#071B49;--gold:#F4C430;--gold-dark:#D4A820;--offwhite:#F7F8FC;--white:#FFFFFF;--charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;--border:#E2E8F0;--radius:10px;--radius-lg:16px;}
 body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;}
 a{text-decoration:none;color:inherit;}
-
-/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;background:var(--navy);position:sticky;top:0;z-index:200;}
 .logo{display:flex;align-items:center;gap:10px;}
 .logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);}
@@ -30,87 +22,52 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;h
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
 .nav-dl{background:var(--gold);color:var(--navy);padding:0.5rem 1.25rem;border-radius:var(--radius);font-size:14px;font-weight:600;}
 .nav-dl:hover{background:var(--gold-dark);}
-
-/* PAGE HERO */
-.page-hero{background:var(--navy);padding:4rem 6% 3.5rem;text-align:center;}
-.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.25rem;font-weight:500;}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:0.75rem;}
+.page-hero{background:var(--navy);padding:5rem 6% 4rem;text-align:center;}
+.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.5rem;font-weight:500;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:1rem;}
 .page-hero h1 em{color:var(--gold);font-style:normal;}
-.page-hero p{color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto;font-size:0.95rem;}
-
-/* QUICK NAV PILLS */
-.quick-nav{display:flex;flex-wrap:wrap;gap:0.6rem;justify-content:center;padding:2rem 6% 0;}
-.qpill{background:var(--offwhite);border:1px solid var(--border);border-radius:999px;padding:0.4rem 1rem;font-size:13px;color:var(--text-mid);transition:all 0.2s;}
-.qpill:hover{background:var(--navy);color:#fff;border-color:var(--navy);}
-
-/* SECTIONS */
+.page-hero p{color:rgba(255,255,255,0.6);font-size:1rem;max-width:520px;margin:0 auto;}
 .sec{padding:4rem 6%;}
 .sec-alt{background:var(--offwhite);}
 .sec-label{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;margin-bottom:0.6rem;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);color:var(--charcoal);margin-bottom:0.5rem;}
-.sec-sub{color:var(--text-mid);font-size:0.9rem;margin-bottom:2rem;}
-
-/* NUMBERED STEPS */
-.steps-wrap{display:flex;flex-direction:column;gap:1.5rem;}
-.step-row{display:grid;grid-template-columns:56px 1fr;gap:1.25rem;align-items:flex-start;}
-.step-circle{width:52px;height:52px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--charcoal);margin-bottom:0.75rem;}
+.sec-sub{color:var(--text-mid);font-size:0.95rem;margin-bottom:2rem;}
+.steps-list{display:flex;flex-direction:column;gap:0;}
+.step-row{display:grid;grid-template-columns:60px 1fr;gap:1.5rem;padding:1.75rem 0;border-bottom:1px solid var(--border);}
+.step-row:last-child{border-bottom:none;}
+.step-circle{width:44px;height:44px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:3px;}
 .step-content{}
-.step-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.3rem;}
-.step-desc{font-size:14px;color:var(--text-mid);line-height:1.7;}
-.step-note{display:inline-block;margin-top:0.5rem;background:rgba(7,27,73,0.06);border-left:3px solid var(--gold);padding:0.4rem 0.75rem;border-radius:0 6px 6px 0;font-size:13px;color:var(--navy);}
-
-/* CONNECTOR LINE */
-.step-connector{width:2px;height:24px;background:var(--border);margin-left:25px;}
-
-/* TASK CARDS (how to do specific tasks) */
-.task-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-top:1.5rem;}
-.task-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;}
-.task-card.alt{background:var(--offwhite);}
-.task-num{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:12px;font-weight:700;margin-bottom:0.75rem;}
-.task-title{font-size:0.95rem;font-weight:600;color:var(--charcoal);margin-bottom:0.75rem;}
-.task-steps{list-style:none;padding:0;}
-.task-steps li{font-size:13px;color:var(--text-mid);padding:4px 0;padding-left:1.25rem;position:relative;line-height:1.6;}
-.task-steps li::before{content:'→';position:absolute;left:0;color:var(--gold-dark);font-size:12px;}
-
-/* TIP BOXES */
-.tip-box{background:rgba(7,27,73,0.04);border:1px solid rgba(7,27,73,0.1);border-left:4px solid var(--gold);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.25rem;margin-top:1rem;}
-.tip-label{font-size:11px;font-weight:700;color:var(--gold-dark);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px;}
-.tip-text{font-size:13px;color:var(--text-mid);line-height:1.65;}
-
-/* FAQ */
-.faq-list{display:flex;flex-direction:column;gap:0.75rem;margin-top:1.5rem;}
-.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
-.faq-q{padding:1rem 1.25rem;font-size:0.95rem;font-weight:600;color:var(--charcoal);cursor:pointer;display:flex;justify-content:space-between;align-items:center;}
-.faq-q::after{content:'＋';color:var(--gold-dark);font-size:1.1rem;font-weight:400;}
-.faq-a{padding:0 1.25rem 1rem;font-size:14px;color:var(--text-mid);line-height:1.7;border-top:1px solid var(--border);}
-
-/* CTA */
-.cta-strip{background:var(--navy);padding:3.5rem 6%;text-align:center;}
-.cta-strip h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:0.75rem;}
-.cta-strip p{color:rgba(255,255,255,0.55);margin-bottom:1.75rem;font-size:0.95rem;}
+.step-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
+.step-desc{font-size:14px;color:var(--text-mid);line-height:1.75;}
+.step-desc strong{color:var(--charcoal);}
+.step-tip{display:inline-flex;align-items:center;gap:5px;background:rgba(244,196,48,0.1);border:1px solid rgba(244,196,48,0.25);border-radius:6px;padding:4px 10px;font-size:12px;color:#92400E;margin-top:0.6rem;}
+.shortcuts-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:0.75rem;margin-top:1.5rem;}
+.shortcut-row{background:var(--white);border:1px solid var(--border);border-radius:9px;padding:0.9rem 1.1rem;display:flex;align-items:center;gap:12px;}
+.key{background:var(--navy);color:var(--gold);font-size:12px;font-weight:700;padding:3px 9px;border-radius:5px;font-family:monospace;white-space:nowrap;}
+.key-desc{font-size:13px;color:var(--text-mid);}
+.tip-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:1.5rem;}
+.tip-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;}
+.tip-head{font-size:0.9rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;display:flex;align-items:center;gap:7px;}
+.tip-body{font-size:13px;color:var(--text-mid);line-height:1.65;}
 .btn-gold{background:var(--gold);color:var(--navy);padding:0.8rem 1.75rem;border-radius:var(--radius);font-weight:700;font-size:0.95rem;display:inline-flex;align-items:center;gap:7px;transition:background 0.2s;}
 .btn-gold:hover{background:var(--gold-dark);}
-.btn-outline-white{border:1.5px solid rgba(255,255,255,0.3);color:rgba(255,255,255,0.85);padding:0.8rem 1.75rem;border-radius:var(--radius);font-size:0.95rem;margin-left:1rem;}
-.btn-outline-white:hover{border-color:#fff;color:#fff;}
-
-/* FOOTER */
 footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;}
 .foot-desc{font-size:13px;color:rgba(255,255,255,0.4);margin-top:0.75rem;line-height:1.7;}
 .foot-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase;}
 .foot-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;transition:color 0.2s;}
 .foot-col a:hover{color:var(--gold);}
 .foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;padding:1.25rem 0;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;}
-
-@media(max-width:768px){
-  .nav-links{display:none;}
-  footer{grid-template-columns:1fr;}
-  .btn-outline-white{margin-left:0;margin-top:0.75rem;}
-}
+.foot-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s;}
+.foot-bottom a:hover{color:var(--gold);}
+.wa-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:999;transition:transform 0.2s;}
+.wa-fab:hover{transform:scale(1.08);}
+@media(max-width:768px){.nav-links{display:none;}.step-row{grid-template-columns:44px 1fr;}footer{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<a href="https://wa.me/918427651580" target="_blank" class="wa-fab" title="WhatsApp Support">💬</a>
+
 <nav>
   <a href="index.html" class="logo">
     <div class="logo-icon">म</div>
@@ -125,294 +82,181 @@ footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-c
     <a href="contact.html">Support</a>
     <a href="download.html">Download</a>
   </div>
-  <a href="download.html" class="nav-dl">⬇ Download Free</a>
+  <a href="download.html" class="nav-dl">⬇ Download</a>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="page-badge">📖 Guide</div>
-  <h1>How to use <em>MUNIM</em></h1>
-  <p>Step-by-step guide to set up MUNIM and start entering your accounts from day one.</p>
+  <div class="page-badge">📖 How to Use</div>
+  <h1>Get started with <em>MUNIM</em></h1>
+  <p>A complete step-by-step guide — from first launch to your first set of books.</p>
 </div>
 
-<!-- QUICK NAV -->
-<div class="quick-nav">
-  <a href="#install" class="qpill">1. Install</a>
-  <a href="#company" class="qpill">2. Create Company</a>
-  <a href="#sales" class="qpill">3. Sales Entry</a>
-  <a href="#purchase" class="qpill">4. Purchase Entry</a>
-  <a href="#reports" class="qpill">5. View Reports</a>
-  <a href="#backup" class="qpill">6. Backup Data</a>
-  <a href="#faq" class="qpill">FAQ</a>
-</div>
-
-<!-- STEP 1: INSTALL -->
-<section class="sec" id="install">
-  <div class="sec-label">Step 1</div>
-  <div class="sec-title">Download and install MUNIM</div>
-  <p class="sec-sub">No installation wizard needed. Just download and double-click.</p>
-  <div class="steps-wrap">
+<!-- FIRST DAY -->
+<section class="sec">
+  <div class="sec-label">First Day</div>
+  <div class="sec-title">Setting up MUNIM</div>
+  <div class="sec-sub">Follow these steps in order on the day you start using MUNIM.</div>
+  <div class="steps-list">
     <div class="step-row">
       <div class="step-circle">1</div>
       <div class="step-content">
-        <div class="step-title">Download MUNIM.exe</div>
-        <div class="step-desc">Click the Download button on this website. The file is about 25 MB. Save it anywhere on your computer — Desktop is easiest.</div>
+        <div class="step-title">Download and run MUNIM.exe</div>
+        <div class="step-desc">Keep the .exe in a permanent folder (e.g. <strong>E:\Munim\</strong>). Double-click to open. If Windows SmartScreen appears, click <strong>More info → Run anyway</strong>. This is normal for new software and not a virus warning about MUNIM specifically.</div>
+        <div class="step-tip">💡 Accept the desktop shortcut offer — MUNIM will keep it updated if you move the .exe</div>
       </div>
     </div>
-    <div class="step-connector"></div>
     <div class="step-row">
       <div class="step-circle">2</div>
       <div class="step-content">
-        <div class="step-title">Double-click MUNIM.exe to open</div>
-        <div class="step-desc">No installation needed. MUNIM opens directly. Windows may show a SmartScreen warning — click "More info" then "Run anyway". This is normal for new software.</div>
-        <div class="step-note">💡 Windows SmartScreen warning is safe to dismiss — MUNIM has no virus or malware.</div>
+        <div class="step-title">Activate your copy</div>
+        <div class="step-desc">On first run, an activation screen appears. Enter the <strong>username, password and licence key</strong> provided when you purchased. The key is validated offline — no internet needed. Done in 30 seconds.</div>
       </div>
     </div>
-    <div class="step-connector"></div>
     <div class="step-row">
       <div class="step-circle">3</div>
       <div class="step-content">
-        <div class="step-title">Data folder created automatically</div>
-        <div class="step-desc">On first launch, MUNIM creates a folder at <strong>C:\MUNIM\</strong> and sets up the database. This is where all your data lives. You never need to touch this folder manually.</div>
+        <div class="step-title">Change the default password</div>
+        <div class="step-desc">On first login, MUNIM asks you to set a new password (minimum 8 characters). Choose something you will remember — there is no "forgot password" button. If you forget it, WhatsApp us and we will reset it.</div>
       </div>
     </div>
-  </div>
-  <div class="tip-box">
-    <div class="tip-label">System Requirements</div>
-    <div class="tip-text">Windows 10 or Windows 11 · Minimum 4GB RAM · 100MB free disk space · No internet required</div>
-  </div>
-</section>
-
-<!-- STEP 2: COMPANY -->
-<section class="sec sec-alt" id="company">
-  <div class="sec-label">Step 2</div>
-  <div class="sec-title">Create your company</div>
-  <p class="sec-sub">Set up your business profile once — MUNIM uses it on all invoices and reports.</p>
-  <div class="steps-wrap">
-    <div class="step-row">
-      <div class="step-circle">1</div>
-      <div class="step-content">
-        <div class="step-title">Click "Create New Company"</div>
-        <div class="step-desc">On the first screen, click "Create New Company". If you already have a company, click "Open Company" to load it.</div>
-      </div>
-    </div>
-    <div class="step-connector"></div>
-    <div class="step-row">
-      <div class="step-circle">2</div>
-      <div class="step-content">
-        <div class="step-title">Fill in your business details</div>
-        <div class="step-desc">Enter: Business Name, Address, State, GSTIN (if registered), PAN Number, Financial Year (April to March), and your opening cash balance.</div>
-      </div>
-    </div>
-    <div class="step-connector"></div>
-    <div class="step-row">
-      <div class="step-circle">3</div>
-      <div class="step-content">
-        <div class="step-title">Set admin username and password</div>
-        <div class="step-desc">Create a login ID and password for your company. This protects your books. You can add more users (staff) later from Settings.</div>
-        <div class="step-note">💡 Keep your password safe — MUNIM stores it locally and cannot recover it if lost.</div>
-      </div>
-    </div>
-    <div class="step-connector"></div>
     <div class="step-row">
       <div class="step-circle">4</div>
       <div class="step-content">
-        <div class="step-title">Company is ready</div>
-        <div class="step-desc">MUNIM creates all default account groups (Assets, Liabilities, Income, Expenses) and default ledgers automatically. Your dashboard is ready to use.</div>
+        <div class="step-title">Set up Company Details</div>
+        <div class="step-desc">Go to <strong>Utilities → Company Details</strong>. Enter your business name, GSTIN, address and state. This information appears on invoices and reports. If you are not GST registered, uncheck the GST Registered box — tax fields will be hidden.</div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- STEP 3, 4, 5, 6: TASK CARDS -->
-<section class="sec" id="sales">
-  <div class="sec-label">Step 3</div>
-  <div class="sec-title">How to enter a sales bill</div>
-  <p class="sec-sub">Every bill you create automatically posts to the Sales Register, Party Ledger, and Trial Balance.</p>
-  <div class="task-grid">
-    <div class="task-card">
-      <div class="task-num">A</div>
-      <div class="task-title">Create a new sales bill</div>
-      <ul class="task-steps">
-        <li>Click "Sales" in the left menu</li>
-        <li>Click "New Sales Entry" button</li>
-        <li>Select party name from dropdown (or add new)</li>
-        <li>Enter bill date</li>
-        <li>Add items — name, quantity, rate, GST %</li>
-        <li>MUNIM calculates total and GST automatically</li>
-        <li>Click "Save Bill" — it posts everywhere instantly</li>
-      </ul>
-    </div>
-    <div class="task-card">
-      <div class="task-num">B</div>
-      <div class="task-title">Print or share the invoice</div>
-      <ul class="task-steps">
-        <li>After saving, click "Print Invoice"</li>
-        <li>Choose A4 GST Invoice or Thermal Slip</li>
-        <li>Your printer opens automatically</li>
-        <li>Or click "Save as PDF" to share on WhatsApp</li>
-        <li>Invoice includes your GSTIN, HSN codes, tax split</li>
-      </ul>
-    </div>
-  </div>
-  <div class="tip-box">
-    <div class="tip-label">Pro Tip</div>
-    <div class="tip-text">Add your common items (like Gold Ring, Silver Chain) to the Item Master once. Then just select them from the dropdown when creating bills — no retyping needed.</div>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="purchase">
-  <div class="sec-label">Step 4</div>
-  <div class="sec-title">How to record a purchase</div>
-  <p class="sec-sub">Record supplier purchases — stock and ledger update automatically.</p>
-  <div class="task-grid">
-    <div class="task-card">
-      <div class="task-num">A</div>
-      <div class="task-title">Enter a purchase entry</div>
-      <ul class="task-steps">
-        <li>Click "Purchase" in the left menu</li>
-        <li>Click "New Purchase Entry"</li>
-        <li>Select or add supplier name</li>
-        <li>Enter supplier invoice number and date</li>
-        <li>Add items purchased with quantity and rate</li>
-        <li>Click "Save" — stock and ledger update instantly</li>
-      </ul>
-    </div>
-    <div class="task-card">
-      <div class="task-num">B</div>
-      <div class="task-title">Record a payment to supplier</div>
-      <ul class="task-steps">
-        <li>Click "Vouchers" → "Payment"</li>
-        <li>Select supplier from dropdown</li>
-        <li>Enter amount paid and payment mode (Cash/Bank)</li>
-        <li>Add narration (optional)</li>
-        <li>Click "Save" — supplier ledger updates</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="sec" id="reports">
-  <div class="sec-label">Step 5</div>
-  <div class="sec-title">How to view reports</div>
-  <p class="sec-sub">All reports pull live data — no manual work needed.</p>
-  <div class="task-grid">
-    <div class="task-card">
-      <div class="task-num">A</div>
-      <div class="task-title">View Trial Balance</div>
-      <ul class="task-steps">
-        <li>Click "Reports" in the left menu</li>
-        <li>Click "Trial Balance"</li>
-        <li>Select date range (or full year)</li>
-        <li>MUNIM shows all accounts with Dr/Cr totals</li>
-        <li>Click "Export to PDF" or "Export to Excel"</li>
-      </ul>
-    </div>
-    <div class="task-card">
-      <div class="task-num">B</div>
-      <div class="task-title">View Balance Sheet</div>
-      <ul class="task-steps">
-        <li>Click "Reports" → "Balance Sheet"</li>
-        <li>Select financial year</li>
-        <li>Assets and Liabilities shown as per Schedule III</li>
-        <li>Net Profit from P&L auto-included</li>
-        <li>Export to PDF to share with your CA</li>
-      </ul>
-    </div>
-    <div class="task-card">
-      <div class="task-num">C</div>
-      <div class="task-title">View Party Ledger</div>
-      <ul class="task-steps">
-        <li>Click "Ledger" in left menu</li>
-        <li>Select party name from dropdown</li>
-        <li>See all transactions with opening and closing balance</li>
-        <li>Filter by date range</li>
-        <li>Print or export for sharing</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<section class="sec sec-alt" id="backup">
-  <div class="sec-label">Step 6</div>
-  <div class="sec-title">How to backup your data</div>
-  <p class="sec-sub">Your data is at C:\MUNIM\ — backing up is as simple as copying a folder.</p>
-  <div class="steps-wrap">
     <div class="step-row">
-      <div class="step-circle">1</div>
+      <div class="step-circle">5</div>
       <div class="step-content">
-        <div class="step-title">Open File Explorer → go to C:\MUNIM\</div>
-        <div class="step-desc">This folder contains your entire database — all companies, all entries, all data.</div>
+        <div class="step-title">Add your customers and suppliers</div>
+        <div class="step-desc">Go to <strong>Masters → Party Master</strong>. Add each customer and supplier with their GSTIN and opening balance (what they owe you / you owe them on the starting date). You can also add parties later directly from the invoice screen using the <strong>+ New</strong> button.</div>
+        <div class="step-tip">💡 Set credit days for each party to use due-date ageing in Outstanding reports</div>
       </div>
     </div>
-    <div class="step-connector"></div>
     <div class="step-row">
-      <div class="step-circle">2</div>
+      <div class="step-circle">6</div>
       <div class="step-content">
-        <div class="step-title">Copy the entire MUNIM folder</div>
-        <div class="step-desc">Right-click → Copy → Paste to a USB drive, Google Drive, or any external storage. That's your backup.</div>
-      </div>
-    </div>
-    <div class="step-connector"></div>
-    <div class="step-row">
-      <div class="step-circle">3</div>
-      <div class="step-content">
-        <div class="step-title">To restore — paste back to C:\</div>
-        <div class="step-desc">On a new computer, install MUNIM.exe and paste your backed-up MUNIM folder to C:\. All your data will be there when you open MUNIM.</div>
-        <div class="step-note">💡 MUNIM also has a built-in backup button in Settings → Backup & Restore.</div>
+        <div class="step-title">Enter opening balances</div>
+        <div class="step-desc">If you are starting mid-year with existing balances, enter a Journal dated on your opening day: <strong>Dr Cash/Bank, Cr Capital</strong> for cash in hand. For other account opening balances, go to <strong>Masters → Ledger Accounts</strong> and double-click any account to set its opening balance.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="sec" id="faq">
-  <div class="sec-label">FAQ</div>
-  <div class="sec-title">Common questions</div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">Does MUNIM work without internet?</div>
-      <div class="faq-a">Yes — 100% offline. MUNIM never connects to the internet. All data is stored on your own computer at C:\MUNIM\. No cloud, no server, no subscription.</div>
+<!-- DAY TO DAY -->
+<section class="sec sec-alt">
+  <div class="sec-label">Daily Use</div>
+  <div class="sec-title">Recording transactions every day</div>
+  <div class="steps-list">
+    <div class="step-row">
+      <div class="step-circle">A</div>
+      <div class="step-content">
+        <div class="step-title">Recording a sale to a customer</div>
+        <div class="step-desc">Go to <strong>Transactions → Sales Invoice</strong>. Select the customer, enter items with quantity, rate and GST%. MUNIM calculates CGST/SGST or IGST automatically. If the customer pays now, enter the amount in <strong>Received now</strong>. Save — the entry posts to Sales Register, Ledger, and Trial Balance automatically.</div>
+        <div class="step-tip">💡 For walk-in customers: select Cash as the party and type the customer name in "Customer name on bill"</div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Is MUNIM really free? Are there hidden charges?</div>
-      <div class="faq-a">MUNIM is completely free forever. No subscription, no trial period, no hidden charges. Download once and use it for life.</div>
+    <div class="step-row">
+      <div class="step-circle">B</div>
+      <div class="step-content">
+        <div class="step-title">Counter sales for the day (retail/B2C)</div>
+        <div class="step-desc">If you have many small cash sales without individual invoices, use <strong>Transactions → Daily Sales Summary</strong>. Enter the total amount per GST rate for the day. Tick <strong>"Amounts include GST"</strong> if your prices are tax-inclusive. One entry covers the whole day.</div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Can I use MUNIM for GST filing?</div>
-      <div class="faq-a">MUNIM generates GST-ready invoices and reports (GSTR-1 summary, Sales Register with GST). For actual GST filing on the portal, export your data to Excel and upload on the GST portal directly.</div>
+    <div class="step-row">
+      <div class="step-circle">C</div>
+      <div class="step-content">
+        <div class="step-title">Recording a purchase from a supplier</div>
+        <div class="step-desc">Go to <strong>Transactions → Purchase Bill</strong>. Select the supplier, enter items with GST%. Input CGST/SGST/IGST is posted automatically. If you pay now, enter the amount in <strong>Paid now</strong>.</div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">What if I change computers or reinstall Windows?</div>
-      <div class="faq-a">Just copy your C:\MUNIM\ folder to a USB drive or external storage before reinstalling. After reinstalling MUNIM on the new system, paste the folder back to C:\ and all your data will be intact.</div>
+    <div class="step-row">
+      <div class="step-circle">D</div>
+      <div class="step-content">
+        <div class="step-title">Receiving payment from a customer later</div>
+        <div class="step-desc">Go to <strong>Transactions → Receipt / Payment</strong>. Select <strong>Receipt from customer</strong>, pick the party, enter the amount. MUNIM settles the oldest unpaid bill first. Any excess stays as advance on account. You can see all settled bills in the confirmation message.</div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Can my CA access my MUNIM data?</div>
-      <div class="faq-a">Yes — export any report (Trial Balance, Balance Sheet, Ledger) to PDF or Excel from inside MUNIM and share it with your CA on WhatsApp or email. No need for your CA to install MUNIM.</div>
+    <div class="step-row">
+      <div class="step-circle">E</div>
+      <div class="step-content">
+        <div class="step-title">Recording an expense (rent, salary, electricity)</div>
+        <div class="step-desc">First create the expense account if it does not exist: <strong>Masters → Ledger Accounts → add "Electricity" under Direct/Indirect Expenses</strong>. Then go to <strong>Transactions → Voucher Entry</strong>, type Payment, and enter: Dr Electricity, Cr Cash.</div>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">Does MUNIM work for businesses other than jewellery?</div>
-      <div class="faq-a">Yes. MUNIM is built for any Indian small business — retail shops, traders, service providers, manufacturers. The accounting modules (Sales, Purchase, Ledger, TB, BS) work for all types of businesses.</div>
+    <div class="step-row">
+      <div class="step-circle">F</div>
+      <div class="step-content">
+        <div class="step-title">Fixing a mistake</div>
+        <div class="step-desc">Open <strong>Reports → Day Book</strong>, find the entry, double-click it. A window opens showing full details. Click <strong>Edit</strong> to change it or <strong>Delete</strong> to remove it. Every change is logged in <strong>Utilities → Audit Log</strong>.</div>
+        <div class="step-tip">💡 Vouchers that settle bills cannot be edited — delete and re-enter instead</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
-<div class="cta-strip">
-  <h2>Ready to get started?</h2>
-  <p>Download MUNIM and have your books running in under 10 minutes.</p>
-  <a href="download.html" class="btn-gold">⬇ Download MUNIM Free</a>
-  <a href="contact.html" class="btn-outline-white">Need help? Contact us</a>
-</div>
+<!-- SHORTCUTS -->
+<section class="sec">
+  <div class="sec-label">Keyboard Shortcuts</div>
+  <div class="sec-title">Work faster with the keyboard</div>
+  <div class="shortcuts-grid">
+    <div class="shortcut-row"><span class="key">Enter</span><span class="key-desc">Move to the next field on any entry screen</span></div>
+    <div class="shortcut-row"><span class="key">Ctrl+S</span><span class="key-desc">Save the current entry</span></div>
+    <div class="shortcut-row"><span class="key">Esc</span><span class="key-desc">Go back one screen</span></div>
+    <div class="shortcut-row"><span class="key">↑ ↓</span><span class="key-desc">Move up and down in menus</span></div>
+    <div class="shortcut-row"><span class="key">Letter</span><span class="key-desc">Jump to that menu item (e.g. S for Sales)</span></div>
+    <div class="shortcut-row"><span class="key">t</span><span class="key-desc">Today's date in any date field</span></div>
+    <div class="shortcut-row"><span class="key">15</span><span class="key-desc">15th of this month in a date field</span></div>
+    <div class="shortcut-row"><span class="key">1511</span><span class="key-desc">15 November this year in a date field</span></div>
+  </div>
+</section>
 
-<!-- FOOTER -->
+<!-- TIPS -->
+<section class="sec sec-alt">
+  <div class="sec-label">Good to Know</div>
+  <div class="sec-title">Tips for clean books</div>
+  <div class="tip-grid">
+    <div class="tip-card">
+      <div class="tip-head">💾 Back up weekly</div>
+      <div class="tip-body">Go to Utilities → Backup Data. Save to a USB drive or cloud folder — not only on the same PC. The Gateway shows days since last backup in red if overdue.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-head">📊 Check Trial Balance monthly</div>
+      <div class="tip-body">A balanced trial balance (Dr = Cr) means your entries are correct. Run it at the end of each month before filing GST returns.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-head">🧾 GST invoices vs Daily Summary</div>
+      <div class="tip-body">Use Sales Invoice for every sale to a GST-registered business. Use Daily Sales Summary only for small B2C counter sales where the buyer does not need a tax invoice. Confirm with your CA.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-head">📅 Financial year</div>
+      <div class="tip-body">MUNIM uses Indian FY (April–March). Reports have a FY picker — you can view any past year at any time. Prior year balances carry forward automatically.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-head">🔑 Password safety</div>
+      <div class="tip-body">Change the default password immediately after first login. Keep it somewhere safe. If you forget it, WhatsApp us — we can reset it remotely.</div>
+    </div>
+    <div class="tip-card">
+      <div class="tip-head">📈 Opening and closing stock</div>
+      <div class="tip-body">Until the stock module is built, enter opening and closing stock manually on the Trading & P&L screen. Opening follows last year's closing automatically unless you change it.</div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--navy);padding:4rem 6%;text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:0.75rem;">Still have questions?</h2>
+  <p style="color:rgba(255,255,255,0.55);margin-bottom:1.75rem;max-width:460px;margin-left:auto;margin-right:auto;">WhatsApp us — we'll walk you through anything step by step.</p>
+  <a href="https://wa.me/918427651580" target="_blank" class="btn-gold">💬 WhatsApp Support</a>
+</section>
+
 <footer>
   <div>
     <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:0.75rem;">
       <div class="logo-icon">म</div>
       <div class="logo-name" style="font-size:17px;">MUNIM<span>.</span></div>
     </a>
-    <p class="foot-desc">Smart offline accounting software for Indian small businesses. Free forever.</p>
+    <p class="foot-desc">Smart offline accounting software for Indian small businesses. ₹2,499/year.</p>
     <p class="foot-desc" style="margin-top:0.5rem;">A companion tool on <a href="https://catoolskit.runs.on.dev/ca-tools-hub" style="color:var(--gold);">CA Toolkit</a></p>
   </div>
   <div class="foot-col">
@@ -426,12 +270,12 @@ footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-c
   <div class="foot-col">
     <h4>Support</h4>
     <a href="contact.html">Contact Us</a>
-    <a href="contact.html">WhatsApp Support</a>
+    <a href="https://wa.me/918427651580" target="_blank">WhatsApp Support</a>
     <a href="https://catoolskit.runs.on.dev" target="_blank">CA Toolkit</a>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 MUNIM. Free forever. Built with ❤️ in India.</span>
-    <span>Data stays on your computer — always.</span>
+    <span>© 2026 MUNIM. Built with ❤️ in India by Sumit Verma.</span>
+    <span>Data stays on your computer — always. &nbsp;<a href="admin-panel.html">Admin</a></span>
   </div>
 </footer>
 
