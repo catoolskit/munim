@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUNIM Admin Panel</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Segoe UI',sans-serif;background:#F4F6FA;color:#1B2438;min-height:100vh}
+  .navbar{background:#0F1F3D;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
+  .navbar .brand{color:#fff;font-size:20px;font-weight:700;letter-spacing:1px}
+  .navbar .sub{color:#9FB3D9;font-size:13px}
+  .container{max-width:900px;margin:40px auto;padding:0 20px}
+  .card{background:#fff;border:1px solid #E1E6EF;border-radius:12px;padding:28px 32px;margin-bottom:24px}
+  .card h2{font-size:17px;font-weight:700;margin-bottom:18px;color:#1B2438}
+  label{font-size:12px;color:#6B7690;display:block;margin-bottom:4px;margin-top:12px}
+  input,select{width:100%;padding:10px 14px;border:1px solid #E1E6EF;border-radius:8px;
+    font-size:14px;color:#1B2438;background:#fff;outline:none}
+  input:focus,select:focus{border-color:#1856A0}
+  .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+  .btn{background:#1856A0;color:#fff;border:none;border-radius:8px;padding:11px 24px;
+    font-size:14px;font-weight:700;cursor:pointer;margin-top:18px}
+  .btn:hover{background:#134581}
+  .btn-danger{background:#C0392B}.btn-danger:hover{background:#A32F23}
+  .btn-copy{background:#E7ECF5;color:#1B2438;border:none;border-radius:8px;
+    padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;margin-top:8px}
+  .btn-copy:hover{background:#DCE3F0}
+  .result-box{background:#F4F6FA;border:1px solid #E1E6EF;border-radius:8px;
+    padding:16px 20px;margin-top:16px;font-family:monospace;font-size:14px;line-height:2}
+  .result-box span{display:block}
+  .result-box .label{color:#6B7690;font-size:11px;font-family:'Segoe UI',sans-serif}
+  .result-box .val{color:#1B2438;font-weight:600;font-size:15px}
+  .key-val{color:#1856A0;font-size:16px;letter-spacing:1px}
+  .ok{color:#1E8E5A;font-weight:700}
+  .err{color:#C0392B;font-weight:600;font-size:13px;margin-top:8px}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{background:#EEF2F8;padding:10px 14px;text-align:left;font-weight:600;color:#1B2438}
+  td{padding:10px 14px;border-bottom:1px solid #F0F3F8;color:#1B2438}
+  tr:last-child td{border-bottom:none}
+  .pill{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700}
+  .pill-trial{background:#FEF3C7;color:#92400E}
+  .pill-month{background:#DBEAFE;color:#1D4ED8}
+  .pill-year{background:#D1FAE5;color:#065F46}
+  .pill-two{background:#EDE9FE;color:#5B21B6}
+  #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;
+    background:#0F1F3D}
+  .login-card{background:#fff;border-radius:16px;padding:40px 44px;width:360px;text-align:center}
+  .login-card h1{font-size:28px;font-weight:700;color:#0F1F3D;margin-bottom:4px}
+  .login-card p{color:#6B7690;font-size:13px;margin-bottom:24px}
+  .login-card input{margin-bottom:14px}
+  #main-screen{display:none}
+  .whatsapp-box{background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;
+    padding:14px 18px;margin-top:12px;font-size:13px;color:#2E7D32;white-space:pre-wrap;
+    word-break:break-all;line-height:1.8}
+  .footer{text-align:center;color:#9FB3D9;font-size:12px;padding:32px;background:#0F1F3D;margin-top:40px}
+</style>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen">
+  <div class="login-card">
+    <h1>MUNIM</h1>
+    <p>Admin Panel — Software Provider Login</p>
+    <input type="password" id="admin-pw" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <div class="err" id="login-err"></div>
+    <button class="btn" style="width:100%;margin-top:14px" onclick="doLogin()">Sign in</button>
+  </div>
+</div>
+
+<!-- MAIN SCREEN -->
+<div id="main-screen">
+  <div class="navbar">
+    <div>
+      <div class="brand">MUNIM</div>
+      <div class="sub">Admin Panel — Licence Manager</div>
+    </div>
+    <button class="btn-copy" onclick="doLogout()">Sign out</button>
+  </div>
+
+  <div class="container">
+
+    <!-- CREATE USER -->
+    <div class="card">
+      <h2>+ Create New User</h2>
+      <div class="row">
+        <div>
+          <label>Customer / Firm Name</label>
+          <input type="text" id="cust-name" placeholder="e.g. Ram Traders">
+        </div>
+        <div>
+          <label>Plan</label>
+          <select id="plan">
+            <option value="7">Trial — 7 days</option>
+            <option value="30">1 Month</option>
+            <option value="90">3 Months</option>
+            <option value="180">6 Months</option>
+            <option value="365" selected>1 Year</option>
+            <option value="730">2 Years</option>
+          </select>
+        </div>
+        <div>
+          <label>Username (auto-generated, editable)</label>
+          <input type="text" id="username" placeholder="will be generated">
+        </div>
+      </div>
+      <div class="row" style="margin-top:4px">
+        <div>
+          <label>Password (auto-generated, editable)</label>
+          <input type="text" id="password" placeholder="will be generated">
+        </div>
+        <div style="display:flex;align-items:flex-end">
+          <button class="btn" onclick="generateCredentials()">Generate</button>
+        </div>
+        <div></div>
+      </div>
+
+      <div id="result-area" style="display:none">
+        <div class="result-box">
+          <span class="label">Username</span>
+          <span class="val" id="res-user"></span>
+          <span class="label" style="margin-top:8px">Password</span>
+          <span class="val" id="res-pw"></span>
+          <span class="label" style="margin-top:8px">Licence Key</span>
+          <span class="val key-val" id="res-key"></span>
+          <span class="label" style="margin-top:8px">Valid Until</span>
+          <span class="val ok" id="res-expiry"></span>
+        </div>
+        <div class="whatsapp-box" id="wa-msg"></div>
+        <button class="btn-copy" onclick="copyAll()">📋 Copy WhatsApp message</button>
+        <button class="btn" style="margin-left:12px;margin-top:0" onclick="saveUser()">Save to list</button>
+        <div class="ok" id="save-ok" style="margin-top:8px;display:none">✓ Saved</div>
+      </div>
+    </div>
+
+    <!-- ALL USERS -->
+    <div class="card">
+      <h2>All Users</h2>
+      <table>
+        <thead>
+          <tr><th>#</th><th>Username</th><th>Firm</th><th>Plan</th><th>Created</th><th>Expires</th><th>Actions</th></tr>
+        </thead>
+        <tbody id="users-table">
+          <tr><td colspan="7" style="color:#6B7690;text-align:center">No users yet</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <div class="footer">© 2026 MUNIM · Admin Panel · All Rights Reserved</div>
+</div>
+
+<script>
+// ---- CONFIG — change ADMIN_PW before uploading ----
+const ADMIN_PW = "Munim@Admin2026";
+const SECRET   = "MUNIM_SUMIT_2026_CATOOLSKIT_XK9";   // must match utils/licence.py _SECRET
+const STORAGE_KEY = "munim_admin_users";
+
+// ---- LOGIN ----
+function doLogin(){
+  const pw = document.getElementById("admin-pw").value;
+  if(pw === ADMIN_PW){
+    sessionStorage.setItem("munim_admin_ok","1");
+    document.getElementById("login-screen").style.display="none";
+    document.getElementById("main-screen").style.display="block";
+    renderTable();
+  } else {
+    document.getElementById("login-err").textContent="Wrong password";
+  }
+}
+function doLogout(){
+  sessionStorage.removeItem("munim_admin_ok");
+  location.reload();
+}
+window.onload=()=>{
+  if(sessionStorage.getItem("munim_admin_ok")==="1"){
+    document.getElementById("login-screen").style.display="none";
+    document.getElementById("main-screen").style.display="block";
+    renderTable();
+  }
+};
+
+// ---- HMAC-SHA256 (pure JS, same logic as Python) ----
+async function hmacHex(secret, msg){
+  const enc = new TextEncoder();
+  const key = await crypto.subtle.importKey("raw", enc.encode(secret),
+    {name:"HMAC",hash:"SHA-256"}, false, ["sign"]);
+  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(msg));
+  return Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,"0")).join("");
+}
+
+// ---- BASE32 ----
+const B32 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+function b32encode(bytes){
+  let bits=0, val=0, out="";
+  for(let b of bytes){ val=(val<<8)|b; bits+=8;
+    while(bits>=5){ out+=B32[(val>>>(bits-5))&31]; bits-=5; }
+  }
+  if(bits>0) out+=B32[(val<<(5-bits))&31];
+  return out;
+}
+
+// ---- KEY GENERATION ----
+async function buildKey(username, expiryDate){
+  // Pack: 20 bytes username + 4 bytes ordinal (big-endian)
+  const uBytes = new Uint8Array(20);
+  const enc = new TextEncoder();
+  const ub = enc.encode(username.slice(0,20));
+  uBytes.set(ub.slice(0,20));
+  // Date ordinal: days since 0001-01-01 (Python's date.toordinal())
+  const ordinal = dateToPythonOrdinal(expiryDate);
+  const dBytes = new Uint8Array(4);
+  dBytes[0]=(ordinal>>>24)&255; dBytes[1]=(ordinal>>>16)&255;
+  dBytes[2]=(ordinal>>>8)&255;  dBytes[3]=ordinal&255;
+  const payload = b32encode([...uBytes, ...dBytes]);
+  const sig = (await hmacHex(SECRET, payload)).slice(0,6).toUpperCase();
+  return `MNM-${payload}-${sig}`;
+}
+
+function dateToPythonOrdinal(d){
+  // Python date.toordinal(): days since Jan 1, year 1 (proleptic Gregorian)
+  const y=d.getFullYear(), m=d.getMonth()+1, day=d.getDate();
+  // Algorithm matching Python's _ord2ymd
+  let days = Math.floor(365.25*(y+4716)) + Math.floor(30.6001*(m<3?m+12:m)) + day - 1524;
+  if(m<3){ days -= Math.floor(y/4) - Math.floor(y/100) + Math.floor(y/400) - 36; }
+  else { days -= Math.floor((y+1)/4) - Math.floor((y+1)/100) + Math.floor((y+1)/400) - 36; }
+  // Simpler: use epoch offset
+  const epoch = new Date(1,0,1); // Jan 1, year 1 — but JS Date doesn't go that far back
+  // Use a known anchor: Python ordinal of 2000-01-01 = 730120
+  const anchor = new Date(2000,0,1);
+  const diffDays = Math.round((d - anchor)/(86400000));
+  return 730120 + diffDays;
+}
+
+function addDays(d, n){ const r=new Date(d); r.setDate(r.getDate()+n); return r; }
+function fmtDate(d){ return d.toLocaleDateString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric"}); }
+
+function slugify(name){
+  return name.toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12) +
+         Math.floor(100+Math.random()*900);
+}
+function randPw(){
+  const up="ABCDEFGHJKLMNPQRSTUVWXYZ", lo="abcdefghjkmnpqrstuvwxyz", dg="23456789", sp="@#!";
+  const all=up+lo+dg+sp;
+  let pw=up[Math.floor(Math.random()*up.length)]+lo[Math.floor(Math.random()*lo.length)]+
+         dg[Math.floor(Math.random()*dg.length)]+sp[Math.floor(Math.random()*sp.length)];
+  for(let i=0;i<4;i++) pw+=all[Math.floor(Math.random()*all.length)];
+  return pw.split("").sort(()=>Math.random()-0.5).join("");
+}
+
+async function generateCredentials(){
+  const name = document.getElementById("cust-name").value.trim();
+  if(!name){ alert("Enter the customer or firm name first"); return; }
+  const days = parseInt(document.getElementById("plan").value);
+  const expiry = addDays(new Date(), days);
+  const username = document.getElementById("username").value.trim() || slugify(name);
+  const password = document.getElementById("password").value.trim() || randPw();
+  document.getElementById("username").value = username;
+  document.getElementById("password").value = password;
+  const key = await buildKey(username, expiry);
+  document.getElementById("res-user").textContent = username;
+  document.getElementById("res-pw").textContent   = password;
+  document.getElementById("res-key").textContent  = key;
+  document.getElementById("res-expiry").textContent = fmtDate(expiry);
+  const planLabel = document.getElementById("plan").selectedOptions[0].text;
+  const wa = `Hello,\n\nYour MUNIM accounting software is ready.\n\n` +
+    `Firm: ${name}\nPlan: ${planLabel}\nValid till: ${fmtDate(expiry)}\n\n` +
+    `Username: ${username}\nPassword: ${password}\nLicence Key: ${key}\n\n` +
+    `Steps:\n1. Open MUNIM.exe\n2. Enter username, password and licence key\n3. Start using your books\n\n` +
+    `For help, reply to this message.`;
+  document.getElementById("wa-msg").textContent = wa;
+  document.getElementById("result-area").style.display="block";
+  document.getElementById("save-ok").style.display="none";
+}
+
+function copyAll(){
+  const txt = document.getElementById("wa-msg").textContent;
+  navigator.clipboard.writeText(txt).then(()=>{ alert("Copied! Paste it in WhatsApp."); });
+}
+
+function saveUser(){
+  const users = JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+  const days = parseInt(document.getElementById("plan").value);
+  const expiry = addDays(new Date(), days);
+  users.unshift({
+    username: document.getElementById("res-user").textContent,
+    firm:     document.getElementById("cust-name").value.trim(),
+    plan:     document.getElementById("plan").selectedOptions[0].text,
+    created:  new Date().toISOString().slice(0,10),
+    expires:  expiry.toISOString().slice(0,10),
+    key:      document.getElementById("res-key").textContent,
+  });
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  document.getElementById("save-ok").style.display="block";
+  renderTable();
+}
+
+function deleteUser(i){
+  if(!confirm("Remove this user from the list?")) return;
+  const users = JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+  users.splice(i,1);
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(users));
+  renderTable();
+}
+
+function planPill(plan){
+  if(plan.includes("Trial"))  return `<span class="pill pill-trial">${plan}</span>`;
+  if(plan.includes("Month"))  return `<span class="pill pill-month">${plan}</span>`;
+  if(plan.includes("Year"))   return `<span class="pill pill-year">${plan}</span>`;
+  return `<span class="pill pill-two">${plan}</span>`;
+}
+
+function renderTable(){
+  const users = JSON.parse(localStorage.getItem(STORAGE_KEY)||"[]");
+  const tbody = document.getElementById("users-table");
+  if(!users.length){
+    tbody.innerHTML=`<tr><td colspan="7" style="color:#6B7690;text-align:center">No users yet</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = users.map((u,i)=>`
+    <tr>
+      <td>${users.length - i}</td>
+      <td><b>${u.username}</b></td>
+      <td>${u.firm}</td>
+      <td>${planPill(u.plan)}</td>
+      <td>${u.created}</td>
+      <td>${u.expires}</td>
+      <td><button class="btn-copy btn-danger" style="color:#fff;background:#C0392B;padding:4px 12px;font-size:12px"
+          onclick="deleteUser(${i})">Remove</button></td>
+    </tr>`).join("");
+}
+</script>
+</body>
+</html>
