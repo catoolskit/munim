@@ -10,194 +10,90 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --navy:#071B49;
-  --navy-light:#0D2560;
-  --gold:#F4C430;
-  --gold-dark:#D4A820;
-  --offwhite:#F7F8FC;
-  --white:#FFFFFF;
-  --charcoal:#252B36;
-  --text-mid:#4A5568;
-  --text-light:#718096;
-  --border:#E2E8F0;
-  --radius:10px;
-  --radius-lg:16px;
+  --navy:#071B49;--navy-light:#0D2560;
+  --gold:#F4C430;--gold-dark:#D4A820;
+  --offwhite:#F7F8FC;--white:#FFFFFF;
+  --charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;
+  --border:#E2E8F0;--radius:10px;--radius-lg:16px;
 }
 body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;}
 a{text-decoration:none;color:inherit;}
-
-/* NAV */
-nav{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 6%;height:68px;background:var(--navy);
-  position:sticky;top:0;z-index:200;
-}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;background:var(--navy);position:sticky;top:0;z-index:200;}
 .logo{display:flex;align-items:center;gap:10px;}
-.logo-icon{
-  width:36px;height:36px;background:var(--gold);border-radius:8px;
-  display:flex;align-items:center;justify-content:center;
-  font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);
-}
+.logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);}
 .logo-name{font-size:19px;font-weight:700;color:#fff;letter-spacing:0.3px;}
 .logo-name span{color:var(--gold);}
 .nav-links{display:flex;gap:1.75rem;font-size:14px;}
 .nav-links a{color:rgba(255,255,255,0.75);transition:color 0.2s;}
 .nav-links a:hover{color:var(--gold);}
-.nav-dl{
-  background:var(--gold);color:var(--navy);
-  padding:0.5rem 1.25rem;border-radius:var(--radius);
-  font-size:14px;font-weight:600;transition:background 0.2s;
-}
+.nav-dl{background:var(--gold);color:var(--navy);padding:0.5rem 1.25rem;border-radius:var(--radius);font-size:14px;font-weight:600;transition:background 0.2s;}
 .nav-dl:hover{background:var(--gold-dark);}
-
-/* HERO */
-.hero{
-  background:var(--navy);padding:5.5rem 6% 5rem;
-  display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;
-}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);
-  color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;
-  margin-bottom:1.5rem;font-weight:500;
-}
-.hero h1{
-  font-family:'Playfair Display',serif;
-  font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;
-  color:#fff;margin-bottom:1.25rem;
-}
+.hero{background:var(--navy);padding:5.5rem 6% 5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.5rem;font-weight:500;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:#fff;margin-bottom:1.25rem;}
 .hero h1 em{color:var(--gold);font-style:normal;}
 .hero-sub{color:rgba(255,255,255,0.65);font-size:1rem;margin-bottom:2rem;line-height:1.75;max-width:480px;}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-gold{
-  background:var(--gold);color:var(--navy);
-  padding:0.8rem 1.75rem;border-radius:var(--radius);
-  font-weight:700;font-size:0.95rem;
-  display:inline-flex;align-items:center;gap:7px;
-  transition:background 0.2s;
-}
+.btn-gold{background:var(--gold);color:var(--navy);padding:0.8rem 1.75rem;border-radius:var(--radius);font-weight:700;font-size:0.95rem;display:inline-flex;align-items:center;gap:7px;transition:background 0.2s;}
 .btn-gold:hover{background:var(--gold-dark);}
-.btn-outline{
-  border:1.5px solid rgba(244,196,48,0.5);color:rgba(255,255,255,0.85);
-  padding:0.8rem 1.75rem;border-radius:var(--radius);
-  font-size:0.95rem;transition:border-color 0.2s;
-}
+.btn-outline{border:1.5px solid rgba(244,196,48,0.5);color:rgba(255,255,255,0.85);padding:0.8rem 1.75rem;border-radius:var(--radius);font-size:0.95rem;transition:border-color 0.2s;}
 .btn-outline:hover{border-color:var(--gold);color:#fff;}
 .hero-note{margin-top:1.1rem;font-size:12px;color:rgba(255,255,255,0.4);}
-
-/* HERO MOCK WINDOW */
-.hero-visual{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:var(--radius-lg);overflow:hidden;
-}
-.mock-bar{
-  background:rgba(255,255,255,0.08);padding:0.6rem 1rem;
-  display:flex;align-items:center;gap:6px;
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
+.hero-visual{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);overflow:hidden;}
+.mock-bar{background:rgba(255,255,255,0.08);padding:0.6rem 1rem;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.08);}
 .mock-dot{width:10px;height:10px;border-radius:50%;}
 .mock-content{padding:1.25rem;}
-.mock-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0.6rem 0.75rem;border-radius:7px;margin-bottom:0.4rem;
-  background:rgba(255,255,255,0.05);font-size:13px;color:rgba(255,255,255,0.8);
-}
+.mock-row{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0.75rem;border-radius:7px;margin-bottom:0.4rem;background:rgba(255,255,255,0.05);font-size:13px;color:rgba(255,255,255,0.8);}
 .mock-row span{font-size:12px;color:var(--gold);}
 .mock-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.75rem;}
 .mock-stat{background:rgba(244,196,48,0.1);border-radius:8px;padding:0.75rem;text-align:center;}
 .mock-stat-num{font-size:1.1rem;font-weight:700;color:var(--gold);}
 .mock-stat-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px;}
-
-/* SECTIONS */
+.mock-sample-note{font-size:10px;color:rgba(255,255,255,0.25);text-align:right;padding:0.5rem 0.75rem 0.75rem;}
 .sec{padding:5rem 6%;}
 .sec-alt{background:var(--offwhite);}
 .sec-label{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;margin-bottom:0.6rem;}
 .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--charcoal);margin-bottom:0.75rem;}
 .sec-sub{color:var(--text-mid);max-width:540px;font-size:0.95rem;}
-
-/* STATS */
-.stats-row{
-  display:grid;grid-template-columns:repeat(4,1fr);
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .stat-cell{text-align:center;padding:2rem 1rem;border-right:1px solid var(--border);}
 .stat-cell:last-child{border-right:none;}
 .stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--navy);font-weight:700;}
 .stat-label{font-size:13px;color:var(--text-light);margin-top:4px;}
-
-/* FEATURES */
 .feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;margin-top:2.5rem;}
-.feat-card{
-  background:var(--white);border:1px solid var(--border);
-  border-radius:var(--radius-lg);padding:1.5rem;
-  transition:box-shadow 0.2s,border-color 0.2s;
-}
+.feat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;transition:box-shadow 0.2s,border-color 0.2s;}
 .feat-card:hover{box-shadow:0 4px 20px rgba(7,27,73,0.08);border-color:#cbd5e0;}
-.feat-icon-box{
-  width:46px;height:46px;border-radius:10px;
-  background:rgba(7,27,73,0.06);
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;margin-bottom:1rem;
-}
+.feat-icon-box{width:46px;height:46px;border-radius:10px;background:rgba(7,27,73,0.06);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1rem;}
 .feat-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
 .feat-desc{font-size:13px;color:var(--text-mid);line-height:1.65;}
-
-/* MODULES */
+.soon-tag{font-size:10px;background:#FEF3C7;color:#92400E;padding:2px 7px;border-radius:999px;margin-left:6px;font-weight:600;vertical-align:middle;}
 .modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.65rem;margin-top:2rem;}
-.mod-pill{
-  display:flex;align-items:center;gap:10px;
-  background:var(--white);border:1px solid var(--border);
-  border-radius:9px;padding:0.8rem 1rem;transition:border-color 0.2s;
-}
+.mod-pill{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:9px;padding:0.8rem 1rem;transition:border-color 0.2s;}
 .mod-pill:hover{border-color:#94a3b8;}
 .mod-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-dark);flex-shrink:0;}
 .mod-name{font-size:14px;font-weight:500;color:var(--charcoal);}
 .mod-tag{margin-left:auto;font-size:11px;background:var(--offwhite);color:var(--text-light);padding:2px 8px;border-radius:999px;border:1px solid var(--border);}
-
-/* STEPS */
 .steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem;}
 .step-card{text-align:center;padding:1.5rem;}
-.step-num{
-  width:52px;height:52px;border-radius:50%;
-  background:var(--navy);color:var(--gold);
-  font-size:1.2rem;font-weight:700;font-family:'Playfair Display',serif;
-  display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;
-}
+.step-num{width:52px;height:52px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:1.2rem;font-weight:700;font-family:'Playfair Display',serif;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
 .step-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
 .step-desc{font-size:13px;color:var(--text-mid);line-height:1.65;}
-
-/* COMPARE TABLE */
-.tbl-wrap{margin-top:2rem;overflow-x:auto;border-radius:var(--radius-lg);border:1px solid var(--border);}
-table{width:100%;border-collapse:collapse;font-size:14px;background:var(--white);}
-thead tr{background:var(--navy);}
-th{padding:1rem 1.25rem;text-align:left;color:rgba(255,255,255,0.7);font-weight:500;font-size:13px;}
-th.hl{color:var(--gold);font-weight:600;}
-td{padding:0.9rem 1.25rem;border-bottom:1px solid var(--border);color:var(--charcoal);}
-td.hl{color:var(--navy);font-weight:600;background:rgba(7,27,73,0.03);}
-tr:last-child td{border-bottom:none;}
-.yes{color:#2f9e44;font-weight:600;}
-.no{color:#c92a2a;}
-
-/* FOOTER */
-footer{
-  background:var(--charcoal);padding:3rem 6% 0;
-  display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;
-}
+.price-box{background:var(--navy);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;max-width:420px;margin:2rem auto 0;}
+.price-amount{font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);font-weight:700;}
+.price-period{font-size:14px;color:rgba(255,255,255,0.5);margin-top:4px;}
+.price-includes{list-style:none;margin:1.5rem 0;text-align:left;}
+.price-includes li{font-size:14px;color:rgba(255,255,255,0.7);padding:0.4rem 0;display:flex;gap:8px;}
+.price-includes li::before{content:'✓';color:var(--gold);font-weight:700;}
+footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;}
 .foot-desc{font-size:13px;color:rgba(255,255,255,0.4);margin-top:0.75rem;line-height:1.7;}
 .foot-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase;}
 .foot-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;transition:color 0.2s;}
 .foot-col a:hover{color:var(--gold);}
-.foot-bottom{
-  grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);
-  margin-top:2rem;padding:1.25rem 0;
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;
-}
-.foot-bottom a{color:rgba(255,255,255,0.4);transition:color 0.2s;}
+.foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;}
+.foot-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s;}
 .foot-bottom a:hover{color:var(--gold);}
-
-/* RESPONSIVE */
+.wa-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:999;transition:transform 0.2s;}
+.wa-fab:hover{transform:scale(1.08);}
 @media(max-width:768px){
   .hero{grid-template-columns:1fr;}
   .hero-visual{display:none;}
@@ -211,7 +107,10 @@ footer{
 </head>
 <body>
 
-<!-- ── NAV ── -->
+<!-- WhatsApp FAB -->
+<a href="https://wa.me/918427651580" target="_blank" class="wa-fab" title="WhatsApp Support">💬</a>
+
+<!-- NAV -->
 <nav>
   <a href="index.html" class="logo">
     <div class="logo-icon">म</div>
@@ -226,56 +125,57 @@ footer{
     <a href="contact.html">Support</a>
     <a href="download.html">Download</a>
   </div>
-  <a href="download.html" class="nav-dl">⬇ Download Free</a>
+  <a href="download.html" class="nav-dl">⬇ Download</a>
 </nav>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <div>
     <div class="hero-badge">🇮🇳 Built for Indian Small Businesses</div>
     <h1>Your Digital<br/><em>मुनीम</em> —<br/>Complete Accounting</h1>
-    <p class="hero-sub">Sales, Purchase, Journal, Ledger, Trial Balance, Balance Sheet and more. Works fully offline. No subscription ever. All data saved on your own computer.</p>
+    <p class="hero-sub">Sales, Purchase, Journal, Ledger, Trial Balance, Balance Sheet and more. Works fully offline. All data saved on your own computer.</p>
     <div class="hero-btns">
-      <a href="download.html" class="btn-gold">⬇ Download Free</a>
+      <a href="download.html" class="btn-gold">⬇ Download MUNIM</a>
       <a href="features.html" class="btn-outline">See all features →</a>
     </div>
-    <p class="hero-note">Windows 10/11 · ~25 MB · No internet needed · Free forever</p>
+    <p class="hero-note">Windows 10/11 · ~15 MB · No internet needed · ₹2,499/year</p>
   </div>
   <div class="hero-visual">
     <div class="mock-bar">
       <div class="mock-dot" style="background:#ff5f56"></div>
       <div class="mock-dot" style="background:#ffbd2e"></div>
       <div class="mock-dot" style="background:#27c93f"></div>
-      <span style="font-size:12px;color:rgba(255,255,255,0.4);margin-left:8px;">MUNIM — Dashboard</span>
+      <span style="font-size:12px;color:rgba(255,255,255,0.4);margin-left:8px;">MUNIM — Gateway</span>
     </div>
     <div class="mock-content">
-      <div class="mock-row">📋 Sales Entry — Today<span>+ ₹28,500</span></div>
-      <div class="mock-row">🛒 Purchase Entry<span>− ₹14,200</span></div>
-      <div class="mock-row">📔 Journal Voucher<span>Posted ✓</span></div>
+      <div class="mock-row">📋 Sales Invoice<span>Posted ✓</span></div>
+      <div class="mock-row">🛒 Purchase Bill<span>Posted ✓</span></div>
+      <div class="mock-row">📔 Journal Voucher<span>Balanced ✓</span></div>
       <div class="mock-row">📊 Trial Balance<span>Balanced ✓</span></div>
       <div class="mock-stat-row">
         <div class="mock-stat">
-          <div class="mock-stat-num">₹2.4L</div>
-          <div class="mock-stat-label">This month sales</div>
+          <div class="mock-stat-num">Dr = Cr</div>
+          <div class="mock-stat-label">Double entry</div>
         </div>
         <div class="mock-stat">
-          <div class="mock-stat-num">₹18K</div>
-          <div class="mock-stat-label">Net profit</div>
+          <div class="mock-stat-num">GST ✓</div>
+          <div class="mock-stat-label">Auto split</div>
         </div>
       </div>
     </div>
+    <div class="mock-sample-note">Sample data for illustration</div>
   </div>
 </section>
 
-<!-- ── STATS ── -->
+<!-- STATS -->
 <div class="stats-row">
   <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-label">Offline — no internet needed</div></div>
-  <div class="stat-cell"><div class="stat-num">₹0</div><div class="stat-label">Free forever, no subscription</div></div>
-  <div class="stat-cell"><div class="stat-num">12+</div><div class="stat-label">Accounting modules built-in</div></div>
+  <div class="stat-cell"><div class="stat-num">₹2,499</div><div class="stat-label">Per year, all features included</div></div>
+  <div class="stat-cell"><div class="stat-num">9+</div><div class="stat-label">Accounting modules built-in</div></div>
   <div class="stat-cell"><div class="stat-num">1-Click</div><div class="stat-label">Setup and start in minutes</div></div>
 </div>
 
-<!-- ── FEATURES ── -->
+<!-- FEATURES -->
 <section class="sec">
   <div class="sec-label">Why MUNIM</div>
   <div class="sec-title">Built for the way you work</div>
@@ -284,12 +184,12 @@ footer{
     <div class="feat-card">
       <div class="feat-icon-box">📋</div>
       <div class="feat-title">Auto-posting vouchers</div>
-      <div class="feat-desc">Every sales bill automatically flows into the Sales Register, Ledger, and Trial Balance — exactly like Tally.</div>
+      <div class="feat-desc">Every sales bill automatically flows into the Sales Register, Ledger, and Trial Balance. No manual journal needed.</div>
     </div>
     <div class="feat-card">
       <div class="feat-icon-box">📊</div>
       <div class="feat-title">Complete financial reports</div>
-      <div class="feat-desc">Generate Trial Balance, P&L Statement, and Balance Sheet instantly. Export to PDF or Excel in one click.</div>
+      <div class="feat-desc">Generate Trial Balance, Trading & P&L, and Balance Sheet instantly. Export to Excel in one click.</div>
     </div>
     <div class="feat-card">
       <div class="feat-icon-box">💾</div>
@@ -299,17 +199,17 @@ footer{
     <div class="feat-card">
       <div class="feat-icon-box">🧾</div>
       <div class="feat-title">GST-ready billing</div>
-      <div class="feat-desc">Generate proper GST invoices with CGST/SGST/IGST split. Print clean A4 bills directly from MUNIM.</div>
+      <div class="feat-desc">CGST/SGST/IGST split auto-detected from GSTIN state code. Daily Sales Summary for counter sales. <span class="soon-tag">PDF invoice coming soon</span></div>
     </div>
     <div class="feat-card">
       <div class="feat-icon-box">🔐</div>
       <div class="feat-title">Multi-user login</div>
-      <div class="feat-desc">Set up separate login IDs with passwords. Protect your books with simple, secure access control.</div>
+      <div class="feat-desc">Set up separate admin and staff logins with passwords. Full audit log of every change made.</div>
     </div>
     <div class="feat-card">
       <div class="feat-icon-box">⚡</div>
       <div class="feat-title">Fast and lightweight</div>
-      <div class="feat-desc">No browser, no loading screens. Opens in under 3 seconds. Runs smoothly on older Windows PCs too.</div>
+      <div class="feat-desc">No browser, no loading screens. Runs smoothly on older Windows PCs. About 15 MB download.</div>
     </div>
   </div>
   <div style="margin-top:1.5rem;text-align:center;">
@@ -317,28 +217,28 @@ footer{
   </div>
 </section>
 
-<!-- ── MODULES ── -->
+<!-- MODULES -->
 <section class="sec sec-alt">
-  <div class="sec-label">All Modules</div>
+  <div class="sec-label">What's Inside</div>
   <div class="sec-title">Everything in one place</div>
-  <p class="sec-sub">12 fully integrated accounting modules. No add-ons, no upgrades needed.</p>
+  <p class="sec-sub">Fully integrated accounting modules. No add-ons, no upgrades needed.</p>
   <div class="modules-grid">
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Sales Register</div><div class="mod-tag">Core</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Purchase Register</div><div class="mod-tag">Core</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Journal Entry</div><div class="mod-tag">Core</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Ledger View</div><div class="mod-tag">Core</div></div>
+    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Sales Invoice</div><div class="mod-tag">Core</div></div>
+    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Purchase Bill</div><div class="mod-tag">Core</div></div>
+    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Voucher Entry</div><div class="mod-tag">Core</div></div>
+    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Ledger View</div><div class="mod-tag">Reports</div></div>
     <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Trial Balance</div><div class="mod-tag">Reports</div></div>
     <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Balance Sheet</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Profit & Loss</div><div class="mod-tag">Reports</div></div>
+    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Trading & P&L</div><div class="mod-tag">Reports</div></div>
     <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Cash Book</div><div class="mod-tag">Reports</div></div>
     <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Day Book</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">GST Invoice (A4 / Slip)</div><div class="mod-tag">Billing</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Stock / Inventory</div><div class="mod-tag">Inventory</div></div>
+    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Outstanding / Ageing</div><div class="mod-tag">Reports</div></div>
     <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Party Master</div><div class="mod-tag">Master</div></div>
+    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">GST Invoice PDF</div><div class="mod-tag">Coming soon</div></div>
   </div>
 </section>
 
-<!-- ── HOW IT WORKS ── -->
+<!-- HOW IT WORKS -->
 <section class="sec">
   <div class="sec-label">Setup</div>
   <div class="sec-title">Get started in 3 steps</div>
@@ -350,13 +250,13 @@ footer{
     </div>
     <div class="step-card">
       <div class="step-num">2</div>
-      <div class="step-title">Create your company</div>
-      <div class="step-desc">Enter your business name, GST number, and financial year. MUNIM sets up all account groups and ledgers automatically.</div>
+      <div class="step-title">Activate your copy</div>
+      <div class="step-desc">Enter the username, password and licence key provided when you purchase. Takes 30 seconds. Works fully offline after that.</div>
     </div>
     <div class="step-card">
       <div class="step-num">3</div>
       <div class="step-title">Start your books</div>
-      <div class="step-desc">Create a sales bill and watch it post to Sales Register, Ledger, and Trial Balance automatically — just like Tally.</div>
+      <div class="step-desc">Set up your company, add customers and suppliers, and record your first sale. The ledger, registers and reports update automatically.</div>
     </div>
   </div>
   <div style="text-align:center;margin-top:2rem;">
@@ -364,58 +264,50 @@ footer{
   </div>
 </section>
 
-<!-- ── COMPARE ── -->
+<!-- PRICING -->
 <section class="sec sec-alt">
-  <div class="sec-label">Comparison</div>
-  <div class="sec-title">MUNIM vs other options</div>
-  <p class="sec-sub">Why pay thousands per year when MUNIM gives you everything for free?</p>
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th>Feature</th>
-          <th class="hl">MUNIM</th>
-          <th>Tally Prime</th>
-          <th>Busy / Evershine</th>
-          <th>Excel</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Price</td><td class="hl">Free forever</td><td>₹18,000+/yr</td><td>₹5,000+/yr</td><td>Paid (M365)</td></tr>
-        <tr><td>Works offline</td><td class="hl"><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td></tr>
-        <tr><td>Auto voucher posting</td><td class="hl"><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="no">✗ No</span></td></tr>
-        <tr><td>Balance Sheet generation</td><td class="hl"><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="no">✗ No</span></td></tr>
-        <tr><td>No subscription required</td><td class="hl"><span class="yes">✓ Yes</span></td><td><span class="no">✗ No</span></td><td><span class="no">✗ No</span></td><td><span class="no">✗ No</span></td></tr>
-        <tr><td>Data on your computer</td><td class="hl"><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td><td><span class="yes">✓ Yes</span></td></tr>
-        <tr><td>Setup complexity</td><td class="hl">Very easy</td><td>Complex</td><td>Moderate</td><td>Manual</td></tr>
-      </tbody>
-    </table>
+  <div class="sec-label">Pricing</div>
+  <div class="sec-title">Simple, honest pricing</div>
+  <p class="sec-sub">One price. All features included. Renew every year to keep receiving updates and support.</p>
+  <div class="price-box">
+    <div class="price-amount">₹2,499</div>
+    <div class="price-period">per year · includes all updates and WhatsApp support</div>
+    <ul class="price-includes">
+      <li>All accounting modules — Sales, Purchase, Journal, Reports</li>
+      <li>Unlimited vouchers and parties</li>
+      <li>Works 100% offline on your PC</li>
+      <li>Your data stays on your computer always</li>
+      <li>WhatsApp support from a real person</li>
+      <li>Free updates throughout the year</li>
+    </ul>
+    <a href="download.html" class="btn-gold" style="width:100%;justify-content:center;">Get MUNIM →</a>
+    <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">7-day free trial available · No credit card needed to try</p>
   </div>
 </section>
 
-<!-- ── DOWNLOAD CTA ── -->
+<!-- DOWNLOAD CTA -->
 <section style="background:var(--navy);padding:4.5rem 6%;text-align:center;">
   <div class="sec-label" style="color:var(--gold);">Download</div>
-  <div class="sec-title" style="color:#fff;font-family:'Playfair Display',serif;">Start using MUNIM today — it's free</div>
-  <p style="color:rgba(255,255,255,0.55);margin:0.75rem auto 2rem;max-width:480px;font-size:0.95rem;">One .exe file. No installation, no subscription, no internet. Just double-click and start.</p>
-  <a href="download.html" class="btn-gold" style="font-size:1rem;padding:0.9rem 2.25rem;display:inline-flex;">⬇ Download MUNIM.exe — Free</a>
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;margin-bottom:0.75rem;">Start using MUNIM today</h2>
+  <p style="color:rgba(255,255,255,0.55);margin:0.75rem auto 2rem;max-width:480px;font-size:0.95rem;">One .exe file. No installation, no internet. Just download, activate and start.</p>
+  <a href="download.html" class="btn-gold" style="font-size:1rem;padding:0.9rem 2.25rem;display:inline-flex;">⬇ Download MUNIM</a>
   <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1.5rem;">
     <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ Windows 10/11</span>
-    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ ~25 MB download</span>
+    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ ~15 MB download</span>
     <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ No internet required</span>
     <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ Data saved to C:\MUNIM\</span>
-    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ Free forever</span>
+    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ ₹2,499/year</span>
   </div>
 </section>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
   <div>
     <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:0.75rem;">
       <div class="logo-icon">म</div>
       <div class="logo-name" style="font-size:17px;">MUNIM<span>.</span></div>
     </a>
-    <p class="foot-desc">Smart offline accounting software for Indian small businesses. Free forever.</p>
+    <p class="foot-desc">Smart offline accounting software for Indian small businesses. ₹2,499/year.</p>
     <p class="foot-desc" style="margin-top:0.5rem;">A companion tool on <a href="https://catoolskit.runs.on.dev/ca-tools-hub" style="color:var(--gold);text-decoration:none;">CA Toolkit</a></p>
   </div>
   <div class="foot-col">
@@ -429,12 +321,12 @@ footer{
   <div class="foot-col">
     <h4>Support</h4>
     <a href="contact.html">Contact Us</a>
-    <a href="contact.html">WhatsApp Support</a>
+    <a href="https://wa.me/918427651580" target="_blank">WhatsApp Support</a>
     <a href="https://catoolskit.runs.on.dev" target="_blank">CA Toolkit</a>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 MUNIM. Free forever. Built with ❤️ in India.</span>
-    <span>Data stays on your computer — always.</span>
+    <span>© 2026 MUNIM. Built with ❤️ in India by Sumit Verma.</span>
+    <span>Data stays on your computer — always. &nbsp;<a href="admin-panel.html">Admin</a></span>
   </div>
 </footer>
 
