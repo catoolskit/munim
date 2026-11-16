@@ -9,18 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --navy:#071B49;--navy-light:#0D2560;
-  --gold:#F4C430;--gold-dark:#D4A820;
-  --offwhite:#F7F8FC;--white:#FFFFFF;
-  --charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;
-  --border:#E2E8F0;--radius:10px;--radius-lg:16px;
-  --green:#25D366;--green-dark:#1da851;
-}
+:root{--navy:#071B49;--gold:#F4C430;--gold-dark:#D4A820;--offwhite:#F7F8FC;--white:#FFFFFF;--charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;--border:#E2E8F0;--radius:10px;--radius-lg:16px;}
 body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;}
 a{text-decoration:none;color:inherit;}
-
-/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;background:var(--navy);position:sticky;top:0;z-index:200;}
 .logo{display:flex;align-items:center;gap:10px;}
 .logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);}
@@ -31,78 +22,52 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;h
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
 .nav-dl{background:var(--gold);color:var(--navy);padding:0.5rem 1.25rem;border-radius:var(--radius);font-size:14px;font-weight:600;}
 .nav-dl:hover{background:var(--gold-dark);}
-
-/* PAGE HERO */
-.page-hero{background:var(--navy);padding:4rem 6% 3.5rem;text-align:center;}
-.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.25rem;font-weight:500;}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:0.75rem;}
+.page-hero{background:var(--navy);padding:5rem 6% 4rem;text-align:center;}
+.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.5rem;font-weight:500;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:1rem;}
 .page-hero h1 em{color:var(--gold);font-style:normal;}
-.page-hero p{color:rgba(255,255,255,0.6);max-width:480px;margin:0 auto;font-size:0.95rem;}
-
-/* SECTIONS */
+.page-hero p{color:rgba(255,255,255,0.6);font-size:1rem;max-width:500px;margin:0 auto;}
 .sec{padding:4rem 6%;}
 .sec-alt{background:var(--offwhite);}
 .sec-label{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;margin-bottom:0.6rem;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);color:var(--charcoal);margin-bottom:0.5rem;}
-.sec-sub{color:var(--text-mid);font-size:0.9rem;margin-bottom:2rem;}
-
-/* CONTACT CARDS */
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--charcoal);margin-bottom:1rem;}
 .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2rem;}
-.contact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem 1.75rem;text-align:center;transition:box-shadow 0.2s,border-color 0.2s;}
-.contact-card:hover{box-shadow:0 4px 20px rgba(7,27,73,0.08);border-color:#cbd5e0;}
-.contact-card.featured{border:2px solid var(--gold);background:#fffdf0;}
+.contact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:box-shadow 0.2s;}
+.contact-card:hover{box-shadow:0 4px 20px rgba(7,27,73,0.08);}
 .contact-icon{font-size:2.5rem;margin-bottom:1rem;}
-.contact-method{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.3rem;}
-.contact-handle{font-size:0.9rem;color:var(--text-mid);margin-bottom:1.25rem;}
-.contact-note{font-size:12px;color:var(--text-light);margin-bottom:1.25rem;line-height:1.6;}
-.btn-wa{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:0.7rem 1.5rem;border-radius:var(--radius);font-weight:600;font-size:0.9rem;transition:background 0.2s;}
-.btn-wa:hover{background:var(--green-dark);}
-.btn-navy{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;padding:0.7rem 1.5rem;border-radius:var(--radius);font-weight:600;font-size:0.9rem;transition:background 0.2s;}
-.btn-navy:hover{background:var(--navy-light);}
-.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--border);color:var(--charcoal);padding:0.7rem 1.5rem;border-radius:var(--radius);font-weight:600;font-size:0.9rem;transition:all 0.2s;}
-.btn-outline:hover{border-color:var(--navy);color:var(--navy);}
-.featured-tag{display:inline-block;background:var(--gold);color:var(--navy);font-size:11px;font-weight:700;padding:3px 10px;border-radius:999px;margin-bottom:1rem;}
-
-/* RESPONSE TIME */
-.response-band{background:var(--navy);border-radius:var(--radius-lg);padding:1.5rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:2rem;}
-.response-item{text-align:center;}
-.response-time{font-size:1.4rem;font-weight:700;color:var(--gold);font-family:'Playfair Display',serif;}
-.response-label{font-size:12px;color:rgba(255,255,255,0.45);margin-top:3px;}
-
-/* COMMON ISSUES */
-.issues-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-top:1.5rem;}
-.issue-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;}
-.issue-q{font-size:0.9rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;display:flex;align-items:flex-start;gap:0.5rem;}
-.issue-q::before{content:'?';width:20px;height:20px;border-radius:50%;background:rgba(7,27,73,0.08);color:var(--navy);font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
-.issue-a{font-size:13px;color:var(--text-mid);line-height:1.65;padding-left:1.625rem;}
-.issue-link{font-size:13px;color:var(--navy);font-weight:500;padding-left:1.625rem;margin-top:0.4rem;display:block;}
-
-/* REPORT BUG */
-.bug-box{background:var(--offwhite);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;margin-top:2rem;}
-.bug-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
-.bug-desc{font-size:14px;color:var(--text-mid);margin-bottom:1.25rem;line-height:1.65;}
-.bug-steps{list-style:none;padding:0;margin-bottom:1.25rem;}
-.bug-steps li{font-size:13px;color:var(--text-mid);padding:4px 0;padding-left:1.25rem;position:relative;}
-.bug-steps li::before{content:'→';position:absolute;left:0;color:var(--gold-dark);}
-
-/* FOOTER */
+.contact-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
+.contact-desc{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1.25rem;}
+.btn-gold{background:var(--gold);color:var(--navy);padding:0.75rem 1.5rem;border-radius:var(--radius);font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:7px;transition:background 0.2s;}
+.btn-gold:hover{background:var(--gold-dark);}
+.btn-outline{border:1.5px solid var(--border);color:var(--charcoal);padding:0.75rem 1.5rem;border-radius:var(--radius);font-size:0.9rem;display:inline-flex;align-items:center;gap:7px;transition:border-color 0.2s;}
+.btn-outline:hover{border-color:#94a3b8;}
+.hours-box{background:var(--navy);border-radius:var(--radius-lg);padding:2rem;margin-top:2rem;max-width:500px;}
+.hours-title{font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1rem;}
+.hours-row{display:flex;justify-content:space-between;font-size:14px;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.08);}
+.hours-row:last-child{border-bottom:none;}
+.hours-day{color:rgba(255,255,255,0.6);}
+.hours-time{color:#fff;font-weight:500;}
+.faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:1rem;}
+.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;}
+.faq-q{font-size:0.95rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
+.faq-a{font-size:13px;color:var(--text-mid);line-height:1.65;}
 footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;}
 .foot-desc{font-size:13px;color:rgba(255,255,255,0.4);margin-top:0.75rem;line-height:1.7;}
 .foot-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase;}
 .foot-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;transition:color 0.2s;}
 .foot-col a:hover{color:var(--gold);}
 .foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;padding:1.25rem 0;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;}
-
-@media(max-width:768px){
-  .nav-links{display:none;}
-  footer{grid-template-columns:1fr;}
-  .response-band{justify-content:center;}
-}
+.foot-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s;}
+.foot-bottom a:hover{color:var(--gold);}
+.wa-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:999;transition:transform 0.2s;}
+.wa-fab:hover{transform:scale(1.08);}
+@media(max-width:768px){.nav-links{display:none;}footer{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<a href="https://wa.me/918427651580" target="_blank" class="wa-fab" title="WhatsApp Support">💬</a>
+
 <nav>
   <a href="index.html" class="logo">
     <div class="logo-icon">म</div>
@@ -117,159 +82,80 @@ footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-c
     <a href="contact.html" class="active">Support</a>
     <a href="download.html">Download</a>
   </div>
-  <a href="download.html" class="nav-dl">⬇ Download Free</a>
+  <a href="download.html" class="nav-dl">⬇ Download</a>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="page-badge">🤝 Support</div>
+  <div class="page-badge">💬 Support</div>
   <h1>We're here to <em>help</em></h1>
-  <p>Having trouble with MUNIM? Want to report a bug or suggest a feature? Reach out — real human support, no chatbot.</p>
+  <p>Real support from a real person. No chatbots, no support tickets. Just WhatsApp us and we'll sort it out.</p>
 </div>
 
-<!-- CONTACT OPTIONS -->
 <section class="sec">
-  <div class="sec-label">Get in touch</div>
+  <div class="sec-label">Get in Touch</div>
   <div class="sec-title">Choose how to reach us</div>
   <div class="contact-grid">
-
-    <div class="contact-card featured">
-      <div class="featured-tag">Fastest response</div>
-      <div class="contact-icon">📱</div>
-      <div class="contact-method">WhatsApp Support</div>
-      <div class="contact-handle">Message us on WhatsApp</div>
-      <div class="contact-note">Send a message describing your issue. Include a screenshot if possible. We respond within a few hours on most days.</div>
-      <a href="https://wa.me/918427651580?text=Hi%2C%20I%20need%20help%20with%20MUNIM%20accounting%20software." class="btn-wa" target="_blank">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Chat on WhatsApp
-      </a>
-    </div>
-
     <div class="contact-card">
-      <div class="contact-icon">📧</div>
-      <div class="contact-method">Email Support</div>
-      <div class="contact-handle">support@munim.runs-on.dev</div>
-      <div class="contact-note">For detailed issues, bug reports, or feature requests. Include your Windows version and a description of the problem.</div>
-      <a href="mailto:support@munim.runs-on.dev" class="btn-navy">Send an Email</a>
+      <div class="contact-icon">💬</div>
+      <div class="contact-title">WhatsApp Support</div>
+      <div class="contact-desc">The fastest way to reach us. Send a message and get a reply from a real person — usually within a few hours on working days.</div>
+      <a href="https://wa.me/918427651580" target="_blank" class="btn-gold">Open WhatsApp</a>
     </div>
-
     <div class="contact-card">
-      <div class="contact-icon">🐛</div>
-      <div class="contact-method">Report a Bug</div>
-      <div class="contact-handle">GitHub Issues</div>
-      <div class="contact-note">Found a bug or crash? Open an issue on GitHub. Include steps to reproduce, your Windows version, and a screenshot.</div>
-      <a href="https://github.com/catoolskit/munim/issues" target="_blank" class="btn-outline">Open GitHub Issue</a>
+      <div class="contact-icon">🛒</div>
+      <div class="contact-title">Buy or Renew</div>
+      <div class="contact-desc">To purchase MUNIM or renew your licence, WhatsApp us. We'll send you the payment link, username, password and key within minutes.</div>
+      <a href="https://wa.me/918427651580?text=Hi, I want to buy MUNIM" target="_blank" class="btn-gold">WhatsApp to Buy</a>
     </div>
-
+    <div class="contact-card">
+      <div class="contact-icon">🔑</div>
+      <div class="contact-title">Trial Access</div>
+      <div class="contact-desc">Want to try MUNIM free for 7 days before buying? WhatsApp us and we'll set up a trial key for you right away. No payment needed.</div>
+      <a href="https://wa.me/918427651580?text=Hi, I want a free trial of MUNIM" target="_blank" class="btn-outline">Request Free Trial</a>
+    </div>
   </div>
-
-  <!-- RESPONSE TIMES -->
-  <div class="response-band">
-    <div class="response-item">
-      <div class="response-time">2–4 hrs</div>
-      <div class="response-label">WhatsApp response time</div>
-    </div>
-    <div class="response-item">
-      <div class="response-time">24 hrs</div>
-      <div class="response-label">Email response time</div>
-    </div>
-    <div class="response-item">
-      <div class="response-time">Free</div>
-      <div class="response-label">Support is always free</div>
-    </div>
-    <div class="response-item">
-      <div class="response-time">Human</div>
-      <div class="response-label">No bots — real person replies</div>
-    </div>
+  <div class="hours-box">
+    <div class="hours-title">📅 Support Hours</div>
+    <div class="hours-row"><span class="hours-day">Monday – Saturday</span><span class="hours-time">10:00 AM – 7:00 PM</span></div>
+    <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">Closed</span></div>
+    <div class="hours-row"><span class="hours-day">WhatsApp number</span><span class="hours-time">+91 84276 51580</span></div>
   </div>
 </section>
 
-<!-- COMMON ISSUES -->
 <section class="sec sec-alt">
-  <div class="sec-label">Self Help</div>
-  <div class="sec-title">Common issues and fixes</div>
-  <p class="sec-sub">Check here first — most issues have a simple fix.</p>
-  <div class="issues-grid">
-
-    <div class="issue-card">
-      <div class="issue-q">Windows says MUNIM is unsafe or blocked it</div>
-      <div class="issue-a">This is a Windows SmartScreen warning for new software. Click "More info" then "Run anyway". MUNIM is completely safe — no virus, no malware.</div>
-      <a href="how-to-use.html#install" class="issue-link">See installation guide →</a>
+  <div class="sec-label">Common Questions</div>
+  <div class="sec-title">Quick answers</div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">How do I activate MUNIM after downloading?</div>
+      <div class="faq-a">Open MUNIM.exe — it will show an activation screen. Enter the username, password and licence key we sent you. Done in 30 seconds.</div>
     </div>
-
-    <div class="issue-card">
-      <div class="issue-q">MUNIM won't open after double-clicking</div>
-      <div class="issue-a">Right-click MUNIM.exe → "Run as administrator". If it still doesn't open, your antivirus may be blocking it — add MUNIM.exe as an exception.</div>
+    <div class="faq-item">
+      <div class="faq-q">I forgot my password. What do I do?</div>
+      <div class="faq-a">WhatsApp us with your username. We'll reset it and send you a new one within the hour.</div>
     </div>
-
-    <div class="issue-card">
-      <div class="issue-q">I forgot my MUNIM password</div>
-      <div class="issue-a">Password recovery is not available to protect your data. If you are the computer's admin user, contact us on WhatsApp — we can guide you through a manual reset.</div>
+    <div class="faq-item">
+      <div class="faq-q">My licence expired. Can I still access my data?</div>
+      <div class="faq-a">Yes — your data is always on your computer and is never deleted. Renew your licence and enter the new key to continue using MUNIM.</div>
     </div>
-
-    <div class="issue-card">
-      <div class="issue-q">How do I move MUNIM to a new computer?</div>
-      <div class="issue-a">Copy the entire C:\MUNIM\ folder to a USB drive. Install MUNIM.exe on the new computer, then paste the MUNIM folder back to C:\. All your data will be there.</div>
-      <a href="how-to-use.html#backup" class="issue-link">See backup guide →</a>
+    <div class="faq-item">
+      <div class="faq-q">I changed my PC. How do I move MUNIM?</div>
+      <div class="faq-a">Copy MUNIM.exe to the new PC. Copy the C:\MUNIM\ folder from the old PC to the new one. Log in with your existing username and password.</div>
     </div>
-
-    <div class="issue-card">
-      <div class="issue-q">Trial Balance is not balancing</div>
-      <div class="issue-a">This usually means an opening balance entry is missing or entered on the wrong side. Check your opening balances in Settings → Opening Balances and ensure Dr and Cr totals match.</div>
-    </div>
-
-    <div class="issue-card">
-      <div class="issue-q">Invoice is not printing correctly</div>
-      <div class="issue-a">Go to Settings → Print Settings and check that the correct printer and paper size (A4 or Thermal) is selected. Try "Print Preview" first before sending to printer.</div>
-    </div>
-
-    <div class="issue-card">
-      <div class="issue-q">How do I take a backup of my data?</div>
-      <div class="issue-a">Go to Settings → Backup & Restore → click "Take Backup". Or manually copy C:\MUNIM\ to any external drive or USB. Do this regularly — especially before updating MUNIM.</div>
-    </div>
-
-    <div class="issue-card">
-      <div class="issue-q">MUNIM is running slowly</div>
-      <div class="issue-a">Close other heavy applications while using MUNIM. If your data is very large (2+ years of entries), go to Settings → Database → Compact Database to improve speed.</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- REPORT A BUG -->
-<section class="sec">
-  <div class="sec-label">Bug Report</div>
-  <div class="sec-title">How to report a bug properly</div>
-  <p class="sec-sub">A good bug report helps us fix it faster.</p>
-  <div class="bug-box">
-    <div class="bug-title">When reporting a bug, please include:</div>
-    <div class="bug-desc">The more information you give us, the faster we can fix it. Send this over WhatsApp or email.</div>
-    <ul class="bug-steps">
-      <li>Your Windows version (Windows 10 or 11, 32-bit or 64-bit)</li>
-      <li>MUNIM version number (shown at bottom of the MUNIM window)</li>
-      <li>What you were doing when the bug happened</li>
-      <li>Exact steps to reproduce the bug</li>
-      <li>A screenshot of the error message if any</li>
-      <li>Whether this happens every time or only sometimes</li>
-    </ul>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;">
-      <a href="https://wa.me/918427651580?text=Bug%20Report%20for%20MUNIM%3A%0A%0AWindows%20version%3A%0AMUNIM%20version%3A%0AWhat%20happened%3A%0ASteps%20to%20reproduce%3A" class="btn-wa" target="_blank">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        Report on WhatsApp
-      </a>
-      <a href="https://github.com/catoolskit/munim/issues/new" target="_blank" class="btn-outline">Open GitHub Issue</a>
+    <div class="faq-item">
+      <div class="faq-q">Something is not working. What should I do?</div>
+      <div class="faq-a">WhatsApp us with a screenshot of the error. We'll diagnose and fix it — usually on the same day.</div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div>
     <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:0.75rem;">
       <div class="logo-icon">म</div>
       <div class="logo-name" style="font-size:17px;">MUNIM<span>.</span></div>
     </a>
-    <p class="foot-desc">Smart offline accounting software for Indian small businesses. Free forever.</p>
+    <p class="foot-desc">Smart offline accounting software for Indian small businesses. ₹2,499/year.</p>
     <p class="foot-desc" style="margin-top:0.5rem;">A companion tool on <a href="https://catoolskit.runs.on.dev/ca-tools-hub" style="color:var(--gold);">CA Toolkit</a></p>
   </div>
   <div class="foot-col">
@@ -283,12 +169,12 @@ footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-c
   <div class="foot-col">
     <h4>Support</h4>
     <a href="contact.html">Contact Us</a>
-    <a href="contact.html">WhatsApp Support</a>
+    <a href="https://wa.me/918427651580" target="_blank">WhatsApp Support</a>
     <a href="https://catoolskit.runs.on.dev" target="_blank">CA Toolkit</a>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 MUNIM. Free forever. Built with ❤️ in India.</span>
-    <span>Data stays on your computer — always.</span>
+    <span>© 2026 MUNIM. Built with ❤️ in India by Sumit Verma.</span>
+    <span>Data stays on your computer — always. &nbsp;<a href="admin-panel.html">Admin</a></span>
   </div>
 </footer>
 
