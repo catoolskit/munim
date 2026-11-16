@@ -9,17 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --navy:#071B49;--navy-light:#0D2560;
-  --gold:#F4C430;--gold-dark:#D4A820;
-  --offwhite:#F7F8FC;--white:#FFFFFF;
-  --charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;
-  --border:#E2E8F0;--radius:10px;--radius-lg:16px;
-}
+:root{--navy:#071B49;--gold:#F4C430;--gold-dark:#D4A820;--offwhite:#F7F8FC;--white:#FFFFFF;--charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;--border:#E2E8F0;--radius:10px;--radius-lg:16px;}
 body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;}
 a{text-decoration:none;color:inherit;}
-
-/* NAV */
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;background:var(--navy);position:sticky;top:0;z-index:200;}
 .logo{display:flex;align-items:center;gap:10px;}
 .logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);}
@@ -30,87 +22,50 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;h
 .nav-links a:hover,.nav-links a.active{color:var(--gold);}
 .nav-dl{background:var(--gold);color:var(--navy);padding:0.5rem 1.25rem;border-radius:var(--radius);font-size:14px;font-weight:600;}
 .nav-dl:hover{background:var(--gold-dark);}
-
-/* PAGE HERO */
-.page-hero{background:var(--navy);padding:4rem 6% 3.5rem;text-align:center;}
-.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.25rem;font-weight:500;}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);color:#fff;margin-bottom:0.75rem;}
+.page-hero{background:var(--navy);padding:5rem 6% 4rem;text-align:center;}
+.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.5rem;font-weight:500;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:1rem;}
 .page-hero h1 em{color:var(--gold);font-style:normal;}
-.page-hero p{color:rgba(255,255,255,0.6);max-width:520px;margin:0 auto;font-size:0.95rem;}
-
-/* SECTIONS */
-.sec{padding:4.5rem 6%;}
+.page-hero p{color:rgba(255,255,255,0.6);font-size:1rem;max-width:520px;margin:0 auto;}
+.sec{padding:4rem 6%;}
 .sec-alt{background:var(--offwhite);}
 .sec-label{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;margin-bottom:0.6rem;}
 .sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--charcoal);margin-bottom:0.75rem;}
-.sec-sub{color:var(--text-mid);max-width:540px;font-size:0.95rem;}
-
-/* MODULE DETAIL CARDS */
-.module-block{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;padding:4rem 6%;}
-.module-block.flip{direction:rtl;}
-.module-block.flip>*{direction:ltr;}
-.module-block.alt{background:var(--offwhite);}
-.mod-text .tag{display:inline-block;background:rgba(7,27,73,0.07);color:var(--navy);font-size:11px;font-weight:600;padding:3px 10px;border-radius:999px;margin-bottom:1rem;letter-spacing:0.5px;text-transform:uppercase;}
-.mod-text h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);color:var(--charcoal);margin-bottom:0.75rem;}
-.mod-text p{color:var(--text-mid);font-size:0.95rem;line-height:1.75;margin-bottom:1rem;}
-.mod-text ul{list-style:none;padding:0;}
-.mod-text ul li{font-size:14px;color:var(--text-mid);padding:5px 0;display:flex;align-items:flex-start;gap:8px;}
-.mod-text ul li::before{content:'✓';color:var(--gold-dark);font-weight:700;flex-shrink:0;margin-top:1px;}
-
-/* MOCK SCREENS */
-.mock-screen{background:var(--navy);border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(255,255,255,0.08);}
-.mock-topbar{background:rgba(255,255,255,0.07);padding:0.6rem 1rem;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.06);}
-.mdot{width:9px;height:9px;border-radius:50%;}
-.mock-title{font-size:12px;color:rgba(255,255,255,0.4);margin-left:8px;}
-.mock-body{padding:1.25rem;}
-.mock-form-row{margin-bottom:0.75rem;}
-.mock-label{font-size:10px;color:rgba(255,255,255,0.4);margin-bottom:3px;text-transform:uppercase;letter-spacing:0.5px;}
-.mock-input{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:6px;padding:0.45rem 0.75rem;font-size:12px;color:rgba(255,255,255,0.75);width:100%;}
-.mock-row-item{display:flex;justify-content:space-between;padding:0.5rem 0.6rem;border-radius:6px;background:rgba(255,255,255,0.04);margin-bottom:0.35rem;font-size:12px;color:rgba(255,255,255,0.7);}
-.mock-row-item span{color:var(--gold);font-size:11px;}
-.mock-total{display:flex;justify-content:space-between;padding:0.6rem 0.6rem;border-top:1px solid rgba(255,255,255,0.1);margin-top:0.5rem;font-size:13px;font-weight:600;color:#fff;}
-.mock-total span{color:var(--gold);}
-.mock-btn{background:var(--gold);color:var(--navy);border:none;border-radius:6px;padding:0.5rem 1rem;font-size:12px;font-weight:700;margin-top:0.75rem;width:100%;cursor:pointer;}
-.mock-report-row{display:flex;justify-content:space-between;padding:0.55rem 0.6rem;font-size:12px;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.05);}
-.mock-report-row.total{color:#fff;font-weight:600;border-top:1px solid rgba(255,255,255,0.15);border-bottom:none;}
-.mock-report-row span{color:var(--gold);}
-.mock-report-row span.red{color:#ff7c7c;}
-
-/* FEATURES GRID */
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2rem;}
+.sec-sub{color:var(--text-mid);font-size:0.95rem;margin-bottom:2rem;}
+.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.25rem;}
 .feat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;transition:box-shadow 0.2s;}
 .feat-card:hover{box-shadow:0 4px 20px rgba(7,27,73,0.08);}
-.feat-icon{font-size:24px;margin-bottom:0.75rem;}
-.feat-title{font-size:0.95rem;font-weight:600;color:var(--charcoal);margin-bottom:0.35rem;}
-.feat-desc{font-size:13px;color:var(--text-mid);line-height:1.65;}
-
-/* CTA STRIP */
-.cta-strip{background:var(--navy);padding:3.5rem 6%;text-align:center;}
-.cta-strip h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:0.75rem;}
-.cta-strip p{color:rgba(255,255,255,0.55);margin-bottom:1.75rem;font-size:0.95rem;}
+.feat-icon{font-size:1.75rem;margin-bottom:0.75rem;}
+.feat-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.5rem;display:flex;align-items:center;gap:8px;}
+.feat-desc{font-size:13px;color:var(--text-mid);line-height:1.7;}
+.feat-list{list-style:none;margin-top:0.75rem;}
+.feat-list li{font-size:13px;color:var(--text-mid);padding:0.25rem 0;display:flex;gap:7px;}
+.feat-list li::before{content:'·';color:var(--gold-dark);font-weight:700;flex-shrink:0;}
+.soon-tag{font-size:10px;background:#FEF3C7;color:#92400E;padding:2px 7px;border-radius:999px;font-weight:600;}
+.coming-section{background:var(--navy);border-radius:var(--radius-lg);padding:2rem;margin-top:2rem;}
+.coming-title{font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1rem;}
+.coming-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0.75rem;}
+.coming-item{display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.6);}
+.coming-item::before{content:'○';color:rgba(244,196,48,0.5);flex-shrink:0;}
 .btn-gold{background:var(--gold);color:var(--navy);padding:0.8rem 1.75rem;border-radius:var(--radius);font-weight:700;font-size:0.95rem;display:inline-flex;align-items:center;gap:7px;transition:background 0.2s;}
 .btn-gold:hover{background:var(--gold-dark);}
-
-/* FOOTER */
 footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;}
 .foot-desc{font-size:13px;color:rgba(255,255,255,0.4);margin-top:0.75rem;line-height:1.7;}
 .foot-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase;}
 .foot-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;transition:color 0.2s;}
 .foot-col a:hover{color:var(--gold);}
 .foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;padding:1.25rem 0;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;}
-.foot-bottom a{color:rgba(255,255,255,0.4);}
-
-@media(max-width:768px){
-  .module-block{grid-template-columns:1fr;}
-  .module-block.flip{direction:ltr;}
-  .nav-links{display:none;}
-  footer{grid-template-columns:1fr;}
-}
+.foot-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s;}
+.foot-bottom a:hover{color:var(--gold);}
+.wa-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:999;transition:transform 0.2s;}
+.wa-fab:hover{transform:scale(1.08);}
+@media(max-width:768px){.nav-links{display:none;}footer{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<a href="https://wa.me/918427651580" target="_blank" class="wa-fab" title="WhatsApp Support">💬</a>
+
 <nav>
   <a href="index.html" class="logo">
     <div class="logo-icon">म</div>
@@ -125,80 +80,235 @@ footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-c
     <a href="contact.html">Support</a>
     <a href="download.html">Download</a>
   </div>
-  <a href="download.html" class="nav-dl">⬇ Download Free</a>
+  <a href="download.html" class="nav-dl">⬇ Download</a>
 </nav>
 
-<!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="page-badge">📋 All Features</div>
-  <h1>Everything MUNIM <em>can do</em></h1>
-  <p>12 fully integrated accounting modules — built for Indian small businesses. Free, offline, and always yours.</p>
+  <div class="page-badge">⚙️ Features</div>
+  <h1>Everything in <em>MUNIM</em></h1>
+  <p>A complete list of what is built, what is coming, and how each feature works in practice.</p>
 </div>
 
-<!-- MODULE 1: SALES -->
-<div class="module-block">
-  <div class="mod-text">
-    <div class="tag">Core Module</div>
-    <h2>Sales Register</h2>
-    <p>Create sales bills and watch them automatically post to the Sales Register, Party Ledger, and Trial Balance — in one click, just like Tally.</p>
-    <ul>
-      <li>Create itemised sales bills with quantity, rate, and amount</li>
-      <li>Auto-calculates CGST, SGST, IGST based on GST rate</li>
-      <li>Bill auto-posts to Sales Register and Party Ledger</li>
-      <li>Print A4 GST invoice or thermal slip directly</li>
-      <li>View, edit, or cancel any past bill</li>
-      <li>Filter bills by date, party, or amount</li>
-    </ul>
-  </div>
-  <div class="mock-screen">
-    <div class="mock-topbar">
-      <div class="mdot" style="background:#ff5f56"></div>
-      <div class="mdot" style="background:#ffbd2e"></div>
-      <div class="mdot" style="background:#27c93f"></div>
-      <span class="mock-title">New Sales Entry</span>
+<!-- TRANSACTIONS -->
+<section class="sec">
+  <div class="sec-label">Transactions</div>
+  <div class="sec-title">Recording your business</div>
+  <div class="sec-sub">Every entry posts to the ledger automatically — no separate journal needed.</div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🧾</div>
+      <div class="feat-title">Sales Invoice</div>
+      <div class="feat-desc">Create GST invoices for customers. CGST/SGST or IGST auto-detected from GSTIN state code.</div>
+      <ul class="feat-list">
+        <li>Up to 5 line items per invoice</li>
+        <li>Multiple GST rates on one bill</li>
+        <li>Collect part payment at time of sale</li>
+        <li>Cash/Bank counter sales supported</li>
+        <li>Customer name on bill (walk-ins)</li>
+      </ul>
     </div>
-    <div class="mock-body">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-bottom:0.75rem;">
-        <div class="mock-form-row"><div class="mock-label">Party Name</div><div class="mock-input">Sharma Jewellers</div></div>
-        <div class="mock-form-row"><div class="mock-label">Date</div><div class="mock-input">14/11/2026</div></div>
-      </div>
-      <div class="mock-label" style="margin-bottom:6px;">Items</div>
-      <div class="mock-row-item">Gold Ring 22K · 5g<span>₹28,500</span></div>
-      <div class="mock-row-item">Silver Chain · 20g<span>₹1,800</span></div>
-      <div class="mock-row-item">Making Charges<span>₹2,000</span></div>
-      <div class="mock-total">Total (incl. GST 3%)<span>₹33,228</span></div>
-      <button class="mock-btn">Save Bill + Post to Ledger ✓</button>
+    <div class="feat-card">
+      <div class="feat-icon">🛒</div>
+      <div class="feat-title">Purchase Bill</div>
+      <div class="feat-desc">Record supplier purchases with Input GST auto-posted to ledger.</div>
+      <ul class="feat-list">
+        <li>Input CGST/SGST/IGST auto-split</li>
+        <li>Pay supplier partially at time of entry</li>
+        <li>Links to outstanding for ageing</li>
+      </ul>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📔</div>
+      <div class="feat-title">Voucher Entry</div>
+      <div class="feat-desc">Journal, Payment, Receipt and Contra vouchers. Full double-entry with any accounts.</div>
+      <ul class="feat-list">
+        <li>Unlimited lines per voucher</li>
+        <li>Debit must equal credit — enforced</li>
+        <li>Type-to-search on account names</li>
+      </ul>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💰</div>
+      <div class="feat-title">Receipt / Payment</div>
+      <div class="feat-desc">Record money received from customers or paid to suppliers. Auto-settles oldest bills first (FIFO).</div>
+      <ul class="feat-list">
+        <li>Shows all open bills of the party</li>
+        <li>Excess stays as advance on account</li>
+        <li>Cash or Bank mode</li>
+      </ul>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📅</div>
+      <div class="feat-title">Daily Sales Summary</div>
+      <div class="feat-desc">One entry for a full day's counter sales — amount per GST rate. For B2C retail only.</div>
+      <ul class="feat-list">
+        <li>Tax-inclusive or tax-exclusive amounts</li>
+        <li>Cash or Bank receipt</li>
+        <li>Stored as a Sales voucher</li>
+      </ul>
     </div>
   </div>
-</div>
+</section>
 
-<!-- MODULE 2: PURCHASE -->
-<div class="module-block flip alt">
-  <div class="mod-text">
-    <div class="tag">Core Module</div>
-    <h2>Purchase Register</h2>
-    <p>Record all purchases from suppliers. Every entry auto-posts to the Purchase Register, Supplier Ledger, and updates your stock automatically.</p>
-    <ul>
-      <li>Record purchases with item, weight, purity, and rate</li>
-      <li>Supplier-wise purchase history at a glance</li>
-      <li>Auto-posts to Purchase Register and Supplier Ledger</li>
-      <li>Stock updated automatically on each purchase</li>
-      <li>Import purchase bills from PDF (coming soon)</li>
-      <li>Monthly and yearly purchase summary reports</li>
-    </ul>
+<!-- REPORTS -->
+<section class="sec sec-alt">
+  <div class="sec-label">Reports</div>
+  <div class="sec-title">Know your numbers instantly</div>
+  <div class="sec-sub">All reports update in real time as you enter transactions.</div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">📊</div>
+      <div class="feat-title">Trial Balance</div>
+      <div class="feat-desc">Closing balances of every account. Prior years carried forward automatically. Export to Excel.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📈</div>
+      <div class="feat-title">Trading & P&L</div>
+      <div class="feat-desc">Trading Account (gross profit) and P&L Account (net profit) in classic T-format. Opening and closing stock entered manually per year.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🏦</div>
+      <div class="feat-title">Balance Sheet</div>
+      <div class="feat-desc">Assets and liabilities side by side. Profit carried automatically from P&L. Both sides always equal.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📒</div>
+      <div class="feat-title">Ledger View</div>
+      <div class="feat-desc">Every entry in any account with a running balance. Opening brought forward from prior years.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💵</div>
+      <div class="feat-title">Cash Book</div>
+      <div class="feat-desc">Cash and Bank accounts together with running balance. Same as Ledger View but for cash/bank only.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📋</div>
+      <div class="feat-title">Day Book</div>
+      <div class="feat-desc">Every voucher for any date range, with all accounting lines. Double-click to open, edit or delete.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🧾</div>
+      <div class="feat-title">Sales & Purchase Register</div>
+      <div class="feat-desc">All bills for the year with GST breakup, payment status (Paid / Partly paid / Unpaid). Export to Excel.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">⏰</div>
+      <div class="feat-title">Outstanding & Ageing</div>
+      <div class="feat-desc">Who owes you and whom you owe. Bill-wise or party-wise ageing with custom date ranges. Age from bill date or due date.</div>
+      <ul class="feat-list">
+        <li>Custom ageing ranges (e.g. 30,60,90)</li>
+        <li>As-on date filter</li>
+        <li>Export to Excel</li>
+      </ul>
+    </div>
   </div>
-  <div class="mock-screen">
-    <div class="mock-topbar">
-      <div class="mdot" style="background:#ff5f56"></div>
-      <div class="mdot" style="background:#ffbd2e"></div>
-      <div class="mdot" style="background:#27c93f"></div>
-      <span class="mock-title">Purchase Register</span>
+</section>
+
+<!-- MASTERS -->
+<section class="sec">
+  <div class="sec-label">Masters</div>
+  <div class="sec-title">Set up your books</div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">👥</div>
+      <div class="feat-title">Party Master</div>
+      <div class="feat-desc">Customers and suppliers. Each gets their own ledger account automatically.</div>
+      <ul class="feat-list">
+        <li>GSTIN with format validation</li>
+        <li>Opening balance</li>
+        <li>Credit days for due-date ageing</li>
+        <li>Add new party from invoice screen</li>
+      </ul>
     </div>
-    <div class="mock-body">
-      <div class="mock-label" style="margin-bottom:8px;">November 2026</div>
-      <div class="mock-row-item">Mehta Gold Suppliers<span>₹1,24,000</span></div>
-      <div class="mock-row-item">Rajasthan Silver House<span>₹28,500</span></div>
-      <div class="mock-row-item">Delhi Bullion Traders<span>₹85,200</span></div>
-      <div class="mock-row-item">Local Artisan Purchase<span>₹12,000</span></div>
-      <div class="mock-total">Total Purchases<span>₹2,49,700</span></div>
+    <div class="feat-card">
+      <div class="feat-icon">📂</div>
+      <div class="feat-title">Ledger Accounts</div>
+      <div class="feat-desc">Create accounts like Electricity, Freight, Commission. Choose group (Direct/Indirect Expense etc.) — determines where it appears in P&L.</div>
+      <ul class="feat-list">
+        <li>13 account groups supported</li>
+        <li>Opening balances</li>
+        <li>Delete unused accounts</li>
+      </ul>
     </div>
+  </div>
+</section>
+
+<!-- UTILITIES -->
+<section class="sec sec-alt">
+  <div class="sec-label">Utilities & Safety</div>
+  <div class="sec-title">Keep your books safe</div>
+  <div class="feat-grid">
+    <div class="feat-card">
+      <div class="feat-icon">🔐</div>
+      <div class="feat-title">User Management</div>
+      <div class="feat-desc">Admin and staff logins. Admin can create/delete staff users, reset passwords. Staff can enter transactions but not delete data.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">📝</div>
+      <div class="feat-title">Audit Log</div>
+      <div class="feat-desc">Every voucher created, edited or deleted is recorded — who did it, when, and what changed. Cannot be tampered with.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">💾</div>
+      <div class="feat-title">Backup</div>
+      <div class="feat-desc">One-click backup to any folder — USB drive, cloud folder, network drive. Gateway shows days since last backup in red if overdue.</div>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🏢</div>
+      <div class="feat-title">Company Details</div>
+      <div class="feat-desc">Business name, GSTIN, address, state, invoice prefix, round-off setting, books begin date. GST registered toggle hides tax fields if not applicable.</div>
+    </div>
+  </div>
+
+  <div class="coming-section">
+    <div class="coming-title">🚧 Coming in future releases</div>
+    <div class="coming-grid">
+      <div class="coming-item">GST Invoice PDF (A4 format)</div>
+      <div class="coming-item">GSTR-1 and GSTR-3B export</div>
+      <div class="coming-item">Stock / Inventory module</div>
+      <div class="coming-item">Credit notes / Debit notes</div>
+      <div class="coming-item">PDF reports</div>
+      <div class="coming-item">Bank reconciliation</div>
+      <div class="coming-item">Fixed asset register</div>
+      <div class="coming-item">WhatsApp invoice sharing</div>
+    </div>
+  </div>
+</section>
+
+<section style="background:var(--navy);padding:4rem 6%;text-align:center;">
+  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:0.75rem;">Ready to get started?</h2>
+  <p style="color:rgba(255,255,255,0.55);margin-bottom:1.75rem;max-width:460px;margin-left:auto;margin-right:auto;">₹2,499/year. 7-day free trial available. WhatsApp us to get your licence key.</p>
+  <a href="https://wa.me/918427651580?text=Hi, I want to try MUNIM" target="_blank" class="btn-gold">💬 WhatsApp to get started</a>
+</section>
+
+<footer>
+  <div>
+    <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:0.75rem;">
+      <div class="logo-icon">म</div>
+      <div class="logo-name" style="font-size:17px;">MUNIM<span>.</span></div>
+    </a>
+    <p class="foot-desc">Smart offline accounting software for Indian small businesses. ₹2,499/year.</p>
+    <p class="foot-desc" style="margin-top:0.5rem;">A companion tool on <a href="https://catoolskit.runs.on.dev/ca-tools-hub" style="color:var(--gold);">CA Toolkit</a></p>
+  </div>
+  <div class="foot-col">
+    <h4>Pages</h4>
+    <a href="index.html">Home</a>
+    <a href="features.html">Features</a>
+    <a href="how-to-use.html">How to Use</a>
+    <a href="about.html">About</a>
+    <a href="download.html">Download</a>
+  </div>
+  <div class="foot-col">
+    <h4>Support</h4>
+    <a href="contact.html">Contact Us</a>
+    <a href="https://wa.me/918427651580" target="_blank">WhatsApp Support</a>
+    <a href="https://catoolskit.runs.on.dev" target="_blank">CA Toolkit</a>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 MUNIM. Built with ❤️ in India by Sumit Verma.</span>
+    <span>Data stays on your computer — always. &nbsp;<a href="admin-panel.html">Admin</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
