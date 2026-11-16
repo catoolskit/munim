@@ -19,24 +19,30 @@
   .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
   .btn{background:#1856A0;color:#fff;border:none;border-radius:8px;padding:11px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-top:18px}
   .btn:hover{background:#134581}
-  .btn-danger{background:#C0392B}.btn-danger:hover{background:#A32F23}
+  .btn-sm{background:#1856A0;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer}
+  .btn-sm:hover{background:#134581}
+  .btn-danger{background:#C0392B;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer}
+  .btn-danger:hover{background:#A32F23}
+  .btn-green{background:#1E8E5A;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer}
+  .btn-green:hover{background:#166b44}
   .btn-copy{background:#E7ECF5;color:#1B2438;border:none;border-radius:8px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;margin-top:8px}
   .btn-copy:hover{background:#DCE3F0}
-  .result-box{background:#F4F6FA;border:1px solid #E1E6EF;border-radius:8px;padding:16px 20px;margin-top:16px;font-family:monospace;font-size:14px;line-height:2}
-  .result-box .label{color:#6B7690;font-size:11px;font-family:'Segoe UI',sans-serif}
-  .result-box .val{color:#1B2438;font-weight:600;font-size:15px}
-  .key-val{color:#1856A0;font-size:16px;letter-spacing:1px}
+  .result-box{background:#F4F6FA;border:1px solid #E1E6EF;border-radius:8px;padding:16px 20px;margin-top:16px;line-height:2}
+  .result-box .label{color:#6B7690;font-size:11px}
+  .result-box .val{color:#1B2438;font-weight:600;font-size:15px;display:block}
+  .key-val{color:#1856A0;font-size:15px;letter-spacing:1px;word-break:break-all}
   .ok{color:#1E8E5A;font-weight:700}
   .err{color:#C0392B;font-weight:600;font-size:13px;margin-top:8px}
   table{width:100%;border-collapse:collapse;font-size:13px}
   th{background:#EEF2F8;padding:10px 14px;text-align:left;font-weight:600;color:#1B2438}
-  td{padding:10px 14px;border-bottom:1px solid #F0F3F8;color:#1B2438}
+  td{padding:10px 14px;border-bottom:1px solid #F0F3F8;color:#1B2438;vertical-align:middle}
   tr:last-child td{border-bottom:none}
   .pill{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700}
   .pill-trial{background:#FEF3C7;color:#92400E}
   .pill-month{background:#DBEAFE;color:#1D4ED8}
   .pill-year{background:#D1FAE5;color:#065F46}
   .pill-two{background:#EDE9FE;color:#5B21B6}
+  .pill-exp{background:#FEE2E2;color:#991B1B}
   #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0F1F3D}
   .login-card{background:#fff;border-radius:16px;padding:40px 44px;width:360px;text-align:center}
   .login-card h1{font-size:28px;font-weight:700;color:#0F1F3D;margin-bottom:4px}
@@ -46,6 +52,12 @@
   .whatsapp-box{background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:14px 18px;margin-top:12px;font-size:13px;color:#2E7D32;white-space:pre-wrap;word-break:break-all;line-height:1.8}
   .footer{text-align:center;color:#9FB3D9;font-size:12px;padding:32px;background:#0F1F3D;margin-top:40px}
   .saving{color:#1856A0;font-size:13px;margin-top:8px}
+  .extend-row{display:none;background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px;margin-top:8px}
+  .extend-row select{width:auto;display:inline-block;padding:6px 10px;font-size:13px;margin:0 8px}
+  .days-left{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px}
+  .days-ok{background:#D1FAE5;color:#065F46}
+  .days-warn{background:#FEF3C7;color:#92400E}
+  .days-exp{background:#FEE2E2;color:#991B1B}
 </style>
 </head>
 <body>
@@ -127,10 +139,10 @@
       <h2>All Users <span id="user-count" style="font-size:13px;color:#6B7690;font-weight:400"></span></h2>
       <table>
         <thead>
-          <tr><th>#</th><th>Username</th><th>Firm</th><th>Plan</th><th>Created</th><th>Expires</th><th>Actions</th></tr>
+          <tr><th>#</th><th>Username</th><th>Firm</th><th>Plan</th><th>Created</th><th>Expires</th><th>Days left</th><th>Actions</th></tr>
         </thead>
         <tbody id="users-table">
-          <tr><td colspan="7" style="color:#6B7690;text-align:center">Loading...</td></tr>
+          <tr><td colspan="8" style="color:#6B7690;text-align:center">Loading...</td></tr>
         </tbody>
       </table>
     </div>
@@ -139,22 +151,51 @@
   <div class="footer">© 2026 MUNIM · Admin Panel · All Rights Reserved</div>
 </div>
 
+<!-- Extend modal -->
+<div id="extend-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center">
+  <div style="background:#fff;border-radius:16px;padding:32px;width:480px;max-width:95vw">
+    <h3 style="margin-bottom:16px;color:#1B2438">Extend Licence</h3>
+    <p style="font-size:14px;color:#6B7690;margin-bottom:4px">Customer: <strong id="ext-firm"></strong></p>
+    <p style="font-size:14px;color:#6B7690;margin-bottom:16px">Username: <strong id="ext-user"></strong></p>
+    <p style="font-size:14px;color:#6B7690;margin-bottom:4px">Current expiry: <strong id="ext-current"></strong></p>
+    <label style="margin-top:12px">Extend by</label>
+    <select id="ext-days" style="margin-top:6px">
+      <option value="30">+ 1 Month</option>
+      <option value="90">+ 3 Months</option>
+      <option value="180">+ 6 Months</option>
+      <option value="365" selected>+ 1 Year</option>
+      <option value="730">+ 2 Years</option>
+    </select>
+    <div id="ext-result" style="display:none;margin-top:16px">
+      <div class="result-box">
+        <span class="label">New expiry</span>
+        <span class="val ok" id="ext-new-expiry"></span>
+        <span class="label" style="margin-top:8px">New Licence Key</span>
+        <span class="val key-val" id="ext-new-key"></span>
+      </div>
+      <div class="whatsapp-box" id="ext-wa-msg" style="margin-top:10px"></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
+      <button class="btn" onclick="generateExtension()">Generate new key</button>
+      <button class="btn-copy" id="ext-copy-btn" style="display:none" onclick="copyExtension()">📋 Copy WhatsApp message</button>
+      <button class="btn-copy" id="ext-save-btn" style="display:none" onclick="saveExtension()">Save new expiry</button>
+      <button class="btn-copy" onclick="closeExtend()">Cancel</button>
+    </div>
+    <div class="saving" id="ext-status"></div>
+  </div>
+</div>
+
 <script>
-const ADMIN_PW  = "Munim@Admin2026";
-const SECRET    = "MUNIM_SUMIT_2026_CATOOLSKIT_XK9";
-const SB_URL    = "https://jfnvddjsgpyowpfzbmqs.supabase.co";
-const SB_KEY    = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmbnZkZGpzZ3B5b3dwZnpibXFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDk2MDEsImV4cCI6MjA5NDIyNTYwMX0.RFdkPuyykaF5fNYbB2QuwJKvzDLrc_TYxHnnLB_tDT4";
-const TABLE     = "munim_customers";
+const ADMIN_PW = "Munim@Admin2026";
+const SECRET   = "MUNIM_SUMIT_2026_CATOOLSKIT_XK9";
+const SB_URL   = "https://jfnvddjsgpyowpfzbmqs.supabase.co";
+const SB_KEY   = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmbnZkZGpzZ3B5b3dwZnpibXFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDk2MDEsImV4cCI6MjA5NDIyNTYwMX0.RFdkPuyykaF5fNYbB2QuwJKvzDLrc_TYxHnnLB_tDT4";
+const TABLE    = "munim_customers";
 
-const sbHeaders = {
-  "Content-Type": "application/json",
-  "apikey": SB_KEY,
-  "Authorization": `Bearer ${SB_KEY}`
-};
+const sbH = {"Content-Type":"application/json","apikey":SB_KEY,"Authorization":`Bearer ${SB_KEY}`};
 
-// ---- LOGIN ----
 function doLogin(){
-  if(document.getElementById("admin-pw").value === ADMIN_PW){
+  if(document.getElementById("admin-pw").value===ADMIN_PW){
     sessionStorage.setItem("munim_admin_ok","1");
     document.getElementById("login-screen").style.display="none";
     document.getElementById("main-screen").style.display="block";
@@ -163,10 +204,7 @@ function doLogin(){
     document.getElementById("login-err").textContent="Wrong password";
   }
 }
-function doLogout(){
-  sessionStorage.removeItem("munim_admin_ok");
-  location.reload();
-}
+function doLogout(){sessionStorage.removeItem("munim_admin_ok");location.reload();}
 window.onload=()=>{
   if(sessionStorage.getItem("munim_admin_ok")==="1"){
     document.getElementById("login-screen").style.display="none";
@@ -175,138 +213,160 @@ window.onload=()=>{
   }
 };
 
-// ---- SUPABASE ----
 async function sbGet(){
-  const r = await fetch(`${SB_URL}/rest/v1/${TABLE}?select=*&order=id.desc`, {headers: sbHeaders});
-  return r.ok ? r.json() : [];
+  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?select=*&order=id.desc`,{headers:sbH});
+  return r.ok?r.json():[];
 }
 async function sbInsert(row){
-  const r = await fetch(`${SB_URL}/rest/v1/${TABLE}`, {
-    method:"POST", headers:{...sbHeaders, "Prefer":"return=representation"},
-    body: JSON.stringify(row)
-  });
+  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}`,{method:"POST",headers:{...sbH,"Prefer":"return=representation"},body:JSON.stringify(row)});
   return r.ok;
 }
 async function sbDelete(id){
-  const r = await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`, {
-    method:"DELETE", headers: sbHeaders
-  });
+  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`,{method:"DELETE",headers:sbH});
+  return r.ok;
+}
+async function sbUpdate(id,data){
+  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`,{method:"PATCH",headers:{...sbH,"Prefer":"return=representation"},body:JSON.stringify(data)});
   return r.ok;
 }
 
-// ---- HMAC-SHA256 ----
-async function hmacHex(secret, msg){
-  const enc = new TextEncoder();
-  const key = await crypto.subtle.importKey("raw", enc.encode(secret),
-    {name:"HMAC",hash:"SHA-256"}, false, ["sign"]);
-  const sig = await crypto.subtle.sign("HMAC", key, enc.encode(msg));
+async function hmacHex(secret,msg){
+  const enc=new TextEncoder();
+  const key=await crypto.subtle.importKey("raw",enc.encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);
+  const sig=await crypto.subtle.sign("HMAC",key,enc.encode(msg));
   return Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,"0")).join("");
 }
-
-// ---- BASE32 ----
-const B32 = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-function b32encode(bytes){
-  let bits=0,val=0,out="";
-  for(let b of bytes){val=(val<<8)|b;bits+=8;while(bits>=5){out+=B32[(val>>>(bits-5))&31];bits-=5;}}
-  if(bits>0) out+=B32[(val<<(5-bits))&31];
-  return out;
-}
-
-// ---- KEY GENERATION ----
-function dateToPythonOrdinal(d){
-  const anchor = new Date(2000,0,1);
-  return 730120 + Math.round((d-anchor)/86400000);
-}
-async function buildKey(username, expiryDate){
-  const uBytes = new Uint8Array(20);
-  const ub = new TextEncoder().encode(username.slice(0,20));
+const B32="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
+function b32encode(bytes){let bits=0,val=0,out="";for(let b of bytes){val=(val<<8)|b;bits+=8;while(bits>=5){out+=B32[(val>>>(bits-5))&31];bits-=5;}}if(bits>0)out+=B32[(val<<(5-bits))&31];return out;}
+function dateToPythonOrdinal(d){return 730120+Math.round((d-new Date(2000,0,1))/86400000);}
+async function buildKey(username,expiryDate){
+  const uBytes=new Uint8Array(20);
+  const ub=new TextEncoder().encode(username.slice(0,20));
   uBytes.set(ub.slice(0,20));
-  const ordinal = dateToPythonOrdinal(expiryDate);
-  const dBytes = new Uint8Array(4);
-  dBytes[0]=(ordinal>>>24)&255;dBytes[1]=(ordinal>>>16)&255;
-  dBytes[2]=(ordinal>>>8)&255;dBytes[3]=ordinal&255;
-  const payload = b32encode([...uBytes,...dBytes]);
-  const sig = (await hmacHex(SECRET,payload)).slice(0,6).toUpperCase();
+  const ordinal=dateToPythonOrdinal(expiryDate);
+  const dBytes=new Uint8Array(4);
+  dBytes[0]=(ordinal>>>24)&255;dBytes[1]=(ordinal>>>16)&255;dBytes[2]=(ordinal>>>8)&255;dBytes[3]=ordinal&255;
+  const payload=b32encode([...uBytes,...dBytes]);
+  const sig=(await hmacHex(SECRET,payload)).slice(0,6).toUpperCase();
   return `MNM-${payload}-${sig}`;
 }
 
 function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
 function fmtDate(d){return d.toLocaleDateString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric"});}
 function fmtISO(d){return d.toISOString().slice(0,10);}
+function daysLeft(expiresISO){return Math.round((new Date(expiresISO)-new Date())/86400000);}
 function slugify(name){return name.toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12)+Math.floor(100+Math.random()*900);}
 function randPw(){
   const up="ABCDEFGHJKLMNPQRSTUVWXYZ",lo="abcdefghjkmnpqrstuvwxyz",dg="23456789",sp="@#!";
   const all=up+lo+dg+sp;
-  let pw=up[Math.floor(Math.random()*up.length)]+lo[Math.floor(Math.random()*lo.length)]+
-         dg[Math.floor(Math.random()*dg.length)]+sp[Math.floor(Math.random()*sp.length)];
-  for(let i=0;i<4;i++) pw+=all[Math.floor(Math.random()*all.length)];
+  let pw=up[Math.floor(Math.random()*up.length)]+lo[Math.floor(Math.random()*lo.length)]+dg[Math.floor(Math.random()*dg.length)]+sp[Math.floor(Math.random()*sp.length)];
+  for(let i=0;i<4;i++)pw+=all[Math.floor(Math.random()*all.length)];
   return pw.split("").sort(()=>Math.random()-0.5).join("");
 }
 
-let _currentRow = null;
+let _currentRow=null;
 
 async function generateCredentials(){
-  const name = document.getElementById("cust-name").value.trim();
+  const name=document.getElementById("cust-name").value.trim();
   if(!name){alert("Enter the customer or firm name first");return;}
-  const days = parseInt(document.getElementById("plan").value);
-  const expiry = addDays(new Date(), days);
-  const username = document.getElementById("username").value.trim() || slugify(name);
-  const password = document.getElementById("password").value.trim() || randPw();
-  document.getElementById("username").value = username;
-  document.getElementById("password").value = password;
-  const key = await buildKey(username, expiry);
-  const planLabel = document.getElementById("plan").selectedOptions[0].text;
-  document.getElementById("res-user").textContent = username;
-  document.getElementById("res-pw").textContent   = password;
-  document.getElementById("res-key").textContent  = key;
-  document.getElementById("res-expiry").textContent = fmtDate(expiry);
-  const wa = `Hello,\n\nYour MUNIM accounting software is ready.\n\nFirm: ${name}\nPlan: ${planLabel}\nValid till: ${fmtDate(expiry)}\n\nUsername: ${username}\nPassword: ${password}\nLicence Key: ${key}\n\nSteps:\n1. Open MUNIM.exe\n2. Enter username, password and licence key\n3. Start using your books\n\nFor help, reply to this message.`;
-  document.getElementById("wa-msg").textContent = wa;
+  const days=parseInt(document.getElementById("plan").value);
+  const expiry=addDays(new Date(),days);
+  const username=document.getElementById("username").value.trim()||slugify(name);
+  const password=document.getElementById("password").value.trim()||randPw();
+  document.getElementById("username").value=username;
+  document.getElementById("password").value=password;
+  const key=await buildKey(username,expiry);
+  const planLabel=document.getElementById("plan").selectedOptions[0].text;
+  document.getElementById("res-user").textContent=username;
+  document.getElementById("res-pw").textContent=password;
+  document.getElementById("res-key").textContent=key;
+  document.getElementById("res-expiry").textContent=fmtDate(expiry);
+  const wa=`Hello,\n\nYour MUNIM accounting software is ready.\n\nFirm: ${name}\nPlan: ${planLabel}\nValid till: ${fmtDate(expiry)}\n\nUsername: ${username}\nPassword: ${password}\nLicence Key: ${key}\n\nSteps:\n1. Open MUNIM.exe\n2. Enter username, password and licence key\n3. Start using your books\n\nFor help, reply to this message.`;
+  document.getElementById("wa-msg").textContent=wa;
   document.getElementById("result-area").style.display="block";
   document.getElementById("save-status").textContent="";
-  _currentRow = {firm:name, username, plan:planLabel, created:fmtISO(new Date()), expires:fmtISO(expiry), key};
+  _currentRow={firm:name,username,plan:planLabel,created:fmtISO(new Date()),expires:fmtISO(expiry),key};
 }
 
-function copyAll(){
-  navigator.clipboard.writeText(document.getElementById("wa-msg").textContent)
-    .then(()=>alert("Copied! Paste it in WhatsApp."));
-}
+function copyAll(){navigator.clipboard.writeText(document.getElementById("wa-msg").textContent).then(()=>alert("Copied! Paste it in WhatsApp."));}
 
 async function saveUser(){
-  if(!_currentRow){return;}
+  if(!_currentRow)return;
   document.getElementById("save-status").textContent="Saving...";
-  const ok = await sbInsert(_currentRow);
-  if(ok){
-    document.getElementById("save-status").textContent="✓ Saved to database";
-    _currentRow = null;
-    loadUsers();
-  } else {
-    document.getElementById("save-status").textContent="❌ Save failed — check Supabase";
-  }
+  const ok=await sbInsert(_currentRow);
+  if(ok){document.getElementById("save-status").textContent="✓ Saved";_currentRow=null;loadUsers();}
+  else document.getElementById("save-status").textContent="❌ Save failed";
 }
 
 async function deleteUser(id){
-  if(!confirm("Remove this user from the list?")) return;
+  if(!confirm("Remove this user from the list?"))return;
   await sbDelete(id);
   loadUsers();
 }
 
+// ---- EXTEND ----
+let _extId=null,_extUsername=null,_extNewKey=null,_extNewExpiry=null,_extFirm=null,_extPlan=null;
+
+function openExtend(id,username,firm,expires,plan){
+  _extId=id;_extUsername=username;_extFirm=firm;_extPlan=plan;_extNewKey=null;_extNewExpiry=null;
+  document.getElementById("ext-firm").textContent=firm;
+  document.getElementById("ext-user").textContent=username;
+  document.getElementById("ext-current").textContent=expires;
+  document.getElementById("ext-result").style.display="none";
+  document.getElementById("ext-copy-btn").style.display="none";
+  document.getElementById("ext-save-btn").style.display="none";
+  document.getElementById("ext-status").textContent="";
+  const modal=document.getElementById("extend-modal");
+  modal.style.display="flex";
+}
+
+function closeExtend(){document.getElementById("extend-modal").style.display="none";}
+
+async function generateExtension(){
+  const days=parseInt(document.getElementById("ext-days").value);
+  const newExpiry=addDays(new Date(),days);
+  const key=await buildKey(_extUsername,newExpiry);
+  _extNewKey=key;_extNewExpiry=fmtISO(newExpiry);
+  const planLabel=document.getElementById("ext-days").selectedOptions[0].text;
+  document.getElementById("ext-new-expiry").textContent=fmtDate(newExpiry);
+  document.getElementById("ext-new-key").textContent=key;
+  const wa=`Hello,\n\nYour MUNIM licence has been extended.\n\nFirm: ${_extFirm}\nExtended by: ${planLabel}\nNew valid till: ${fmtDate(newExpiry)}\n\nUsername: ${_extUsername}\nNew Licence Key: ${key}\n\nOpen MUNIM, go to Utilities → Renew Licence, enter the new key.\n\nFor help, reply to this message.`;
+  document.getElementById("ext-wa-msg").textContent=wa;
+  document.getElementById("ext-result").style.display="block";
+  document.getElementById("ext-copy-btn").style.display="inline-block";
+  document.getElementById("ext-save-btn").style.display="inline-block";
+}
+
+function copyExtension(){navigator.clipboard.writeText(document.getElementById("ext-wa-msg").textContent).then(()=>alert("Copied!"));}
+
+async function saveExtension(){
+  if(!_extNewKey)return;
+  document.getElementById("ext-status").textContent="Saving...";
+  const ok=await sbUpdate(_extId,{expires:_extNewExpiry,key:_extNewKey,plan:_extPlan+" (renewed)"});
+  if(ok){document.getElementById("ext-status").textContent="✓ Updated";loadUsers();setTimeout(closeExtend,1200);}
+  else document.getElementById("ext-status").textContent="❌ Update failed";
+}
+
 function planPill(plan){
-  if(plan.includes("Trial"))  return `<span class="pill pill-trial">${plan}</span>`;
-  if(plan.includes("Month"))  return `<span class="pill pill-month">${plan}</span>`;
-  if(plan.includes("Year"))   return `<span class="pill pill-year">${plan}</span>`;
-  return `<span class="pill pill-two">${plan}</span>`;
+  if(plan.includes("Trial"))return`<span class="pill pill-trial">${plan}</span>`;
+  if(plan.includes("Month"))return`<span class="pill pill-month">${plan}</span>`;
+  if(plan.includes("Year"))return`<span class="pill pill-year">${plan}</span>`;
+  return`<span class="pill pill-two">${plan}</span>`;
+}
+
+function daysLeftPill(expiresISO){
+  const d=daysLeft(expiresISO);
+  if(d<0)return`<span class="days-left days-exp">Expired</span>`;
+  if(d<=30)return`<span class="days-left days-warn">${d} days</span>`;
+  return`<span class="days-left days-ok">${d} days</span>`;
 }
 
 async function loadUsers(){
-  const users = await sbGet();
-  const tbody = document.getElementById("users-table");
-  document.getElementById("user-count").textContent = users.length ? `(${users.length})` : "";
-  if(!users.length){
-    tbody.innerHTML=`<tr><td colspan="7" style="color:#6B7690;text-align:center">No users yet</td></tr>`;
-    return;
-  }
-  tbody.innerHTML = users.map((u,i)=>`
+  const users=await sbGet();
+  const tbody=document.getElementById("users-table");
+  document.getElementById("user-count").textContent=users.length?`(${users.length})`:"";
+  if(!users.length){tbody.innerHTML=`<tr><td colspan="8" style="color:#6B7690;text-align:center">No users yet</td></tr>`;return;}
+  tbody.innerHTML=users.map((u,i)=>`
     <tr>
       <td>${i+1}</td>
       <td><b>${u.username}</b></td>
@@ -314,8 +374,11 @@ async function loadUsers(){
       <td>${planPill(u.plan)}</td>
       <td>${u.created}</td>
       <td>${u.expires}</td>
-      <td><button class="btn-copy btn-danger" style="color:#fff;background:#C0392B;padding:4px 12px;font-size:12px"
-          onclick="deleteUser(${u.id})">Remove</button></td>
+      <td>${daysLeftPill(u.expires)}</td>
+      <td style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn-green" onclick="openExtend(${u.id},'${u.username}','${u.firm}','${u.expires}','${u.plan}')">Extend</button>
+        <button class="btn-danger" onclick="deleteUser(${u.id})">Remove</button>
+      </td>
     </tr>`).join("");
 }
 </script>
