@@ -1,4 +1,4 @@
-< !DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -52,21 +52,23 @@
   .whatsapp-box{background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:14px 18px;margin-top:12px;font-size:13px;color:#2E7D32;white-space:pre-wrap;word-break:break-all;line-height:1.8}
   .footer{text-align:center;color:#9FB3D9;font-size:12px;padding:32px;background:#0F1F3D;margin-top:40px}
   .saving{color:#1856A0;font-size:13px;margin-top:8px}
-  .extend-row{display:none;background:#F0F7FF;border:1px solid #BFDBFE;border-radius:8px;padding:14px 16px;margin-top:8px}
-  .extend-row select{width:auto;display:inline-block;padding:6px 10px;font-size:13px;margin:0 8px}
   .days-left{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px}
   .days-ok{background:#D1FAE5;color:#065F46}
   .days-warn{background:#FEF3C7;color:#92400E}
   .days-exp{background:#FEE2E2;color:#991B1B}
+  .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1B2438;color:#fff;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;z-index:9999;display:none}
 </style>
 </head>
 <body>
+
+<div class="toast" id="toast"></div>
 
 <div id="login-screen">
   <div class="login-card">
     <h1>MUNIM</h1>
     <p>Admin Panel — Software Provider Login</p>
-    <input type="password" id="admin-pw" placeholder="Admin password" onkeydown="if(event.key==='Enter')doLogin()">
+    <input type="password" id="admin-pw" placeholder="Admin password"
+           onkeydown="if(event.key==='Enter')doLogin()">
     <div class="err" id="login-err"></div>
     <button class="btn" style="width:100%;margin-top:14px" onclick="doLogin()">Sign in</button>
   </div>
@@ -191,9 +193,20 @@ const SECRET   = "MUNIM_SUMIT_2026_CATOOLSKIT_XK9";
 const SB_URL   = "https://jfnvddjsgpyowpfzbmqs.supabase.co";
 const SB_KEY   = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmbnZkZGpzZ3B5b3dwZnpibXFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDk2MDEsImV4cCI6MjA5NDIyNTYwMX0.RFdkPuyykaF5fNYbB2QuwJKvzDLrc_TYxHnnLB_tDT4";
 const TABLE    = "munim_customers";
+const sbH = {
+  "Content-Type": "application/json",
+  "apikey": SB_KEY,
+  "Authorization": `Bearer ${SB_KEY}`
+};
 
-const sbH = {"Content-Type":"application/json","apikey":SB_KEY,"Authorization":`Bearer ${SB_KEY}`};
+// ── Toast ──────────────────────────────────────────────
+function showToast(msg, ms=2500){
+  const t=document.getElementById("toast");
+  t.textContent=msg;t.style.display="block";
+  setTimeout(()=>t.style.display="none", ms);
+}
 
+// ── Auth ───────────────────────────────────────────────
 function doLogin(){
   if(document.getElementById("admin-pw").value===ADMIN_PW){
     sessionStorage.setItem("munim_admin_ok","1");
@@ -204,7 +217,10 @@ function doLogin(){
     document.getElementById("login-err").textContent="Wrong password";
   }
 }
-function doLogout(){sessionStorage.removeItem("munim_admin_ok");location.reload();}
+function doLogout(){
+  sessionStorage.removeItem("munim_admin_ok");
+  location.reload();
+}
 window.onload=()=>{
   if(sessionStorage.getItem("munim_admin_ok")==="1"){
     document.getElementById("login-screen").style.display="none";
@@ -213,12 +229,19 @@ window.onload=()=>{
   }
 };
 
+// ── Supabase ───────────────────────────────────────────
 async function sbGet(){
-  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?select=*&order=id.desc`,{headers:sbH});
-  return r.ok?r.json():[];
+  try{
+    const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?select=*&order=id.desc`,{headers:sbH});
+    return r.ok ? r.json() : [];
+  }catch{return [];}
 }
 async function sbInsert(row){
-  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}`,{method:"POST",headers:{...sbH,"Prefer":"return=representation"},body:JSON.stringify(row)});
+  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}`,{
+    method:"POST",
+    headers:{...sbH,"Prefer":"return=representation"},
+    body:JSON.stringify(row)
+  });
   return r.ok;
 }
 async function sbDelete(id){
@@ -226,46 +249,78 @@ async function sbDelete(id){
   return r.ok;
 }
 async function sbUpdate(id,data){
-  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`,{method:"PATCH",headers:{...sbH,"Prefer":"return=representation"},body:JSON.stringify(data)});
+  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`,{
+    method:"PATCH",
+    headers:{...sbH,"Prefer":"return=representation"},
+    body:JSON.stringify(data)
+  });
   return r.ok;
 }
+async function sbUsernameExists(username){
+  const r=await fetch(
+    `${SB_URL}/rest/v1/${TABLE}?username=eq.${encodeURIComponent(username)}&select=id`,
+    {headers:sbH}
+  );
+  if(!r.ok) return false;
+  const rows=await r.json();
+  return rows.length>0;
+}
 
+// ── Crypto / key generation ────────────────────────────
 async function hmacHex(secret,msg){
   const enc=new TextEncoder();
-  const key=await crypto.subtle.importKey("raw",enc.encode(secret),{name:"HMAC",hash:"SHA-256"},false,["sign"]);
+  const key=await crypto.subtle.importKey("raw",enc.encode(secret),
+    {name:"HMAC",hash:"SHA-256"},false,["sign"]);
   const sig=await crypto.subtle.sign("HMAC",key,enc.encode(msg));
   return Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,"0")).join("");
 }
 const B32="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-function b32encode(bytes){let bits=0,val=0,out="";for(let b of bytes){val=(val<<8)|b;bits+=8;while(bits>=5){out+=B32[(val>>>(bits-5))&31];bits-=5;}}if(bits>0)out+=B32[(val<<(5-bits))&31];return out;}
-function dateToPythonOrdinal(d){return 730120+Math.round((d-new Date(2000,0,1))/86400000);}
+function b32encode(bytes){
+  let bits=0,val=0,out="";
+  for(let b of bytes){val=(val<<8)|b;bits+=8;while(bits>=5){out+=B32[(val>>>(bits-5))&31];bits-=5;}}
+  if(bits>0)out+=B32[(val<<(5-bits))&31];
+  return out;
+}
+function dateToPythonOrdinal(d){
+  return 730120+Math.round((d-new Date(2000,0,1))/86400000);
+}
 async function buildKey(username,expiryDate){
   const uBytes=new Uint8Array(20);
   const ub=new TextEncoder().encode(username.slice(0,20));
   uBytes.set(ub.slice(0,20));
   const ordinal=dateToPythonOrdinal(expiryDate);
   const dBytes=new Uint8Array(4);
-  dBytes[0]=(ordinal>>>24)&255;dBytes[1]=(ordinal>>>16)&255;dBytes[2]=(ordinal>>>8)&255;dBytes[3]=ordinal&255;
+  dBytes[0]=(ordinal>>>24)&255;dBytes[1]=(ordinal>>>16)&255;
+  dBytes[2]=(ordinal>>>8)&255;dBytes[3]=ordinal&255;
   const payload=b32encode([...uBytes,...dBytes]);
   const sig=(await hmacHex(SECRET,payload)).slice(0,6).toUpperCase();
   return `MNM-${payload}-${sig}`;
 }
 
+// ── Helpers ────────────────────────────────────────────
 function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
 function fmtDate(d){return d.toLocaleDateString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric"});}
 function fmtISO(d){return d.toISOString().slice(0,10);}
 function daysLeft(expiresISO){return Math.round((new Date(expiresISO)-new Date())/86400000);}
-function slugify(name){return name.toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12)+Math.floor(100+Math.random()*900);}
+function slugify(name){
+  return name.toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12)
+    + Math.floor(100+Math.random()*900);
+}
 function randPw(){
-  const up="ABCDEFGHJKLMNPQRSTUVWXYZ",lo="abcdefghjkmnpqrstuvwxyz",dg="23456789",sp="@#!";
+  const up="ABCDEFGHJKLMNPQRSTUVWXYZ",lo="abcdefghjkmnpqrstuvwxyz",
+        dg="23456789",sp="@#!";
   const all=up+lo+dg+sp;
-  let pw=up[Math.floor(Math.random()*up.length)]+lo[Math.floor(Math.random()*lo.length)]+dg[Math.floor(Math.random()*dg.length)]+sp[Math.floor(Math.random()*sp.length)];
+  let pw=up[Math.floor(Math.random()*up.length)]
+        +lo[Math.floor(Math.random()*lo.length)]
+        +dg[Math.floor(Math.random()*dg.length)]
+        +sp[Math.floor(Math.random()*sp.length)];
   for(let i=0;i<4;i++)pw+=all[Math.floor(Math.random()*all.length)];
   return pw.split("").sort(()=>Math.random()-0.5).join("");
 }
 
 let _currentRow=null;
 
+// ── Generate credentials ───────────────────────────────
 async function generateCredentials(){
   const name=document.getElementById("cust-name").value.trim();
   if(!name){alert("Enter the customer or firm name first");return;}
@@ -288,27 +343,53 @@ async function generateCredentials(){
   _currentRow={firm:name,username,plan:planLabel,created:fmtISO(new Date()),expires:fmtISO(expiry),key};
 }
 
-function copyAll(){navigator.clipboard.writeText(document.getElementById("wa-msg").textContent).then(()=>alert("Copied! Paste it in WhatsApp."));}
+function copyAll(){
+  navigator.clipboard.writeText(document.getElementById("wa-msg").textContent)
+    .then(()=>showToast("✓ Copied! Paste in WhatsApp."));
+}
 
+// ── Save user — with duplicate check ──────────────────
 async function saveUser(){
-  if(!_currentRow)return;
+  if(!_currentRow) return;
+  document.getElementById("save-status").textContent="Checking...";
+  const exists=await sbUsernameExists(_currentRow.username);
+  if(exists){
+    document.getElementById("save-status").textContent=
+      "❌ Username already exists — edit the username field and generate again.";
+    return;
+  }
   document.getElementById("save-status").textContent="Saving...";
   const ok=await sbInsert(_currentRow);
-  if(ok){document.getElementById("save-status").textContent="✓ Saved";_currentRow=null;loadUsers();}
-  else document.getElementById("save-status").textContent="❌ Save failed";
+  if(ok){
+    document.getElementById("save-status").textContent="✓ Saved";
+    // Clear form
+    document.getElementById("cust-name").value="";
+    document.getElementById("username").value="";
+    document.getElementById("password").value="";
+    document.getElementById("result-area").style.display="none";
+    _currentRow=null;
+    loadUsers();
+    showToast("✓ User saved successfully");
+  } else {
+    document.getElementById("save-status").textContent="❌ Save failed — check Supabase connection";
+  }
 }
 
+// ── Delete ─────────────────────────────────────────────
 async function deleteUser(id){
-  if(!confirm("Remove this user from the list?"))return;
-  await sbDelete(id);
-  loadUsers();
+  if(!confirm("Remove this user from the list?")) return;
+  const ok=await sbDelete(id);
+  if(ok){showToast("User removed");loadUsers();}
+  else showToast("❌ Delete failed");
 }
 
-// ---- EXTEND ----
-let _extId=null,_extUsername=null,_extNewKey=null,_extNewExpiry=null,_extFirm=null,_extPlan=null;
+// ── Extend ────────────────────────────────────────────
+let _extId=null,_extUsername=null,_extNewKey=null,
+    _extNewExpiry=null,_extFirm=null,_extPlan=null;
 
 function openExtend(id,username,firm,expires,plan){
-  _extId=id;_extUsername=username;_extFirm=firm;_extPlan=plan;_extNewKey=null;_extNewExpiry=null;
+  _extId=id;_extUsername=username;_extFirm=firm;_extPlan=plan;
+  _extNewKey=null;_extNewExpiry=null;
   document.getElementById("ext-firm").textContent=firm;
   document.getElementById("ext-user").textContent=username;
   document.getElementById("ext-current").textContent=expires;
@@ -316,10 +397,8 @@ function openExtend(id,username,firm,expires,plan){
   document.getElementById("ext-copy-btn").style.display="none";
   document.getElementById("ext-save-btn").style.display="none";
   document.getElementById("ext-status").textContent="";
-  const modal=document.getElementById("extend-modal");
-  modal.style.display="flex";
+  document.getElementById("extend-modal").style.display="flex";
 }
-
 function closeExtend(){document.getElementById("extend-modal").style.display="none";}
 
 async function generateExtension(){
@@ -337,26 +416,35 @@ async function generateExtension(){
   document.getElementById("ext-save-btn").style.display="inline-block";
 }
 
-function copyExtension(){navigator.clipboard.writeText(document.getElementById("ext-wa-msg").textContent).then(()=>alert("Copied!"));}
+function copyExtension(){
+  navigator.clipboard.writeText(document.getElementById("ext-wa-msg").textContent)
+    .then(()=>showToast("✓ Copied!"));
+}
 
 async function saveExtension(){
-  if(!_extNewKey)return;
+  if(!_extNewKey) return;
   document.getElementById("ext-status").textContent="Saving...";
   const ok=await sbUpdate(_extId,{expires:_extNewExpiry,key:_extNewKey,plan:_extPlan+" (renewed)"});
-  if(ok){document.getElementById("ext-status").textContent="✓ Updated";loadUsers();setTimeout(closeExtend,1200);}
-  else document.getElementById("ext-status").textContent="❌ Update failed";
+  if(ok){
+    document.getElementById("ext-status").textContent="✓ Updated";
+    loadUsers();
+    setTimeout(closeExtend,1200);
+    showToast("✓ Licence extended");
+  } else {
+    document.getElementById("ext-status").textContent="❌ Update failed";
+  }
 }
 
+// ── Table rendering ────────────────────────────────────
 function planPill(plan){
-  if(plan.includes("Trial"))return`<span class="pill pill-trial">${plan}</span>`;
-  if(plan.includes("Month"))return`<span class="pill pill-month">${plan}</span>`;
-  if(plan.includes("Year"))return`<span class="pill pill-year">${plan}</span>`;
+  if(plan.includes("Trial")) return`<span class="pill pill-trial">${plan}</span>`;
+  if(plan.includes("Month")) return`<span class="pill pill-month">${plan}</span>`;
+  if(plan.includes("Year"))  return`<span class="pill pill-year">${plan}</span>`;
   return`<span class="pill pill-two">${plan}</span>`;
 }
-
 function daysLeftPill(expiresISO){
   const d=daysLeft(expiresISO);
-  if(d<0)return`<span class="days-left days-exp">Expired</span>`;
+  if(d<0)  return`<span class="days-left days-exp">Expired</span>`;
   if(d<=30)return`<span class="days-left days-warn">${d} days</span>`;
   return`<span class="days-left days-ok">${d} days</span>`;
 }
@@ -365,7 +453,10 @@ async function loadUsers(){
   const users=await sbGet();
   const tbody=document.getElementById("users-table");
   document.getElementById("user-count").textContent=users.length?`(${users.length})`:"";
-  if(!users.length){tbody.innerHTML=`<tr><td colspan="8" style="color:#6B7690;text-align:center">No users yet</td></tr>`;return;}
+  if(!users.length){
+    tbody.innerHTML=`<tr><td colspan="8" style="color:#6B7690;text-align:center">No users yet</td></tr>`;
+    return;
+  }
   tbody.innerHTML=users.map((u,i)=>`
     <tr>
       <td>${i+1}</td>
