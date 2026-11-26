@@ -3,475 +3,674 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MUNIM Admin Panel</title>
+<meta name="robots" content="noindex, nofollow">
+<title>MUNIM Admin — Licence Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Segoe UI',sans-serif;background:#F4F6FA;color:#1B2438;min-height:100vh}
-  .navbar{background:#0F1F3D;padding:14px 32px;display:flex;align-items:center;justify-content:space-between}
-  .navbar .brand{color:#fff;font-size:20px;font-weight:700;letter-spacing:1px}
-  .navbar .sub{color:#9FB3D9;font-size:13px}
-  .container{max-width:960px;margin:40px auto;padding:0 20px}
-  .card{background:#fff;border:1px solid #E1E6EF;border-radius:12px;padding:28px 32px;margin-bottom:24px}
-  .card h2{font-size:17px;font-weight:700;margin-bottom:18px;color:#1B2438}
-  label{font-size:12px;color:#6B7690;display:block;margin-bottom:4px;margin-top:12px}
-  input,select{width:100%;padding:10px 14px;border:1px solid #E1E6EF;border-radius:8px;font-size:14px;color:#1B2438;background:#fff;outline:none}
-  input:focus,select:focus{border-color:#1856A0}
-  .row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
-  .btn{background:#1856A0;color:#fff;border:none;border-radius:8px;padding:11px 24px;font-size:14px;font-weight:700;cursor:pointer;margin-top:18px}
-  .btn:hover{background:#134581}
-  .btn-sm{background:#1856A0;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer}
-  .btn-sm:hover{background:#134581}
-  .btn-danger{background:#C0392B;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer}
-  .btn-danger:hover{background:#A32F23}
-  .btn-green{background:#1E8E5A;color:#fff;border:none;border-radius:6px;padding:4px 12px;font-size:12px;font-weight:600;cursor:pointer}
-  .btn-green:hover{background:#166b44}
-  .btn-copy{background:#E7ECF5;color:#1B2438;border:none;border-radius:8px;padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;margin-top:8px}
-  .btn-copy:hover{background:#DCE3F0}
-  .result-box{background:#F4F6FA;border:1px solid #E1E6EF;border-radius:8px;padding:16px 20px;margin-top:16px;line-height:2}
-  .result-box .label{color:#6B7690;font-size:11px}
-  .result-box .val{color:#1B2438;font-weight:600;font-size:15px;display:block}
-  .key-val{color:#1856A0;font-size:15px;letter-spacing:1px;word-break:break-all}
-  .ok{color:#1E8E5A;font-weight:700}
-  .err{color:#C0392B;font-weight:600;font-size:13px;margin-top:8px}
-  table{width:100%;border-collapse:collapse;font-size:13px}
-  th{background:#EEF2F8;padding:10px 14px;text-align:left;font-weight:600;color:#1B2438}
-  td{padding:10px 14px;border-bottom:1px solid #F0F3F8;color:#1B2438;vertical-align:middle}
-  tr:last-child td{border-bottom:none}
-  .pill{display:inline-block;padding:2px 10px;border-radius:12px;font-size:11px;font-weight:700}
-  .pill-trial{background:#FEF3C7;color:#92400E}
-  .pill-month{background:#DBEAFE;color:#1D4ED8}
-  .pill-year{background:#D1FAE5;color:#065F46}
-  .pill-two{background:#EDE9FE;color:#5B21B6}
-  .pill-exp{background:#FEE2E2;color:#991B1B}
-  #login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:#0F1F3D}
-  .login-card{background:#fff;border-radius:16px;padding:40px 44px;width:360px;text-align:center}
-  .login-card h1{font-size:28px;font-weight:700;color:#0F1F3D;margin-bottom:4px}
-  .login-card p{color:#6B7690;font-size:13px;margin-bottom:24px}
-  .login-card input{margin-bottom:14px}
-  #main-screen{display:none}
-  .whatsapp-box{background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:14px 18px;margin-top:12px;font-size:13px;color:#2E7D32;white-space:pre-wrap;word-break:break-all;line-height:1.8}
-  .footer{text-align:center;color:#9FB3D9;font-size:12px;padding:32px;background:#0F1F3D;margin-top:40px}
-  .saving{color:#1856A0;font-size:13px;margin-top:8px}
-  .days-left{font-size:11px;font-weight:600;padding:2px 8px;border-radius:999px}
-  .days-ok{background:#D1FAE5;color:#065F46}
-  .days-warn{background:#FEF3C7;color:#92400E}
-  .days-exp{background:#FEE2E2;color:#991B1B}
-  .toast{position:fixed;bottom:32px;left:50%;transform:translateX(-50%);background:#1B2438;color:#fff;padding:12px 28px;border-radius:8px;font-size:14px;font-weight:600;z-index:9999;display:none}
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#071B49;--gold:#F4C430;--gold-d:#D4A820;--bg:#F4F6FA;--line:#E2E8F0;--ink:#1B2438;--mid:#4A5568;--soft:#718096;--green:#1E8E5A;--red:#C0392B;--blue:#1856A0}
+body{font-family:Inter,'Segoe UI',sans-serif;background:var(--bg);color:var(--ink);font-size:14px;line-height:1.5}
+button,input,select{font-family:inherit;font-size:14px}
+a{color:inherit;text-decoration:none}
+.hide{display:none!important}
+.logo{width:46px;height:46px;border-radius:10px;background:var(--gold);color:var(--navy);font-weight:800;font-size:22px;display:flex;align-items:center;justify-content:center}
+.logo.sm{width:34px;height:34px;font-size:16px;border-radius:8px}
+#login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--navy);padding:20px}
+.login-card{background:#fff;border-radius:16px;padding:36px 32px;width:360px;max-width:100%;text-align:center}
+.login-card .logo{margin:0 auto 12px}
+.login-card h1{font-size:22px;color:var(--navy)}
+.login-card p{color:var(--soft);font-size:13px;margin:4px 0 20px}
+.login-card input{margin-bottom:6px}
+.back{display:block;margin-top:16px;font-size:12px;color:var(--soft)}
+input,select{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(24,86,160,.12)}
+label{display:block;font-size:12px;font-weight:600;color:var(--mid);margin:14px 0 5px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:8px;padding:10px 18px;font-weight:600;cursor:pointer;white-space:nowrap}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.btn-gold{background:var(--gold);color:var(--navy)}.btn-gold:hover:not(:disabled){background:var(--gold-d)}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-green{background:#25D366;color:#fff}
+.btn-ghost{background:#E9EEF6;color:var(--ink)}.btn-ghost:hover{background:#DCE3F0}
+.btn-block{width:100%}
+.sq{padding:9px 12px}
+.top{background:var(--navy);color:#fff;padding:12px 4%;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:50}
+.brand{display:flex;align-items:center;gap:10px}.brand span{display:block;font-size:12px;color:#9FB3D9}
+.top-actions{display:flex;gap:14px;align-items:center}.top-actions .link{color:#C9D6EE;font-size:13px}
+.wrap{max-width:1180px;margin:24px auto 60px;padding:0 16px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:18px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:22px;color:var(--navy)}.stat span{font-size:12px;color:var(--soft)}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-bottom:18px}
+.card h2{font-size:16px;color:var(--navy)}
+.card-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.tools{display:flex;gap:8px;flex-wrap:wrap}.tools input{width:240px}.tools select{width:200px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:0 16px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden;flex-wrap:wrap}
+.seg label{margin:0;cursor:pointer}.seg input{display:none}
+.seg span{display:block;padding:9px 16px;font-size:13px;font-weight:600;color:var(--mid);background:#fff;border-right:1px solid var(--line)}
+.seg label:last-child span{border-right:none}
+.seg input:checked+span{background:var(--navy);color:var(--gold)}
+.checks{display:flex;gap:18px;flex-wrap:wrap}
+.checks label{display:flex;align-items:center;gap:7px;margin:0;font-size:14px;font-weight:500;color:var(--ink);cursor:pointer}
+.checks input{width:16px;height:16px}
+.inrow{display:flex;gap:6px}
+.hint{font-size:12px;color:var(--soft);margin-top:4px;min-height:16px}.hint.good{color:var(--green)}.hint.bad{color:var(--red)}
+.err{color:var(--red);font-size:13px;font-weight:600;margin-top:10px;min-height:18px}
+#f-create{margin-top:8px}
+.result{margin-top:18px;border:1px solid #BFE3CF;background:#F1FAF5;border-radius:12px;padding:16px 18px}
+.result-head{font-weight:700;color:var(--green);margin-bottom:10px}
+.kv{display:grid;grid-template-columns:130px 1fr;gap:4px 12px;margin-bottom:6px}
+.kv dt{color:var(--soft)}.kv dd{font-weight:600;word-break:break-all}
+.mono{font-family:Consolas,monospace}
+pre.wa{background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 14px;font-family:inherit;font-size:13px;white-space:pre-wrap;word-break:break-word;max-height:320px;overflow:auto;margin:10px 0}
+.row-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#EEF2F8;text-align:left;padding:9px 10px;font-weight:600;white-space:nowrap}
+td{padding:10px;border-bottom:1px solid #EEF1F6;vertical-align:top}
+.sub{font-size:12px;color:var(--soft);margin-top:2px}
+.muted{color:var(--soft)}
+.pill{display:inline-block;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;margin-top:3px}
+.pill.ok{background:#D1FAE5;color:#065F46}.pill.warn{background:#FEF3C7;color:#92400E}.pill.trial{background:#E0E7FF;color:#3730A3}
+.pill.exp,.pill.susp{background:#FEE2E2;color:#991B1B}.pill.none{background:#EEF1F6;color:var(--soft)}
+.pill.books{background:#FFF4CC;color:#7A5A00}.pill.pro{background:var(--navy);color:var(--gold)}
+.chip{display:inline-block;font-size:11px;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin:3px 3px 0 0;color:var(--mid)}
+.acts{display:flex;flex-wrap:wrap;gap:5px;min-width:230px}
+.acts button{border:none;border-radius:6px;padding:4px 9px;font-size:12px;font-weight:600;cursor:pointer;background:#E9EEF6;color:var(--ink)}
+.acts button.green{background:var(--green);color:#fff}.acts button.red{background:#FDE8E6;color:var(--red)}
+.acts button:hover{filter:brightness(.95)}
+.empty{text-align:center;color:var(--soft);padding:28px}
+.modal{position:fixed;inset:0;background:rgba(7,27,73,.55);display:flex;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal-card{background:#fff;border-radius:14px;padding:24px;width:540px;max-width:100%;max-height:92vh;overflow:auto}
+.modal-card h3{font-size:17px;color:var(--navy)}
+.toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:11px 22px;border-radius:8px;font-weight:600;z-index:200;display:none}
+@media(max-width:900px){.stats{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:1fr}.tools input,.tools select{width:100%}}
 </style>
 </head>
 <body>
+<div id="toast" class="toast"></div>
 
-<div class="toast" id="toast"></div>
-
-<div id="login-screen">
-  <div class="login-card">
-    <h1>MUNIM</h1>
-    <p>Admin Panel — Software Provider Login</p>
-    <input type="password" id="admin-pw" placeholder="Admin password"
-           onkeydown="if(event.key==='Enter')doLogin()">
+<!-- ============ LOGIN ============ -->
+<div id="login">
+  <form class="login-card" id="login-form" autocomplete="off">
+    <div class="logo">म</div>
+    <h1>MUNIM Admin</h1>
+    <p>Licence manager — authorised use only</p>
+    <input type="password" id="login-pw" placeholder="Admin password" autocomplete="current-password">
     <div class="err" id="login-err"></div>
-    <button class="btn" style="width:100%;margin-top:14px" onclick="doLogin()">Sign in</button>
-  </div>
+    <button class="btn btn-gold btn-block" id="login-btn" type="submit">Sign in</button>
+    <a class="back" href="index.html">← Back to website</a>
+  </form>
 </div>
 
-<div id="main-screen">
-  <div class="navbar">
-    <div>
-      <div class="brand">MUNIM</div>
-      <div class="sub">Admin Panel — Licence Manager</div>
+<!-- ============ APP ============ -->
+<div id="app" class="hide">
+  <header class="top">
+    <div class="brand"><div class="logo sm">म</div><div><b>MUNIM Admin</b><span>Licence manager</span></div></div>
+    <div class="top-actions">
+      <a href="index.html" class="link">Website</a>
+      <button class="btn btn-ghost" id="logout-btn" type="button">Sign out</button>
     </div>
-    <button class="btn-copy" onclick="doLogout()">Sign out</button>
-  </div>
+  </header>
 
-  <div class="container">
+  <main class="wrap">
+    <div class="stats" id="stats"></div>
 
-    <div class="card">
-      <h2>+ Create New User</h2>
-      <div class="row">
-        <div>
-          <label>Customer / Firm Name</label>
-          <input type="text" id="cust-name" placeholder="e.g. Ram Traders">
-        </div>
-        <div>
-          <label>Plan</label>
-          <select id="plan">
-            <option value="7">Trial — 7 days</option>
-            <option value="30">1 Month</option>
-            <option value="90">3 Months</option>
-            <option value="180">6 Months</option>
-            <option value="365" selected>1 Year</option>
-            <option value="730">2 Years</option>
+    <!-- Create -->
+    <section class="card">
+      <h2>Create licence</h2>
+      <div class="grid3">
+        <div><label for="f-firm">Customer / Firm name *</label><input id="f-firm" maxlength="100" placeholder="e.g. Ram Traders"></div>
+        <div><label for="f-phone">Mobile (WhatsApp)</label><input id="f-phone" inputmode="numeric" maxlength="14" placeholder="10-digit mobile"></div>
+        <div><label for="f-plan">Plan</label>
+          <select id="f-plan">
+            <option value="trial">Free trial — 7 days</option>
+            <option value="1y" selected>1 year</option>
+            <option value="2y">2 years</option>
+            <option value="3y">3 years</option>
+            <option value="4y">4 years</option>
+            <option value="5y">5 years</option>
           </select>
-        </div>
-        <div>
-          <label>Username (auto-generated, editable)</label>
-          <input type="text" id="username" placeholder="will be generated">
+          <div class="hint" id="f-expiry"></div>
         </div>
       </div>
-      <div class="row" style="margin-top:4px">
-        <div>
-          <label>Password (auto-generated, editable)</label>
-          <input type="text" id="password" placeholder="will be generated">
+
+      <label>Product</label>
+      <div class="seg">
+        <label><input type="radio" name="product" value="books" checked><span>MUNIM Books</span></label>
+        <label><input type="radio" name="product" value="pro"><span>MUNIM Pro</span></label>
+        <label><input type="radio" name="product" value="both"><span>Books + Pro</span></label>
+      </div>
+      <div id="f-mods-wrap" class="hide">
+        <label>MUNIM Pro modules</label>
+        <div class="checks" id="f-mods">
+          <label><input type="checkbox" value="tax" checked> Tax Pro</label>
+          <label><input type="checkbox" value="gst" checked> GST Pro</label>
+          <label><input type="checkbox" value="tds" checked> TDS Pro</label>
         </div>
-        <div style="display:flex;align-items:flex-end">
-          <button class="btn" onclick="generateCredentials()">Generate</button>
-        </div>
-        <div></div>
       </div>
 
-      <div id="result-area" style="display:none">
-        <div class="result-box">
-          <span class="label">Username</span>
-          <span class="val" id="res-user"></span>
-          <span class="label" style="margin-top:8px">Password</span>
-          <span class="val" id="res-pw"></span>
-          <span class="label" style="margin-top:8px">Licence Key</span>
-          <span class="val key-val" id="res-key"></span>
-          <span class="label" style="margin-top:8px">Valid Until</span>
-          <span class="val ok" id="res-expiry"></span>
-        </div>
-        <div class="whatsapp-box" id="wa-msg"></div>
-        <button class="btn-copy" onclick="copyAll()">📋 Copy WhatsApp message</button>
-        <button class="btn" style="margin-left:12px;margin-top:0" onclick="saveUser()">Save to list</button>
-        <div class="saving" id="save-status"></div>
+      <div class="grid3">
+        <div><label for="f-user">Username</label>
+          <input id="f-user" maxlength="30" autocomplete="off" spellcheck="false" placeholder="auto from firm name">
+          <div class="hint" id="f-user-status"></div></div>
+        <div><label for="f-pass">Password</label>
+          <div class="inrow"><input id="f-pass" maxlength="40" autocomplete="off" spellcheck="false">
+          <button class="btn btn-ghost sq" id="f-pass-new" type="button" title="New password">↻</button></div></div>
+        <div><label for="f-notes">Notes (only you see this)</label><input id="f-notes" maxlength="200" placeholder="e.g. paid by UPI on 26-Nov"></div>
       </div>
-    </div>
 
-    <div class="card">
-      <h2>All Users <span id="user-count" style="font-size:13px;color:#6B7690;font-weight:400"></span></h2>
-      <table>
-        <thead>
-          <tr><th>#</th><th>Username</th><th>Firm</th><th>Plan</th><th>Created</th><th>Expires</th><th>Days left</th><th>Actions</th></tr>
-        </thead>
-        <tbody id="users-table">
-          <tr><td colspan="8" style="color:#6B7690;text-align:center">Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
+      <div class="err" id="f-err"></div>
+      <button class="btn btn-gold" id="f-create" type="button">Create licence</button>
 
-  </div>
-  <div class="footer">© 2026 MUNIM · Admin Panel · All Rights Reserved</div>
+      <div id="result" class="result hide">
+        <div class="result-head">✓ Licence created — copy the details now. The password is not shown again.</div>
+        <dl class="kv" id="r-kv"></dl>
+        <pre class="wa" id="r-msg"></pre>
+        <div class="row-btns">
+          <button class="btn btn-blue" id="r-copy" type="button">📋 Copy WhatsApp message</button>
+          <a class="btn btn-green" id="r-wa" target="_blank" rel="noopener">Open in WhatsApp</a>
+          <button class="btn btn-ghost" id="r-close" type="button">Done</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- List -->
+    <section class="card">
+      <div class="card-head">
+        <h2>All licences <span id="count" class="muted" style="font-weight:400"></span></h2>
+        <div class="tools">
+          <input id="q" placeholder="Search firm, username, mobile…">
+          <select id="flt">
+            <option value="all">All</option>
+            <option value="trial">Trials (running)</option>
+            <option value="paid">Paid (running)</option>
+            <option value="expiring">Expiring in 30 days</option>
+            <option value="expired">Expired</option>
+            <option value="suspended">Suspended</option>
+            <option value="notact">Not activated yet</option>
+          </select>
+          <button class="btn btn-ghost" id="reload" type="button">↻ Refresh</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Customer</th><th>Product</th><th>Plan</th><th>Valid till</th><th>Computer</th><th>Actions</th></tr></thead>
+          <tbody id="tbody"><tr><td colspan="7" class="empty">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>System</h2>
+      <p class="sub">App public key — needed once for the EXE licence check. Safe to share; it cannot create licences.</p>
+      <div class="row-btns"><button class="btn btn-ghost" id="sys-key" type="button">Show public key</button></div>
+      <pre class="wa hide mono" id="sys-out"></pre>
+    </section>
+  </main>
 </div>
 
 <!-- Extend modal -->
-<div id="extend-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:1000;align-items:center;justify-content:center">
-  <div style="background:#fff;border-radius:16px;padding:32px;width:480px;max-width:95vw">
-    <h3 style="margin-bottom:16px;color:#1B2438">Extend Licence</h3>
-    <p style="font-size:14px;color:#6B7690;margin-bottom:4px">Customer: <strong id="ext-firm"></strong></p>
-    <p style="font-size:14px;color:#6B7690;margin-bottom:16px">Username: <strong id="ext-user"></strong></p>
-    <p style="font-size:14px;color:#6B7690;margin-bottom:4px">Current expiry: <strong id="ext-current"></strong></p>
-    <label style="margin-top:12px">Extend by</label>
-    <select id="ext-days" style="margin-top:6px">
-      <option value="30">+ 1 Month</option>
-      <option value="90">+ 3 Months</option>
-      <option value="180">+ 6 Months</option>
-      <option value="365" selected>+ 1 Year</option>
-      <option value="730">+ 2 Years</option>
+<div class="modal hide" id="x-modal">
+  <div class="modal-card">
+    <h3>Extend / change licence</h3>
+    <p class="sub" id="x-who"></p>
+    <label for="x-plan">Validity</label>
+    <select id="x-plan">
+      <option value="1y" selected>+ 1 year</option>
+      <option value="2y">+ 2 years</option>
+      <option value="3y">+ 3 years</option>
+      <option value="4y">+ 4 years</option>
+      <option value="5y">+ 5 years</option>
+      <option value="trial">Trial — 7 days from today</option>
+      <option value="keep">Don't change validity (only product / modules)</option>
     </select>
-    <div id="ext-result" style="display:none;margin-top:16px">
-      <div class="result-box">
-        <span class="label">New expiry</span>
-        <span class="val ok" id="ext-new-expiry"></span>
-        <span class="label" style="margin-top:8px">New Licence Key</span>
-        <span class="val key-val" id="ext-new-key"></span>
+    <div class="hint" id="x-preview"></div>
+    <label>Product</label>
+    <div class="seg">
+      <label><input type="radio" name="x-product" value="books"><span>MUNIM Books</span></label>
+      <label><input type="radio" name="x-product" value="pro"><span>MUNIM Pro</span></label>
+      <label><input type="radio" name="x-product" value="both"><span>Books + Pro</span></label>
+    </div>
+    <div id="x-mods-wrap">
+      <label>MUNIM Pro modules</label>
+      <div class="checks" id="x-mods">
+        <label><input type="checkbox" value="tax"> Tax Pro</label>
+        <label><input type="checkbox" value="gst"> GST Pro</label>
+        <label><input type="checkbox" value="tds"> TDS Pro</label>
       </div>
-      <div class="whatsapp-box" id="ext-wa-msg" style="margin-top:10px"></div>
     </div>
-    <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap">
-      <button class="btn" onclick="generateExtension()">Generate new key</button>
-      <button class="btn-copy" id="ext-copy-btn" style="display:none" onclick="copyExtension()">📋 Copy WhatsApp message</button>
-      <button class="btn-copy" id="ext-save-btn" style="display:none" onclick="saveExtension()">Save new expiry</button>
-      <button class="btn-copy" onclick="closeExtend()">Cancel</button>
+    <div class="err" id="x-err"></div>
+    <div class="row-btns">
+      <button class="btn btn-gold" id="x-save" type="button">Save</button>
+      <button class="btn btn-ghost" data-close type="button">Cancel</button>
     </div>
-    <div class="saving" id="ext-status"></div>
+  </div>
+</div>
+
+<!-- Message modal -->
+<div class="modal hide" id="m-modal">
+  <div class="modal-card">
+    <h3 id="m-title"></h3>
+    <pre class="wa" id="m-body"></pre>
+    <div class="row-btns">
+      <button class="btn btn-blue" id="m-copy" type="button">📋 Copy</button>
+      <a class="btn btn-green" id="m-wa" target="_blank" rel="noopener">Open in WhatsApp</a>
+      <button class="btn btn-ghost" data-close type="button">Close</button>
+    </div>
   </div>
 </div>
 
 <script>
-const ADMIN_PW = "Munim@Admin2026";
-const SECRET   = "MUNIM_SUMIT_2026_CATOOLSKIT_XK9";
-const SB_URL   = "https://jfnvddjsgpyowpfzbmqs.supabase.co";
-const SB_KEY   = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmbnZkZGpzZ3B5b3dwZnpibXFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDk2MDEsImV4cCI6MjA5NDIyNTYwMX0.RFdkPuyykaF5fNYbB2QuwJKvzDLrc_TYxHnnLB_tDT4";
-const TABLE    = "munim_customers";
-const sbH = {
-  "Content-Type": "application/json",
-  "apikey": SB_KEY,
-  "Authorization": `Bearer ${SB_KEY}`
-};
+// ===== Config (public values only — no secrets here) =====
+const FN      = "https://jfnvddjsgpyowpfzbmqs.supabase.co/functions/v1";
+const ANON    = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpmbnZkZGpzZ3B5b3dwZnpibXFzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg2NDk2MDEsImV4cCI6MjA5NDIyNTYwMX0.RFdkPuyykaF5fNYbB2QuwJKvzDLrc_TYxHnnLB_tDT4";
+const SITE    = "https://technicalmunim.vercel.app";
+const SUPPORT = "+91 84276 51580";
+const SKEY    = "munim_admin_pw";
+const PLAN_LABEL = { trial: "7-day free trial", "1y": "1 year", "2y": "2 years", "3y": "3 years", "4y": "4 years", "5y": "5 years" };
+const MOD_LABEL  = { tax: "Tax Pro", gst: "GST Pro", tds: "TDS Pro" };
 
-// ── Toast ──────────────────────────────────────────────
-function showToast(msg, ms=2500){
-  const t=document.getElementById("toast");
-  t.textContent=msg;t.style.display="block";
-  setTimeout(()=>t.style.display="none", ms);
-}
+let PW = sessionStorage.getItem(SKEY) || "";
+let USERS = [];
+let busy = false;
+let X = null;            // licence open in the extend modal
+let userTouched = false, userTimer = null, userTaken = false;
 
-// ── Auth ───────────────────────────────────────────────
-function doLogin(){
-  if(document.getElementById("admin-pw").value===ADMIN_PW){
-    sessionStorage.setItem("munim_admin_ok","1");
-    document.getElementById("login-screen").style.display="none";
-    document.getElementById("main-screen").style.display="block";
-    loadUsers();
-  } else {
-    document.getElementById("login-err").textContent="Wrong password";
-  }
-}
-function doLogout(){
-  sessionStorage.removeItem("munim_admin_ok");
-  location.reload();
-}
-window.onload=()=>{
-  if(sessionStorage.getItem("munim_admin_ok")==="1"){
-    document.getElementById("login-screen").style.display="none";
-    document.getElementById("main-screen").style.display="block";
-    loadUsers();
-  }
-};
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
-// ── Supabase ───────────────────────────────────────────
-async function sbGet(){
-  try{
-    const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?select=*&order=id.desc`,{headers:sbH});
-    return r.ok ? r.json() : [];
-  }catch{return [];}
-}
-async function sbInsert(row){
-  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}`,{
-    method:"POST",
-    headers:{...sbH,"Prefer":"return=representation"},
-    body:JSON.stringify(row)
-  });
-  return r.ok;
-}
-async function sbDelete(id){
-  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`,{method:"DELETE",headers:sbH});
-  return r.ok;
-}
-async function sbUpdate(id,data){
-  const r=await fetch(`${SB_URL}/rest/v1/${TABLE}?id=eq.${id}`,{
-    method:"PATCH",
-    headers:{...sbH,"Prefer":"return=representation"},
-    body:JSON.stringify(data)
-  });
-  return r.ok;
-}
-async function sbUsernameExists(username){
-  const r=await fetch(
-    `${SB_URL}/rest/v1/${TABLE}?username=eq.${encodeURIComponent(username)}&select=id`,
-    {headers:sbH}
-  );
-  if(!r.ok) return false;
-  const rows=await r.json();
-  return rows.length>0;
+// ===== Dates (India time) =====
+const todayIST = () => new Date(Date.now() + 19800000).toISOString().slice(0, 10);
+const addDays  = (iso, n) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCDate(d.getUTCDate() + n); return d.toISOString().slice(0, 10); };
+const addYears = (iso, n) => { const d = new Date(iso + "T00:00:00Z"); d.setUTCFullYear(d.getUTCFullYear() + n); return d.toISOString().slice(0, 10); };
+const daysLeft = iso => Math.round((new Date(iso + "T00:00:00Z") - new Date(todayIST() + "T00:00:00Z")) / 86400000);
+const fmt = iso => iso ? String(iso).slice(0, 10).split("-").reverse().join("-") : "—";
+function previewExpiry(plan, u) {
+  const t = todayIST();
+  if (plan === "trial") return addDays(t, 7);
+  if (plan === "keep") return u.expires_on;
+  const start = u && !u.is_trial && u.expires_on >= t ? addDays(u.expires_on, 1) : t;
+  return addDays(addYears(start, +plan[0]), -1);
 }
 
-// ── Crypto / key generation ────────────────────────────
-async function hmacHex(secret,msg){
-  const enc=new TextEncoder();
-  const key=await crypto.subtle.importKey("raw",enc.encode(secret),
-    {name:"HMAC",hash:"SHA-256"},false,["sign"]);
-  const sig=await crypto.subtle.sign("HMAC",key,enc.encode(msg));
-  return Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,"0")).join("");
-}
-const B32="ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-function b32encode(bytes){
-  let bits=0,val=0,out="";
-  for(let b of bytes){val=(val<<8)|b;bits+=8;while(bits>=5){out+=B32[(val>>>(bits-5))&31];bits-=5;}}
-  if(bits>0)out+=B32[(val<<(5-bits))&31];
-  return out;
-}
-function dateToPythonOrdinal(d){
-  return 730120+Math.round((d-new Date(2000,0,1))/86400000);
-}
-async function buildKey(username,expiryDate){
-  const uBytes=new Uint8Array(20);
-  const ub=new TextEncoder().encode(username.slice(0,20));
-  uBytes.set(ub.slice(0,20));
-  const ordinal=dateToPythonOrdinal(expiryDate);
-  const dBytes=new Uint8Array(4);
-  dBytes[0]=(ordinal>>>24)&255;dBytes[1]=(ordinal>>>16)&255;
-  dBytes[2]=(ordinal>>>8)&255;dBytes[3]=ordinal&255;
-  const payload=b32encode([...uBytes,...dBytes]);
-  const sig=(await hmacHex(SECRET,payload)).slice(0,6).toUpperCase();
-  return `MNM-${payload}-${sig}`;
+// ===== API =====
+async function api(action, data = {}) {
+  let r;
+  try {
+    r = await fetch(`${FN}/munim-admin`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", apikey: ANON, Authorization: `Bearer ${ANON}` },
+      body: JSON.stringify({ action, admin_password: PW, ...data })
+    });
+  } catch { return { ok: false, error: "No internet, or the licence server is not reachable." }; }
+  let j;
+  try { j = await r.json(); } catch { j = { ok: false, error: `Server error (${r.status})` }; }
+  if (r.status === 401 && !$("app").classList.contains("hide")) logout("Signed out — please sign in again.");
+  return j;
 }
 
-// ── Helpers ────────────────────────────────────────────
-function addDays(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
-function fmtDate(d){return d.toLocaleDateString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric"});}
-function fmtISO(d){return d.toISOString().slice(0,10);}
-function daysLeft(expiresISO){return Math.round((new Date(expiresISO)-new Date())/86400000);}
-function slugify(name){
-  return name.toLowerCase().replace(/[^a-z0-9]/g,"").slice(0,12)
-    + Math.floor(100+Math.random()*900);
+// ===== UI helpers =====
+function toast(msg, ms = 2600) { const t = $("toast"); t.textContent = msg; t.style.display = "block"; clearTimeout(t._h); t._h = setTimeout(() => t.style.display = "none", ms); }
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); }
+  catch { const ta = document.createElement("textarea"); ta.value = t; document.body.appendChild(ta); ta.select(); document.execCommand("copy"); ta.remove(); }
+  toast("✓ Copied — paste it in WhatsApp");
 }
-function randPw(){
-  const up="ABCDEFGHJKLMNPQRSTUVWXYZ",lo="abcdefghjkmnpqrstuvwxyz",
-        dg="23456789",sp="@#!";
-  const all=up+lo+dg+sp;
-  let pw=up[Math.floor(Math.random()*up.length)]
-        +lo[Math.floor(Math.random()*lo.length)]
-        +dg[Math.floor(Math.random()*dg.length)]
-        +sp[Math.floor(Math.random()*sp.length)];
-  for(let i=0;i<4;i++)pw+=all[Math.floor(Math.random()*all.length)];
-  return pw.split("").sort(()=>Math.random()-0.5).join("");
+function waLink(phone, msg) {
+  let d = String(phone || "").replace(/\D/g, "");
+  if (!d) return null;
+  if (d.length === 10) d = "91" + d;
+  return `https://wa.me/${d}?text=${encodeURIComponent(msg)}`;
 }
-
-let _currentRow=null;
-
-// ── Generate credentials ───────────────────────────────
-async function generateCredentials(){
-  const name=document.getElementById("cust-name").value.trim();
-  if(!name){alert("Enter the customer or firm name first");return;}
-  const days=parseInt(document.getElementById("plan").value);
-  const expiry=addDays(new Date(),days);
-  const username=document.getElementById("username").value.trim()||slugify(name);
-  const password=document.getElementById("password").value.trim()||randPw();
-  document.getElementById("username").value=username;
-  document.getElementById("password").value=password;
-  const key=await buildKey(username,expiry);
-  const planLabel=document.getElementById("plan").selectedOptions[0].text;
-  document.getElementById("res-user").textContent=username;
-  document.getElementById("res-pw").textContent=password;
-  document.getElementById("res-key").textContent=key;
-  document.getElementById("res-expiry").textContent=fmtDate(expiry);
-  const wa=`Hello,\n\nYour MUNIM accounting software is ready.\n\nFirm: ${name}\nPlan: ${planLabel}\nValid till: ${fmtDate(expiry)}\n\nUsername: ${username}\nPassword: ${password}\nLicence Key: ${key}\n\nSteps:\n1. Open MUNIM.exe\n2. Enter username, password and licence key\n3. Start using your books\n\nFor help, reply to this message.`;
-  document.getElementById("wa-msg").textContent=wa;
-  document.getElementById("result-area").style.display="block";
-  document.getElementById("save-status").textContent="";
-  _currentRow={firm:name,username,plan:planLabel,created:fmtISO(new Date()),expires:fmtISO(expiry),key};
+function randPw() {
+  const pick = (a, n) => Array.from(crypto.getRandomValues(new Uint8Array(n)), x => a[x % a.length]).join("");
+  return pick("ABCDEFGHJKLMNPQRSTUVWXYZ", 2) + pick("abcdefghjkmnpqrstuvwxyz", 4) + pick("23456789", 3) + pick("@#", 1);
+}
+const getProduct = name => document.querySelector(`input[name="${name}"]:checked`).value;
+const getMods = id => [...document.querySelectorAll(`#${id} input:checked`)].map(i => i.value);
+function productLabel(p, mods) {
+  const m = (mods || []).map(x => MOD_LABEL[x]).join(", ");
+  if (p === "books") return "MUNIM Books";
+  if (p === "pro") return `MUNIM Pro (${m})`;
+  return `MUNIM Books + MUNIM Pro (${m})`;
+}
+function showMsg(title, body, phone) {
+  $("m-title").textContent = title;
+  $("m-body").textContent = body;
+  const link = waLink(phone, body);
+  $("m-wa").classList.toggle("hide", !link);
+  if (link) $("m-wa").href = link;
+  $("m-modal").classList.remove("hide");
 }
 
-function copyAll(){
-  navigator.clipboard.writeText(document.getElementById("wa-msg").textContent)
-    .then(()=>showToast("✓ Copied! Paste in WhatsApp."));
+// ===== WhatsApp messages =====
+const howToStart = [
+  "How to start:",
+  `1. Download: ${SITE}/download.html`,
+  "2. Open the app with internet ON (needed only the first time)",
+  "3. Enter the username, password and licence key",
+  "After activation it works fully offline."
+];
+function msgNew(u, pw) {
+  return [`Hello ${u.firm},`, "",
+    u.is_trial ? `Your 7-day free trial of ${productLabel(u.product, u.modules)} is ready.`
+               : `Your ${productLabel(u.product, u.modules)} licence is ready.`, "",
+    `Plan: ${PLAN_LABEL[u.plan] || u.plan}`, `Valid till: ${fmt(u.expires_on)}`, "",
+    `Username: ${u.username}`, `Password: ${pw}`, `Licence key: ${u.licence_key}`, "",
+    ...howToStart, "", `Help on WhatsApp: ${SUPPORT}`].join("\n");
+}
+function msgDetails(u) {
+  return [`Hello ${u.firm},`, "", `Your ${productLabel(u.product, u.modules)} details:`, "",
+    `Username: ${u.username}`, "Password: (as sent earlier — tell us if you need a new one)",
+    `Licence key: ${u.licence_key}`, `Valid till: ${fmt(u.expires_on)}`, "",
+    ...howToStart, "", `Help on WhatsApp: ${SUPPORT}`].join("\n");
+}
+function msgRenew(u) {
+  return [`Hello ${u.firm},`, "", `Your ${productLabel(u.product, u.modules)} licence has been updated.`,
+    `Plan: ${PLAN_LABEL[u.plan] || u.plan}`, `Valid till: ${fmt(u.expires_on)}`, "",
+    "No new key needed. Just open the app with internet ON — it picks up the new validity automatically.", "",
+    `Thank you! Help on WhatsApp: ${SUPPORT}`].join("\n");
+}
+function msgPassword(u, pw) {
+  return [`Hello ${u.firm},`, "", "Your password has been reset.", "",
+    `Username: ${u.username}`, `New password: ${pw}`, `Licence key: ${u.licence_key}`, "",
+    `Help on WhatsApp: ${SUPPORT}`].join("\n");
+}
+function msgResetPc(u) {
+  return [`Hello ${u.firm},`, "",
+    "Your licence has been freed from your old computer.",
+    "Open the app on your new computer with internet ON and enter the same username, password and licence key.", "",
+    `Licence key: ${u.licence_key}`, "", `Help on WhatsApp: ${SUPPORT}`].join("\n");
 }
 
-// ── Save user — with duplicate check ──────────────────
-async function saveUser(){
-  if(!_currentRow) return;
-  document.getElementById("save-status").textContent="Checking...";
-  const exists=await sbUsernameExists(_currentRow.username);
-  if(exists){
-    document.getElementById("save-status").textContent=
-      "❌ Username already exists — edit the username field and generate again.";
+// ===== Login / logout =====
+function enterApp(users) {
+  $("login").classList.add("hide");
+  $("app").classList.remove("hide");
+  USERS = users || [];
+  render();
+  if (!$("f-pass").value) $("f-pass").value = randPw();
+  updateExpiry();
+}
+function logout(msg) {
+  sessionStorage.removeItem(SKEY); PW = "";
+  $("app").classList.add("hide"); $("login").classList.remove("hide");
+  $("login-pw").value = ""; $("login-err").textContent = msg || "";
+  $("login-pw").focus();
+}
+$("login-form").addEventListener("submit", async e => {
+  e.preventDefault();
+  const pw = $("login-pw").value;
+  if (!pw) return;
+  $("login-btn").disabled = true; $("login-err").textContent = "";
+  PW = pw;
+  const j = await api("list");
+  $("login-btn").disabled = false;
+  if (!j.ok) { PW = ""; $("login-err").textContent = j.error || "Sign-in failed."; return; }
+  sessionStorage.setItem(SKEY, PW);
+  enterApp(j.users);
+});
+$("logout-btn").addEventListener("click", () => logout());
+
+// ===== Create form =====
+function syncMods(name, wrap) { $(wrap).classList.toggle("hide", getProduct(name) === "books"); }
+document.querySelectorAll('input[name="product"]').forEach(r => r.addEventListener("change", () => syncMods("product", "f-mods-wrap")));
+function updateExpiry() { $("f-expiry").textContent = "Valid till " + fmt(previewExpiry($("f-plan").value)); }
+$("f-plan").addEventListener("change", updateExpiry);
+$("f-pass-new").addEventListener("click", () => $("f-pass").value = randPw());
+
+function slug(firm) {
+  const s = firm.toLowerCase().replace(/[^a-z0-9]/g, "").slice(0, 10) || "user";
+  return s + Math.floor(100 + Math.random() * 900);
+}
+$("f-firm").addEventListener("input", () => {
+  if (!userTouched) { $("f-user").value = $("f-firm").value.trim() ? slug($("f-firm").value) : ""; queueUserCheck(); }
+});
+$("f-user").addEventListener("input", () => { userTouched = $("f-user").value.trim() !== ""; queueUserCheck(); });
+
+function queueUserCheck() {
+  clearTimeout(userTimer);
+  const st = $("f-user-status");
+  const u = $("f-user").value.trim().toLowerCase();
+  userTaken = false;
+  if (!u) { st.textContent = ""; return; }
+  if (!/^[a-z0-9][a-z0-9._-]{2,29}$/.test(u)) { st.className = "hint bad"; st.textContent = "3–30 characters: a–z, 0–9, dot, underscore, dash"; return; }
+  if (USERS.some(x => x.username === u)) { userTaken = true; st.className = "hint bad"; st.textContent = "✗ Already taken — change it"; return; }
+  st.className = "hint"; st.textContent = "Checking…";
+  userTimer = setTimeout(async () => {
+    const j = await api("check_username", { username: u });
+    if ($("f-user").value.trim().toLowerCase() !== u) return;
+    if (!j.ok) { st.textContent = ""; return; }
+    userTaken = j.exists;
+    st.className = j.exists ? "hint bad" : "hint good";
+    st.textContent = j.exists ? "✗ Already taken — change it" : "✓ Available";
+  }, 400);
+}
+
+function resetForm() {
+  ["f-firm", "f-phone", "f-notes", "f-user"].forEach(id => $(id).value = "");
+  userTouched = false; userTaken = false;
+  $("f-user-status").textContent = ""; $("f-err").textContent = "";
+  $("f-pass").value = randPw();
+}
+
+async function createLicence() {
+  if (busy) return;
+  const err = $("f-err"); err.textContent = "";
+  const product = getProduct("product");
+  const p = {
+    firm: $("f-firm").value.trim(),
+    phone: $("f-phone").value.trim(),
+    plan: $("f-plan").value,
+    product,
+    modules: product === "books" ? [] : getMods("f-mods"),
+    username: $("f-user").value.trim().toLowerCase(),
+    password: $("f-pass").value.trim(),
+    notes: $("f-notes").value.trim()
+  };
+  if (!p.firm) { err.textContent = "Enter the customer / firm name."; return; }
+  if (!p.username) { err.textContent = "Enter a username."; return; }
+  if (product !== "books" && !p.modules.length) { err.textContent = "Tick at least one MUNIM Pro module."; return; }
+  if (p.password.length < 6) { err.textContent = "Password must be at least 6 characters."; return; }
+  if (userTaken) { err.textContent = "Username already taken — change it."; return; }
+
+  busy = true; const btn = $("f-create"); btn.disabled = true; btn.textContent = "Creating…";
+  const j = await api("create", p);
+  busy = false; btn.disabled = false; btn.textContent = "Create licence";
+  if (!j.ok) {
+    err.textContent = j.error || "Failed.";
+    if (/already exists/i.test(j.error || "")) { userTaken = true; $("f-user-status").className = "hint bad"; $("f-user-status").textContent = "✗ Already taken — change it"; }
     return;
   }
-  document.getElementById("save-status").textContent="Saving...";
-  const ok=await sbInsert(_currentRow);
-  if(ok){
-    document.getElementById("save-status").textContent="✓ Saved";
-    // Clear form
-    document.getElementById("cust-name").value="";
-    document.getElementById("username").value="";
-    document.getElementById("password").value="";
-    document.getElementById("result-area").style.display="none";
-    _currentRow=null;
-    loadUsers();
-    showToast("✓ User saved successfully");
-  } else {
-    document.getElementById("save-status").textContent="❌ Save failed — check Supabase connection";
+  showResult(j.user, j.password);
+  resetForm();
+  await loadUsers();
+}
+$("f-create").addEventListener("click", createLicence);
+
+function showResult(u, pw) {
+  const rows = [
+    ["Firm", u.firm], ["Product", productLabel(u.product, u.modules)], ["Plan", PLAN_LABEL[u.plan]],
+    ["Valid till", fmt(u.expires_on)], ["Username", u.username], ["Password", pw], ["Licence key", u.licence_key]
+  ];
+  $("r-kv").innerHTML = rows.map(([k, v]) => `<dt>${esc(k)}</dt><dd class="${k === "Licence key" || k === "Password" || k === "Username" ? "mono" : ""}">${esc(v)}</dd>`).join("");
+  const msg = msgNew(u, pw);
+  $("r-msg").textContent = msg;
+  const link = waLink(u.phone, msg);
+  $("r-wa").classList.toggle("hide", !link);
+  if (link) $("r-wa").href = link;
+  $("result").classList.remove("hide");
+  $("result").scrollIntoView({ behavior: "smooth", block: "center" });
+}
+$("r-copy").addEventListener("click", () => copyText($("r-msg").textContent));
+$("r-close").addEventListener("click", () => $("result").classList.add("hide"));
+
+// ===== List =====
+async function loadUsers() {
+  const j = await api("list");
+  if (j.ok) { USERS = j.users || []; render(); }
+  else toast("❌ " + (j.error || "Could not load list"));
+}
+$("reload").addEventListener("click", async () => { await loadUsers(); toast("List refreshed"); });
+$("q").addEventListener("input", render);
+$("flt").addEventListener("change", render);
+
+function statusOf(u) {
+  if (u.status === "suspended") return { k: "susp", t: "Suspended" };
+  const d = daysLeft(u.expires_on);
+  if (d < 0) return { k: "exp", t: "Expired" };
+  if (u.is_trial) return { k: "trial", t: `Trial · ${d} day${d === 1 ? "" : "s"} left` };
+  if (d <= 30) return { k: "warn", t: `${d} day${d === 1 ? "" : "s"} left` };
+  return { k: "ok", t: `${d} days left` };
+}
+function passesFilter(u, f) {
+  const d = daysLeft(u.expires_on), active = u.status === "active";
+  switch (f) {
+    case "trial": return active && u.is_trial && d >= 0;
+    case "paid": return active && !u.is_trial && d >= 0;
+    case "expiring": return active && d >= 0 && d <= 30;
+    case "expired": return d < 0;
+    case "suspended": return !active;
+    case "notact": return !u.machine_id;
+    default: return true;
   }
 }
-
-// ── Delete ─────────────────────────────────────────────
-async function deleteUser(id){
-  if(!confirm("Remove this user from the list?")) return;
-  const ok=await sbDelete(id);
-  if(ok){showToast("User removed");loadUsers();}
-  else showToast("❌ Delete failed");
+function prodHtml(u) {
+  const mods = (u.modules || []).map(m => `<span class="chip">${esc(MOD_LABEL[m] || m)}</span>`).join("");
+  if (u.product === "books") return `<span class="pill books">Books</span>`;
+  if (u.product === "pro") return `<span class="pill pro">Pro</span><div>${mods}</div>`;
+  return `<span class="pill books">Books</span> <span class="pill pro">Pro</span><div>${mods}</div>`;
 }
-
-// ── Extend ────────────────────────────────────────────
-let _extId=null,_extUsername=null,_extNewKey=null,
-    _extNewExpiry=null,_extFirm=null,_extPlan=null;
-
-function openExtend(id,username,firm,expires,plan){
-  _extId=id;_extUsername=username;_extFirm=firm;_extPlan=plan;
-  _extNewKey=null;_extNewExpiry=null;
-  document.getElementById("ext-firm").textContent=firm;
-  document.getElementById("ext-user").textContent=username;
-  document.getElementById("ext-current").textContent=expires;
-  document.getElementById("ext-result").style.display="none";
-  document.getElementById("ext-copy-btn").style.display="none";
-  document.getElementById("ext-save-btn").style.display="none";
-  document.getElementById("ext-status").textContent="";
-  document.getElementById("extend-modal").style.display="flex";
+function renderStats() {
+  const run = USERS.filter(u => u.status === "active" && daysLeft(u.expires_on) >= 0);
+  const s = [
+    [USERS.length, "Total licences"],
+    [run.filter(u => !u.is_trial).length, "Paid & running"],
+    [run.filter(u => u.is_trial).length, "Trials running"],
+    [run.filter(u => !u.is_trial && daysLeft(u.expires_on) <= 30).length, "Renewals due ≤30 days"],
+    [USERS.filter(u => daysLeft(u.expires_on) < 0).length, "Expired"]
+  ];
+  $("stats").innerHTML = s.map(([n, l]) => `<div class="stat"><b>${n}</b><span>${l}</span></div>`).join("");
 }
-function closeExtend(){document.getElementById("extend-modal").style.display="none";}
-
-async function generateExtension(){
-  const days=parseInt(document.getElementById("ext-days").value);
-  const newExpiry=addDays(new Date(),days);
-  const key=await buildKey(_extUsername,newExpiry);
-  _extNewKey=key;_extNewExpiry=fmtISO(newExpiry);
-  const planLabel=document.getElementById("ext-days").selectedOptions[0].text;
-  document.getElementById("ext-new-expiry").textContent=fmtDate(newExpiry);
-  document.getElementById("ext-new-key").textContent=key;
-  const wa=`Hello,\n\nYour MUNIM licence has been extended.\n\nFirm: ${_extFirm}\nExtended by: ${planLabel}\nNew valid till: ${fmtDate(newExpiry)}\n\nUsername: ${_extUsername}\nNew Licence Key: ${key}\n\nOpen MUNIM, go to Utilities → Renew Licence, enter the new key.\n\nFor help, reply to this message.`;
-  document.getElementById("ext-wa-msg").textContent=wa;
-  document.getElementById("ext-result").style.display="block";
-  document.getElementById("ext-copy-btn").style.display="inline-block";
-  document.getElementById("ext-save-btn").style.display="inline-block";
-}
-
-function copyExtension(){
-  navigator.clipboard.writeText(document.getElementById("ext-wa-msg").textContent)
-    .then(()=>showToast("✓ Copied!"));
-}
-
-async function saveExtension(){
-  if(!_extNewKey) return;
-  document.getElementById("ext-status").textContent="Saving...";
-  const ok=await sbUpdate(_extId,{expires:_extNewExpiry,key:_extNewKey,plan:_extPlan+" (renewed)"});
-  if(ok){
-    document.getElementById("ext-status").textContent="✓ Updated";
-    loadUsers();
-    setTimeout(closeExtend,1200);
-    showToast("✓ Licence extended");
-  } else {
-    document.getElementById("ext-status").textContent="❌ Update failed";
-  }
-}
-
-// ── Table rendering ────────────────────────────────────
-function planPill(plan){
-  if(plan.includes("Trial")) return`<span class="pill pill-trial">${plan}</span>`;
-  if(plan.includes("Month")) return`<span class="pill pill-month">${plan}</span>`;
-  if(plan.includes("Year"))  return`<span class="pill pill-year">${plan}</span>`;
-  return`<span class="pill pill-two">${plan}</span>`;
-}
-function daysLeftPill(expiresISO){
-  const d=daysLeft(expiresISO);
-  if(d<0)  return`<span class="days-left days-exp">Expired</span>`;
-  if(d<=30)return`<span class="days-left days-warn">${d} days</span>`;
-  return`<span class="days-left days-ok">${d} days</span>`;
-}
-
-async function loadUsers(){
-  const users=await sbGet();
-  const tbody=document.getElementById("users-table");
-  document.getElementById("user-count").textContent=users.length?`(${users.length})`:"";
-  if(!users.length){
-    tbody.innerHTML=`<tr><td colspan="8" style="color:#6B7690;text-align:center">No users yet</td></tr>`;
+function render() {
+  renderStats();
+  const q = $("q").value.trim().toLowerCase(), f = $("flt").value;
+  const list = USERS.filter(u => passesFilter(u, f) &&
+    (!q || [u.firm, u.username, u.phone, u.notes].some(v => String(v || "").toLowerCase().includes(q))));
+  $("count").textContent = USERS.length ? `(${list.length} of ${USERS.length})` : "";
+  if (!list.length) {
+    $("tbody").innerHTML = `<tr><td colspan="7" class="empty">${USERS.length ? "No licences match this search / filter." : "No licences yet — create the first one above."}</td></tr>`;
     return;
   }
-  tbody.innerHTML=users.map((u,i)=>`
-    <tr>
-      <td>${i+1}</td>
-      <td><b>${u.username}</b></td>
-      <td>${u.firm}</td>
-      <td>${planPill(u.plan)}</td>
-      <td>${u.created}</td>
-      <td>${u.expires}</td>
-      <td>${daysLeftPill(u.expires)}</td>
-      <td style="display:flex;gap:6px;flex-wrap:wrap">
-        <button class="btn-green" onclick="openExtend(${u.id},'${u.username}','${u.firm}','${u.expires}','${u.plan}')">Extend</button>
-        <button class="btn-danger" onclick="deleteUser(${u.id})">Remove</button>
-      </td>
-    </tr>`).join("");
+  $("tbody").innerHTML = list.map((u, i) => {
+    const s = statusOf(u);
+    const pc = u.machine_id
+      ? `<span class="pill ok">Activated</span><div class="sub">${u.last_seen ? "Last seen " + fmt(u.last_seen) : ""}${u.app_version ? " · " + esc(u.app_version) : ""}</div>`
+      : `<span class="pill none">Not activated</span>`;
+    return `<tr>
+      <td class="muted">${i + 1}</td>
+      <td><b>${esc(u.firm)}</b><div class="sub mono">${esc(u.username)}${u.phone ? " · " + esc(u.phone) : ""}</div>${u.notes ? `<div class="sub">${esc(u.notes)}</div>` : ""}</td>
+      <td>${prodHtml(u)}</td>
+      <td>${esc(PLAN_LABEL[u.plan] || u.plan)}<div class="sub">Since ${fmt(u.created_at)}</div></td>
+      <td>${fmt(u.expires_on)}<div><span class="pill ${s.k}">${esc(s.t)}</span></div></td>
+      <td>${pc}</td>
+      <td class="acts">
+        <button class="green" data-act="extend" data-id="${u.id}">Extend</button>
+        <button data-act="details" data-id="${u.id}">WhatsApp</button>
+        ${u.machine_id ? `<button data-act="resetpc" data-id="${u.id}">Reset PC</button>` : ""}
+        <button data-act="resetpw" data-id="${u.id}">Reset password</button>
+        <button data-act="status" data-id="${u.id}">${u.status === "active" ? "Suspend" : "Resume"}</button>
+        <button class="red" data-act="remove" data-id="${u.id}">Remove</button>
+      </td></tr>`;
+  }).join("");
 }
+
+async function act(action, data, onOk) {
+  busy = true;
+  const j = await api(action, data);
+  busy = false;
+  if (!j.ok) { toast("❌ " + (j.error || "Failed")); return; }
+  if (onOk) onOk(j);
+  await loadUsers();
+}
+$("tbody").addEventListener("click", e => {
+  const b = e.target.closest("button[data-act]");
+  if (!b || busy) return;
+  const u = USERS.find(x => String(x.id) === b.dataset.id);
+  if (!u) return;
+  switch (b.dataset.act) {
+    case "extend": openExtend(u); break;
+    case "details": showMsg("Send licence details", msgDetails(u), u.phone); break;
+    case "resetpc":
+      if (confirm(`Free ${u.firm}'s licence from its current computer?\nThe old computer stops working the next time it goes online.`))
+        act("reset_pc", { id: u.id }, () => showMsg("Computer reset", msgResetPc(u), u.phone));
+      break;
+    case "resetpw":
+      if (confirm(`Create a new password for ${u.firm}?`))
+        act("reset_password", { id: u.id }, j => showMsg("New password", msgPassword(u, j.password), u.phone));
+      break;
+    case "status": {
+      const to = u.status === "active" ? "suspended" : "active";
+      if (to === "suspended" && !confirm(`Suspend ${u.firm}?\nThe app stops working the next time it goes online.`)) break;
+      act("set_status", { id: u.id, status: to }, () => toast(to === "active" ? "Licence resumed" : "Licence suspended"));
+      break;
+    }
+    case "remove":
+      if (confirm(`Remove ${u.firm} (${u.username}) permanently?\nThis cannot be undone.`))
+        act("remove", { id: u.id }, () => toast("Licence removed"));
+      break;
+  }
+});
+
+// ===== Extend modal =====
+function openExtend(u) {
+  X = u;
+  $("x-who").textContent = `${u.firm} · ${u.username} · valid till ${fmt(u.expires_on)}${u.is_trial ? " (trial)" : ""}`;
+  $("x-plan").value = "1y";
+  document.querySelector(`input[name="x-product"][value="${u.product}"]`).checked = true;
+  const mods = u.modules && u.modules.length ? u.modules : ["tax", "gst", "tds"];
+  document.querySelectorAll("#x-mods input").forEach(c => c.checked = mods.includes(c.value));
+  syncMods("x-product", "x-mods-wrap");
+  $("x-err").textContent = "";
+  updateXPreview();
+  $("x-modal").classList.remove("hide");
+}
+function updateXPreview() { if (X) $("x-preview").textContent = "New validity: till " + fmt(previewExpiry($("x-plan").value, X)); }
+$("x-plan").addEventListener("change", updateXPreview);
+document.querySelectorAll('input[name="x-product"]').forEach(r => r.addEventListener("change", () => syncMods("x-product", "x-mods-wrap")));
+$("x-save").addEventListener("click", async () => {
+  if (!X || busy) return;
+  const product = getProduct("x-product");
+  const modules = product === "books" ? [] : getMods("x-mods");
+  if (product !== "books" && !modules.length) { $("x-err").textContent = "Tick at least one MUNIM Pro module."; return; }
+  busy = true; $("x-save").disabled = true;
+  const j = await api("extend", { id: X.id, plan: $("x-plan").value, product, modules });
+  busy = false; $("x-save").disabled = false;
+  if (!j.ok) { $("x-err").textContent = j.error || "Failed."; return; }
+  $("x-modal").classList.add("hide");
+  showMsg("Licence updated", msgRenew(j.user), j.user.phone);
+  await loadUsers();
+});
+
+// ===== Modals & system =====
+document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => b.closest(".modal").classList.add("hide")));
+document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelectorAll(".modal").forEach(m => m.classList.add("hide")); });
+$("m-copy").addEventListener("click", () => copyText($("m-body").textContent));
+$("sys-key").addEventListener("click", async () => {
+  const j = await api("info");
+  const out = $("sys-out");
+  out.classList.remove("hide");
+  out.textContent = j.ok ? j.public_key : "❌ " + (j.error || "Failed");
+});
+
+// ===== Start =====
+(async () => {
+  if (!PW) { $("login-pw").focus(); return; }
+  const j = await api("list");
+  if (j.ok) enterApp(j.users); else logout(j.error && !/password/i.test(j.error) ? j.error : "");
+})();
 </script>
 </body>
 </html>
