@@ -1,206 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Download MUNIM — Accounting Software for Windows</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#071B49;--gold:#F4C430;--gold-dark:#D4A820;--offwhite:#F7F8FC;--white:#FFFFFF;--charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;--border:#E2E8F0;--radius:10px;--radius-lg:16px;}
-body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;}
-a{text-decoration:none;color:inherit;}
-nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;background:var(--navy);position:sticky;top:0;z-index:200;}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);}
-.logo-name{font-size:19px;font-weight:700;color:#fff;}
-.logo-name span{color:var(--gold);}
-.nav-links{display:flex;gap:1.75rem;font-size:14px;}
-.nav-links a{color:rgba(255,255,255,0.75);transition:color 0.2s;}
-.nav-links a:hover,.nav-links a.active{color:var(--gold);}
-.nav-dl{background:var(--gold);color:var(--navy);padding:0.5rem 1.25rem;border-radius:var(--radius);font-size:14px;font-weight:600;}
-.nav-dl:hover{background:var(--gold-dark);}
-.page-hero{background:var(--navy);padding:5rem 6% 4rem;text-align:center;}
-.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.5rem;font-weight:500;}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:1rem;}
-.page-hero h1 em{color:var(--gold);font-style:normal;}
-.page-hero p{color:rgba(255,255,255,0.6);font-size:1rem;max-width:520px;margin:0 auto 2rem;}
-.btn-gold{background:var(--gold);color:var(--navy);padding:0.9rem 2rem;border-radius:var(--radius);font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;transition:background 0.2s;}
-.btn-gold:hover{background:var(--gold-dark);}
-.btn-disabled{background:#4A5568;color:#9CA3AF;padding:0.9rem 2rem;border-radius:var(--radius);font-weight:700;font-size:1rem;display:inline-flex;align-items:center;gap:8px;cursor:not-allowed;}
-.hero-note{font-size:12px;color:rgba(255,255,255,0.3);margin-top:1rem;}
-.sec{padding:4rem 6%;}
-.sec-alt{background:var(--offwhite);}
-.sec-label{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;margin-bottom:0.6rem;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--charcoal);margin-bottom:1rem;}
-.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.5rem;margin-top:2rem;}
-.step-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;}
-.step-num{width:36px;height:36px;border-radius:50%;background:var(--navy);color:var(--gold);font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
-.step-title{font-size:0.95rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
-.step-desc{font-size:13px;color:var(--text-mid);line-height:1.65;}
-.specs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:2rem;}
-.spec-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;}
-.spec-label{font-size:11px;color:var(--text-light);text-transform:uppercase;letter-spacing:1px;margin-bottom:0.4rem;}
-.spec-value{font-size:0.95rem;font-weight:600;color:var(--charcoal);}
-.faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:1rem;}
-.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;}
-.faq-q{font-size:0.95rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
-.faq-a{font-size:13px;color:var(--text-mid);line-height:1.65;}
-.coming-soon-box{background:rgba(244,196,48,0.08);border:1px solid rgba(244,196,48,0.3);border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-top:1.5rem;text-align:center;}
-.coming-soon-box p{color:var(--text-mid);font-size:14px;margin-top:0.5rem;}
-footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;}
-.foot-desc{font-size:13px;color:rgba(255,255,255,0.4);margin-top:0.75rem;line-height:1.7;}
-.foot-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase;}
-.foot-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;transition:color 0.2s;}
-.foot-col a:hover{color:var(--gold);}
-.foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;padding:1.25rem 0;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;}
-.foot-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s;}
-.foot-bottom a:hover{color:var(--gold);}
-.wa-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:999;transition:transform 0.2s;}
-.wa-fab:hover{transform:scale(1.08);}
-@media(max-width:768px){.nav-links{display:none;}footer{grid-template-columns:1fr;}}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Download MUNIM Books for Windows</title>
+<meta name="description" content="Download MUNIM Books for Windows 10 and 11. Free 7-day trial. MUNIM Pro (Tax Pro, GST Pro, TDS Pro) launching soon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-nav="download">
+<div id="site-header"></div>
 
-<a href="https://wa.me/918427651580" target="_blank" class="wa-fab" title="WhatsApp Support">💬</a>
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow light">Download</span>
+      <h1>Download <em>MUNIM</em></h1>
+      <p class="lead">One file. No installation wizard. Activate once with internet, then work fully offline on Windows 10 or 11.</p>
+    </div>
+  </section>
 
-<nav>
-  <a href="index.html" class="logo">
-    <div class="logo-icon">म</div>
-    <div class="logo-name">MUNIM<span>.</span></div>
-  </a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="how-to-use.html">How to Use</a>
-    <a href="story.html">Our Story</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Support</a>
-    <a href="download.html" class="active">Download</a>
-  </div>
-  <a href="download.html" class="nav-dl">⬇ Download</a>
-</nav>
+  <section class="sec">
+    <div class="wrap">
+      <div class="products" style="margin-top:0">
+        <article class="prod">
+          <span class="tag tag-live">Available now</span>
+          <h3>MUNIM Books</h3>
+          <p>Accounting, GST billing and GST returns for small businesses.</p>
+          <ul class="ticks">
+            <li>Latest version — always the newest release</li>
+            <li>Windows 10 / 11 · about 25 MB</li>
+            <li>Free 7-day trial licence on WhatsApp</li>
+          </ul>
+          <div class="prod-foot">
+            <div class="price-line"><b>₹2,499</b><span>per year</span></div>
+            <div class="btns">
+              <a class="btn btn-gold btn-lg" data-dl="books" href="https://github.com/catoolskit/munim-app/releases/latest/download/MUNIM.exe">⬇ Download MUNIM Books</a>
+            </div>
+          </div>
+          <p class="small" style="margin-top:14px">Need a licence? <a data-wa="Hi, I want a free 7-day trial of MUNIM Books" style="color:var(--gold-d);font-weight:600">Get a free trial licence →</a></p>
+        </article>
 
-<div class="page-hero">
-  <div class="page-badge">⬇ Download</div>
-  <h1>Download <em>MUNIM</em></h1>
-  <p>One .exe file. No installation wizard. Double-click and start. Works fully offline on Windows 10/11.</p>
-<div style="max-width:480px;margin:0 auto 1.5rem;">
-  <a href="https://github.com/catoolskit/munim-app/releases/download/v0.18/MUNIM.exe"
-     class="btn-gold" style="font-size:1.1rem;padding:1rem 2.5rem;display:inline-flex;">
-    ⬇ Download MUNIM v0.18 — Free
-  </a>
-  <p style="color:rgba(255,255,255,0.4);font-size:12px;margin-top:0.75rem;">
-    Windows 10/11 · 24 MB · No installation needed
-  </p>
-</div>
-  <p class="hero-note">Windows 10/11 · ~24 MB · No internet required after activation · ₹2,499/year</p>
-</div>
+        <article class="prod dark">
+          <span class="tag tag-soon">Launching soon</span>
+          <h3>MUNIM Pro</h3>
+          <p>Tax Pro · GST Pro · TDS Pro in one app, for CAs and tax consultants.</p>
+          <ul class="ticks">
+            <li>One download — your licence unlocks your modules</li>
+            <li>Shared client list across all three</li>
+            <li>Early-access users get it first</li>
+          </ul>
+          <div class="prod-foot">
+            <div class="price-line"><b>from ₹3,999</b><span>per module per year</span></div>
+            <div class="btns">
+              <span class="btn off btn-lg">Coming soon</span>
+            </div>
+          </div>
+          <p class="small" style="margin-top:14px;color:rgba(255,255,255,.7)">Want it first? <a data-wa="Hi, I want early access to MUNIM Pro" style="color:#7FE0C5;font-weight:600">Get early access on WhatsApp →</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
 
-<section class="sec sec-alt">
-  <div class="sec-label">After Download</div>
-  <div class="sec-title">How to get started</div>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-title">Run MUNIM.exe</div>
-      <div class="step-desc">Double-click the downloaded file. If Windows SmartScreen appears, click "More info" then "Run anyway". This is normal for new software.</div>
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">After downloading</span><h2>Start in 4 steps</h2></div>
+      <div class="steps four">
+        <div class="step"><h3>Keep the file safe</h3><p>Move MUNIM.exe to a permanent folder (for example D:\MUNIM App\) and double-click it.</p></div>
+        <div class="step"><h3>Activate once</h3><p>With internet ON, enter the username, password and licence key we sent you on WhatsApp.</p></div>
+        <div class="step"><h3>Set your password</h3><p>Choose your own login password (8+ characters). Then set up your company details.</p></div>
+        <div class="step"><h3>Start your books</h3><p>Add customers and suppliers, then record your first sale. Reports update by themselves.</p></div>
+      </div>
+      <div class="note" style="margin-top:28px;max-width:860px"><b>Windows says "Windows protected your PC"?</b> Click <b>More info → Run anyway</b>. This is normal for new software from small developers — it is not a virus warning about MUNIM.</div>
     </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-title">Enter your licence</div>
-      <div class="step-desc">On first run, enter your username, password and licence key — provided by us when you purchase. Takes 30 seconds. Works offline after that.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-title">Set up your company</div>
-      <div class="step-desc">Go to Utilities → Company Details. Enter your business name, GSTIN and address. This takes 2 minutes.</div>
-    </div>
-    <div class="step-card">
-      <div class="step-num">4</div>
-      <div class="step-title">Start your books</div>
-      <div class="step-desc">Add customers and suppliers under Masters → Party Master. Then record your first sale under Transactions → Sales Invoice.</div>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="sec">
-  <div class="sec-label">System Requirements</div>
-  <div class="sec-title">What you need</div>
-  <div class="specs-grid">
-    <div class="spec-card"><div class="spec-label">Operating System</div><div class="spec-value">Windows 10 or Windows 11</div></div>
-    <div class="spec-card"><div class="spec-label">File Size</div><div class="spec-value">~15 MB download</div></div>
-    <div class="spec-card"><div class="spec-label">Internet Required</div><div class="spec-value">No — works fully offline</div></div>
-    <div class="spec-card"><div class="spec-label">Data Location</div><div class="spec-value">C:\MUNIM\ on your computer</div></div>
-    <div class="spec-card"><div class="spec-label">RAM</div><div class="spec-value">2 GB or more</div></div>
-    <div class="spec-card"><div class="spec-label">Licence</div><div class="spec-value">₹2,499/year per PC</div></div>
-  </div>
-</section>
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">System requirements</span><h2>What you need</h2></div>
+      <div class="grid g3">
+        <div class="card"><span class="key">W</span><h3>Windows 10 or 11</h3><p>64-bit. Runs smoothly on older PCs too.</p></div>
+        <div class="card"><span class="key">R</span><h3>2 GB RAM or more</h3><p>About 25 MB download, small data files.</p></div>
+        <div class="card"><span class="key">I</span><h3>Internet once</h3><p>Needed only to activate, and to re-check your licence at least once every 30 days.</p></div>
+      </div>
+    </div>
+  </section>
 
-<section class="sec sec-alt">
-  <div class="sec-label">Common Questions</div>
-  <div class="sec-title">Before you download</div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">Is my data safe?</div>
-      <div class="faq-a">Yes. All data is stored on your own computer at C:\MUNIM\. Nothing is uploaded to any server. We never see your books.</div>
+  <section class="sec sec-alt">
+    <div class="wrap center">
+      <div class="sec-head"><span class="eyebrow">Before you download</span><h2>Common questions</h2></div>
+      <div class="faqs">
+        <details class="faq"><summary>Is my data safe?</summary><p>Yes. All your data is stored on your own computer at C:\MUNIM\. Nothing is uploaded to any server — we never see your books. Only your licence is checked online.</p></details>
+        <details class="faq"><summary>Do I need internet to use MUNIM?</summary><p>Only for the first activation. After that MUNIM works fully offline. Connect at least once every 30 days so it can quietly re-check your licence.</p></details>
+        <details class="faq"><summary>What happens when my licence expires?</summary><p>MUNIM shows a renewal notice and your data stays safe. After you renew, just open MUNIM with internet ON — no new key needed.</p></details>
+        <details class="faq"><summary>How do I move MUNIM to a new computer?</summary><p>WhatsApp us to free your licence from the old computer. Copy the C:\MUNIM\ folder to the new computer, download MUNIM there and activate with the same details.</p></details>
+        <details class="faq"><summary>How do I get a free trial?</summary><p>Download MUNIM Books, then WhatsApp us at +91 84276 51580. We'll send a 7-day trial licence right away — no payment needed.</p></details>
+      </div>
     </div>
-    <div class="faq-item">
-      <div class="faq-q">What happens when my licence expires?</div>
-      <div class="faq-a">The software will show a renewal notice. Your data stays safe on your computer. Contact us on WhatsApp to renew and get a new key — takes 2 minutes.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Can I move MUNIM to another PC?</div>
-      <div class="faq-a">Yes. Copy the MUNIM.exe file to the new PC, copy your C:\MUNIM\ data folder across, and log in. Your books are intact.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">What if I need help?</div>
-      <div class="faq-a">WhatsApp us directly at +91 84276 51580. Real person, no chatbot, no support tickets.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Is there a trial?</div>
-      <div class="faq-a">Yes — 7-day free trial available. Contact us on WhatsApp to get a trial key. No payment needed to try.</div>
-    </div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section style="background:var(--navy);padding:4rem 6%;text-align:center;">
-  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:#fff;margin-bottom:0.75rem;">Questions before you buy?</h2>
-  <p style="color:rgba(255,255,255,0.55);margin-bottom:1.75rem;max-width:460px;margin-left:auto;margin-right:auto;">WhatsApp us — we'll answer honestly and help you decide if MUNIM is the right fit for your business.</p>
-  <a href="https://wa.me/918427651580?text=Hi, I have a question about MUNIM" target="_blank" class="btn-gold">💬 WhatsApp +91 84276 51580</a>
-</section>
-
-<footer>
-  <div>
-    <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:0.75rem;">
-      <div class="logo-icon">म</div>
-      <div class="logo-name" style="font-size:17px;">MUNIM<span>.</span></div>
-    </a>
-    <p class="foot-desc">Smart offline accounting software for Indian small businesses. ₹2,499/year.</p>
-    <p class="foot-desc" style="margin-top:0.5rem;">A companion tool on <a href="https://catoolskit.runs.on.dev/ca-tools-hub" style="color:var(--gold);">CA Toolkit</a></p>
-  </div>
-  <div class="foot-col">
-    <h4>Pages</h4>
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="how-to-use.html">How to Use</a>
-    <a href="about.html">About</a>
-    <a href="download.html">Download</a>
-  </div>
-  <div class="foot-col">
-    <h4>Support</h4>
-    <a href="contact.html">Contact Us</a>
-    <a href="https://wa.me/918427651580" target="_blank">WhatsApp Support</a>
-    <a href="https://catoolskit.runs.on.dev" target="_blank">CA Toolkit</a>
-  </div>
-  <div class="foot-bottom">
-    <span>© 2026 MUNIM. Built with ❤️ in India by Sumit Verma.</span>
-    <span>Data stays on your computer — always. &nbsp;<a href="admin-panel.html">Admin</a></span>
-  </div>
-</footer>
-
+<div id="site-footer"></div>
+<script src="site.js"></script>
 </body>
 </html>
