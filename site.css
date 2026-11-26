@@ -289,24 +289,38 @@ details.faq p{padding:0 0 18px;font-size:.95rem}
 .avatar{width:72px;height:72px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font:700 1.8rem var(--serif);flex-shrink:0}
 @media (max-width:600px){.tl{grid-template-columns:80px 1fr;gap:16px}.tl::before{left:86px}}
 
-/* ── Size tune: slightly smaller, calmer text ── */
-html{font-size:15px}
+/* ── Size tune (combined) ── */
+html{font-size:14px}
+html,body{overflow-x:hidden}
 h1{font-size:clamp(2rem,4vw,3rem)}
 h2{font-size:clamp(1.55rem,2.6vw,2.05rem)}
 h3{font-size:1.1rem}
 .lead{font-size:1.02rem}
-.hero{padding:64px 0 60px}
-.page-hero{padding:56px 0 52px}
+.eyebrow{font-size:11px}
+.head-in{height:60px}
+.brand-mark{width:34px;height:34px;font-size:18px}
+.brand-name{font-size:17px}
+.nav a{font-size:13px;padding:7px 10px}
+.btn{padding:.75rem 1.25rem;font-size:.92rem}
+.btn-sm{padding:.5rem .95rem;font-size:.85rem}
+.btn-lg{padding:.85rem 1.5rem;font-size:.97rem}
+.hero{padding:52px 0}
+.page-hero{padding:48px 0 44px}
 .page-hero h1{margin:12px 0}
-.sec{padding:72px 0}
-.sec-head{margin-bottom:36px}
-.prod{padding:28px}
+.sec{padding:64px 0}
+.sec-head{margin-bottom:30px}
+.card{padding:22px}
+.prod{padding:26px}
 .prod h3{font-size:1.45rem}
+.plan{padding:26px}
 .price-line b{font-size:1.35rem}
 .price .amt{font-size:2rem}
-.btn{padding:.75rem 1.25rem;font-size:.92rem}
-.btn-lg{padding:.85rem 1.5rem;font-size:.97rem}
-.nav a{font-size:13.5px}
 .strip b{font-size:1.25rem}
+.key{min-width:32px;height:32px;font-size:13px}
+.step::before{width:36px;height:36px;font-size:.95rem;margin-bottom:12px}
 .quote .big{font-size:2.8rem}
 .quote blockquote{font-size:1.2rem}
+.wa-fab{width:50px;height:50px;left:18px;bottom:18px}
+.wa-fab svg{width:24px;height:24px}
+.table td{word-break:break-word}
+@media (max-width:980px){.nav{top:60px}}
