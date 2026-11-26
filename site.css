@@ -1,0 +1,24 @@
+/* ── Batch 2 additions ── */
+.prose{max-width:760px}
+.prose p{font-size:1.02rem;line-height:1.85;margin-bottom:16px}
+.prose p b{color:var(--ink)}
+.table{width:100%;border-collapse:collapse;font-size:.93rem;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.table th,.table td{padding:10px 14px;text-align:left;border-bottom:1px solid var(--line)}
+.table th{background:var(--paper-2);font-weight:600;color:var(--ink)}
+.table tr:last-child td{border-bottom:none}
+.table td b{color:var(--ink)}
+.kbd{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;font-size:.92rem;color:var(--mid)}
+.kbd .key{flex-shrink:0}
+.timeline{max-width:780px}
+.tl{display:grid;grid-template-columns:120px 1fr;gap:22px;padding-bottom:28px;position:relative}
+.tl::before{content:"";position:absolute;left:131px;top:8px;bottom:0;width:2px;background:var(--line)}
+.tl:last-child::before{display:none}
+.tl .when{text-align:right;font-weight:700;color:var(--ink);font-size:.9rem}
+.tl .when small{display:block;font-weight:500;color:var(--soft)}
+.tl .what{position:relative}
+.tl .what::before{content:"";position:absolute;left:-17px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--paper)}
+.tl h3{font-size:1.05rem;margin-bottom:4px}
+.tl p{font-size:.93rem}
+.person{display:flex;gap:20px;align-items:center}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font:700 1.8rem var(--serif);flex-shrink:0}
+@media (max-width:600px){.tl{grid-template-columns:80px 1fr;gap:16px}.tl::before{left:86px}}
