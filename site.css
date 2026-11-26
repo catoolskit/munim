@@ -288,3 +288,25 @@ details.faq p{padding:0 0 18px;font-size:.95rem}
 .person{display:flex;gap:20px;align-items:center}
 .avatar{width:72px;height:72px;border-radius:50%;background:var(--gold);color:var(--ink);display:grid;place-items:center;font:700 1.8rem var(--serif);flex-shrink:0}
 @media (max-width:600px){.tl{grid-template-columns:80px 1fr;gap:16px}.tl::before{left:86px}}
+
+/* ── Size tune: slightly smaller, calmer text ── */
+html{font-size:15px}
+h1{font-size:clamp(2rem,4vw,3rem)}
+h2{font-size:clamp(1.55rem,2.6vw,2.05rem)}
+h3{font-size:1.1rem}
+.lead{font-size:1.02rem}
+.hero{padding:64px 0 60px}
+.page-hero{padding:56px 0 52px}
+.page-hero h1{margin:12px 0}
+.sec{padding:72px 0}
+.sec-head{margin-bottom:36px}
+.prod{padding:28px}
+.prod h3{font-size:1.45rem}
+.price-line b{font-size:1.35rem}
+.price .amt{font-size:2rem}
+.btn{padding:.75rem 1.25rem;font-size:.92rem}
+.btn-lg{padding:.85rem 1.5rem;font-size:.97rem}
+.nav a{font-size:13.5px}
+.strip b{font-size:1.25rem}
+.quote .big{font-size:2.8rem}
+.quote blockquote{font-size:1.2rem}
