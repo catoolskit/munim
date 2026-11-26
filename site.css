@@ -324,3 +324,8 @@ h3{font-size:1.1rem}
 .wa-fab svg{width:24px;height:24px}
 .table td{word-break:break-word}
 @media (max-width:980px){.nav{top:60px}}
+
+.page-hero{padding:34px 0 30px}
+.page-hero h1{font-size:clamp(1.7rem,3vw,2.3rem);margin:8px 0}
+.page-hero .lead{font-size:.98rem}
+.page-hero .btns{margin-top:18px!important}
