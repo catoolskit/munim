@@ -1,182 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Contact & Support — MUNIM Accounting Software</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{--navy:#071B49;--gold:#F4C430;--gold-dark:#D4A820;--offwhite:#F7F8FC;--white:#FFFFFF;--charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;--border:#E2E8F0;--radius:10px;--radius-lg:16px;}
-body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;}
-a{text-decoration:none;color:inherit;}
-nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;background:var(--navy);position:sticky;top:0;z-index:200;}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);}
-.logo-name{font-size:19px;font-weight:700;color:#fff;}
-.logo-name span{color:var(--gold);}
-.nav-links{display:flex;gap:1.75rem;font-size:14px;}
-.nav-links a{color:rgba(255,255,255,0.75);transition:color 0.2s;}
-.nav-links a:hover,.nav-links a.active{color:var(--gold);}
-.nav-dl{background:var(--gold);color:var(--navy);padding:0.5rem 1.25rem;border-radius:var(--radius);font-size:14px;font-weight:600;}
-.nav-dl:hover{background:var(--gold-dark);}
-.page-hero{background:var(--navy);padding:5rem 6% 4rem;text-align:center;}
-.page-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.5rem;font-weight:500;}
-.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);color:#fff;margin-bottom:1rem;}
-.page-hero h1 em{color:var(--gold);font-style:normal;}
-.page-hero p{color:rgba(255,255,255,0.6);font-size:1rem;max-width:500px;margin:0 auto;}
-.sec{padding:4rem 6%;}
-.sec-alt{background:var(--offwhite);}
-.sec-label{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;margin-bottom:0.6rem;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2rem);color:var(--charcoal);margin-bottom:1rem;}
-.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem;margin-top:2rem;}
-.contact-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:2rem;text-align:center;transition:box-shadow 0.2s;}
-.contact-card:hover{box-shadow:0 4px 20px rgba(7,27,73,0.08);}
-.contact-icon{font-size:2.5rem;margin-bottom:1rem;}
-.contact-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
-.contact-desc{font-size:13px;color:var(--text-mid);line-height:1.65;margin-bottom:1.25rem;}
-.btn-gold{background:var(--gold);color:var(--navy);padding:0.75rem 1.5rem;border-radius:var(--radius);font-weight:700;font-size:0.9rem;display:inline-flex;align-items:center;gap:7px;transition:background 0.2s;}
-.btn-gold:hover{background:var(--gold-dark);}
-.btn-outline{border:1.5px solid var(--border);color:var(--charcoal);padding:0.75rem 1.5rem;border-radius:var(--radius);font-size:0.9rem;display:inline-flex;align-items:center;gap:7px;transition:border-color 0.2s;}
-.btn-outline:hover{border-color:#94a3b8;}
-.hours-box{background:var(--navy);border-radius:var(--radius-lg);padding:2rem;margin-top:2rem;max-width:500px;}
-.hours-title{font-size:1rem;font-weight:600;color:var(--gold);margin-bottom:1rem;}
-.hours-row{display:flex;justify-content:space-between;font-size:14px;padding:0.4rem 0;border-bottom:1px solid rgba(255,255,255,0.08);}
-.hours-row:last-child{border-bottom:none;}
-.hours-day{color:rgba(255,255,255,0.6);}
-.hours-time{color:#fff;font-weight:500;}
-.faq-list{margin-top:2rem;display:flex;flex-direction:column;gap:1rem;}
-.faq-item{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;}
-.faq-q{font-size:0.95rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
-.faq-a{font-size:13px;color:var(--text-mid);line-height:1.65;}
-footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;}
-.foot-desc{font-size:13px;color:rgba(255,255,255,0.4);margin-top:0.75rem;line-height:1.7;}
-.foot-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase;}
-.foot-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;transition:color 0.2s;}
-.foot-col a:hover{color:var(--gold);}
-.foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;padding:1.25rem 0;display:flex;justify-content:space-between;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;}
-.foot-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s;}
-.foot-bottom a:hover{color:var(--gold);}
-.wa-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:999;transition:transform 0.2s;}
-.wa-fab:hover{transform:scale(1.08);}
-@media(max-width:768px){.nav-links{display:none;}footer{grid-template-columns:1fr;}}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Support — MUNIM Books & MUNIM Pro</title>
+<meta name="description" content="WhatsApp support for MUNIM. Buy, renew, get a free trial or get help — from a real person.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-nav="support">
+<div id="site-header"></div>
 
-<a href="https://wa.me/918427651580" target="_blank" class="wa-fab" title="WhatsApp Support">💬</a>
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow light">Support</span>
+      <h1>We're here to <em>help</em></h1>
+      <p class="lead">Real support from a real person. No chatbots, no tickets — just WhatsApp us.</p>
+    </div>
+  </section>
 
-<nav>
-  <a href="index.html" class="logo">
-    <div class="logo-icon">म</div>
-    <div class="logo-name">MUNIM<span>.</span></div>
-  </a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="how-to-use.html">How to Use</a>
-    <a href="story.html">Our Story</a>
-    <a href="about.html">About</a>
-    <a href="contact.html" class="active">Support</a>
-    <a href="download.html">Download</a>
-  </div>
-  <a href="download.html" class="nav-dl">⬇ Download</a>
-</nav>
+  <section class="sec">
+    <div class="wrap">
+      <div class="grid g3">
+        <div class="card"><span class="key gold">W</span><h3>WhatsApp support</h3><p>The fastest way to reach us. Usually a reply within a few hours on working days.</p>
+          <a class="btn btn-wa" data-wa="Hi, I need help with MUNIM" style="margin-top:18px">Open WhatsApp</a></div>
+        <div class="card"><span class="key gold">₹</span><h3>Buy or renew</h3><p>We send payment details, then your username, password and licence key within minutes.</p>
+          <a class="btn btn-gold" data-wa="Hi, I want to buy / renew MUNIM" style="margin-top:18px">WhatsApp to buy</a></div>
+        <div class="card"><span class="key gold">7</span><h3>Free trial</h3><p>Try MUNIM Books free for 7 days, or join early access for MUNIM Pro.</p>
+          <div class="btns" style="margin-top:18px">
+            <a class="btn btn-line btn-sm" data-wa="Hi, I want a free 7-day trial of MUNIM Books">Books trial</a>
+            <a class="btn btn-line btn-sm" data-wa="Hi, I want early access to MUNIM Pro">Pro early access</a>
+          </div></div>
+      </div>
 
-<div class="page-hero">
-  <div class="page-badge">💬 Support</div>
-  <h1>We're here to <em>help</em></h1>
-  <p>Real support from a real person. No chatbots, no support tickets. Just WhatsApp us and we'll sort it out.</p>
-</div>
+      <div class="grid g2" style="margin-top:20px">
+        <div class="card">
+          <h3 style="margin-top:0">Support hours</h3>
+          <table class="table" style="margin-top:12px">
+            <tr><td>Monday – Saturday</td><td><b>10:00 AM – 7:00 PM</b></td></tr>
+            <tr><td>Sunday</td><td><b>Closed</b></td></tr>
+          </table>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Contact details</h3>
+          <table class="table" style="margin-top:12px">
+            <tr><td>WhatsApp</td><td><b>+91 84276 51580</b></td></tr>
+            <tr><td>Email</td><td><b><a href="mailto:sumitverma2880@gmail.com">sumitverma2880@gmail.com</a></b></td></tr>
+            <tr><td>Location</td><td><b>Ludhiana, Punjab</b></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<section class="sec">
-  <div class="sec-label">Get in Touch</div>
-  <div class="sec-title">Choose how to reach us</div>
-  <div class="contact-grid">
-    <div class="contact-card">
-      <div class="contact-icon">💬</div>
-      <div class="contact-title">WhatsApp Support</div>
-      <div class="contact-desc">The fastest way to reach us. Send a message and get a reply from a real person — usually within a few hours on working days.</div>
-      <a href="https://wa.me/918427651580" target="_blank" class="btn-gold">Open WhatsApp</a>
+  <section class="sec sec-alt">
+    <div class="wrap center">
+      <div class="sec-head"><span class="eyebrow">Quick answers</span><h2>Common questions</h2></div>
+      <div class="faqs">
+        <details class="faq"><summary>How do I activate MUNIM after downloading?</summary><p>Open MUNIM with internet ON and open or create your company. Enter the username, password and licence key we sent you. After that it works offline.</p></details>
+        <details class="faq"><summary>It says my licence is for a different product.</summary><p>MUNIM Books and MUNIM Pro have separate licences. WhatsApp us and we'll check your licence right away.</p></details>
+        <details class="faq"><summary>I forgot my password.</summary><p>WhatsApp us with your username and we'll help you get back in.</p></details>
+        <details class="faq"><summary>My licence expired. Is my data safe?</summary><p>Yes — your data stays on your computer and is never deleted. After renewal, open MUNIM with internet ON and it continues automatically.</p></details>
+        <details class="faq"><summary>I changed my computer.</summary><p>WhatsApp us to free your licence from the old computer. Copy the C:\MUNIM\ folder to the new one and activate with the same details.</p></details>
+        <details class="faq"><summary>How do I get the MUNIM mobile app?</summary><p>WhatsApp us and we'll send you the mobile app and help you connect it to MUNIM Books.</p></details>
+        <details class="faq"><summary>Something is not working.</summary><p>WhatsApp us a screenshot of the message. If MUNIM showed an error, the details are saved in C:\MUNIM\logs\ — send us the latest file from there.</p></details>
+      </div>
     </div>
-    <div class="contact-card">
-      <div class="contact-icon">🛒</div>
-      <div class="contact-title">Buy or Renew</div>
-      <div class="contact-desc">To purchase MUNIM or renew your licence, WhatsApp us. We'll send you the payment link, username, password and key within minutes.</div>
-      <a href="https://wa.me/918427651580?text=Hi, I want to buy MUNIM" target="_blank" class="btn-gold">WhatsApp to Buy</a>
-    </div>
-    <div class="contact-card">
-      <div class="contact-icon">🔑</div>
-      <div class="contact-title">Trial Access</div>
-      <div class="contact-desc">Want to try MUNIM free for 7 days before buying? WhatsApp us and we'll set up a trial key for you right away. No payment needed.</div>
-      <a href="https://wa.me/918427651580?text=Hi, I want a free trial of MUNIM" target="_blank" class="btn-outline">Request Free Trial</a>
-    </div>
-  </div>
-  <div class="hours-box">
-    <div class="hours-title">📅 Support Hours</div>
-    <div class="hours-row"><span class="hours-day">Monday – Saturday</span><span class="hours-time">10:00 AM – 7:00 PM</span></div>
-    <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time">Closed</span></div>
-    <div class="hours-row"><span class="hours-day">WhatsApp number</span><span class="hours-time">+91 84276 51580</span></div>
-  </div>
-</section>
+  </section>
+</main>
 
-<section class="sec sec-alt">
-  <div class="sec-label">Common Questions</div>
-  <div class="sec-title">Quick answers</div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <div class="faq-q">How do I activate MUNIM after downloading?</div>
-      <div class="faq-a">Open MUNIM.exe — it will show an activation screen. Enter the username, password and licence key we sent you. Done in 30 seconds.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">I forgot my password. What do I do?</div>
-      <div class="faq-a">WhatsApp us with your username. We'll reset it and send you a new one within the hour.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">My licence expired. Can I still access my data?</div>
-      <div class="faq-a">Yes — your data is always on your computer and is never deleted. Renew your licence and enter the new key to continue using MUNIM.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">I changed my PC. How do I move MUNIM?</div>
-      <div class="faq-a">Copy MUNIM.exe to the new PC. Copy the C:\MUNIM\ folder from the old PC to the new one. Log in with your existing username and password.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q">Something is not working. What should I do?</div>
-      <div class="faq-a">WhatsApp us with a screenshot of the error. We'll diagnose and fix it — usually on the same day.</div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div>
-    <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:0.75rem;">
-      <div class="logo-icon">म</div>
-      <div class="logo-name" style="font-size:17px;">MUNIM<span>.</span></div>
-    </a>
-    <p class="foot-desc">Smart offline accounting software for Indian small businesses. ₹2,499/year.</p>
-    <p class="foot-desc" style="margin-top:0.5rem;">A companion tool on <a href="https://catoolskit.runs.on.dev/ca-tools-hub" style="color:var(--gold);">CA Toolkit</a></p>
-  </div>
-  <div class="foot-col">
-    <h4>Pages</h4>
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="how-to-use.html">How to Use</a>
-    <a href="about.html">About</a>
-    <a href="download.html">Download</a>
-  </div>
-  <div class="foot-col">
-    <h4>Support</h4>
-    <a href="contact.html">Contact Us</a>
-    <a href="https://wa.me/918427651580" target="_blank">WhatsApp Support</a>
-    <a href="https://catoolskit.runs.on.dev" target="_blank">CA Toolkit</a>
-  </div>
-  <div class="foot-bottom">
-    <span>© 2026 MUNIM. Built with ❤️ in India by Sumit Verma.</span>
-    <span>Data stays on your computer — always. &nbsp;<a href="admin-panel.html">Admin</a></span>
-  </div>
-</footer>
-
+<div id="site-footer"></div>
+<script src="site.js"></script>
 </body>
 </html>
