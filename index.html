@@ -1,334 +1,261 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>MUNIM — Smart Accounting for Indian Businesses</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet"/>
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --navy:#071B49;--navy-light:#0D2560;
-  --gold:#F4C430;--gold-dark:#D4A820;
-  --offwhite:#F7F8FC;--white:#FFFFFF;
-  --charcoal:#252B36;--text-mid:#4A5568;--text-light:#718096;
-  --border:#E2E8F0;--radius:10px;--radius-lg:16px;
-}
-body{font-family:'Inter',sans-serif;color:var(--charcoal);background:var(--white);line-height:1.6;}
-a{text-decoration:none;color:inherit;}
-nav{display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:68px;background:var(--navy);position:sticky;top:0;z-index:200;}
-.logo{display:flex;align-items:center;gap:10px;}
-.logo-icon{width:36px;height:36px;background:var(--gold);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:800;font-size:17px;color:var(--navy);}
-.logo-name{font-size:19px;font-weight:700;color:#fff;letter-spacing:0.3px;}
-.logo-name span{color:var(--gold);}
-.nav-links{display:flex;gap:1.75rem;font-size:14px;}
-.nav-links a{color:rgba(255,255,255,0.75);transition:color 0.2s;}
-.nav-links a:hover{color:var(--gold);}
-.nav-dl{background:var(--gold);color:var(--navy);padding:0.5rem 1.25rem;border-radius:var(--radius);font-size:14px;font-weight:600;transition:background 0.2s;}
-.nav-dl:hover{background:var(--gold-dark);}
-.hero{background:var(--navy);padding:5.5rem 6% 5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(244,196,48,0.12);border:1px solid rgba(244,196,48,0.3);color:#F4C430;font-size:12px;padding:4px 12px;border-radius:999px;margin-bottom:1.5rem;font-weight:500;}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:#fff;margin-bottom:1.25rem;}
-.hero h1 em{color:var(--gold);font-style:normal;}
-.hero-sub{color:rgba(255,255,255,0.65);font-size:1rem;margin-bottom:2rem;line-height:1.75;max-width:480px;}
-.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-.btn-gold{background:var(--gold);color:var(--navy);padding:0.8rem 1.75rem;border-radius:var(--radius);font-weight:700;font-size:0.95rem;display:inline-flex;align-items:center;gap:7px;transition:background 0.2s;}
-.btn-gold:hover{background:var(--gold-dark);}
-.btn-outline{border:1.5px solid rgba(244,196,48,0.5);color:rgba(255,255,255,0.85);padding:0.8rem 1.75rem;border-radius:var(--radius);font-size:0.95rem;transition:border-color 0.2s;}
-.btn-outline:hover{border-color:var(--gold);color:#fff;}
-.hero-note{margin-top:1.1rem;font-size:12px;color:rgba(255,255,255,0.4);}
-.hero-visual{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-lg);overflow:hidden;}
-.mock-bar{background:rgba(255,255,255,0.08);padding:0.6rem 1rem;display:flex;align-items:center;gap:6px;border-bottom:1px solid rgba(255,255,255,0.08);}
-.mock-dot{width:10px;height:10px;border-radius:50%;}
-.mock-content{padding:1.25rem;}
-.mock-row{display:flex;justify-content:space-between;align-items:center;padding:0.6rem 0.75rem;border-radius:7px;margin-bottom:0.4rem;background:rgba(255,255,255,0.05);font-size:13px;color:rgba(255,255,255,0.8);}
-.mock-row span{font-size:12px;color:var(--gold);}
-.mock-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:0.6rem;margin-top:0.75rem;}
-.mock-stat{background:rgba(244,196,48,0.1);border-radius:8px;padding:0.75rem;text-align:center;}
-.mock-stat-num{font-size:1.1rem;font-weight:700;color:var(--gold);}
-.mock-stat-label{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px;}
-.mock-sample-note{font-size:10px;color:rgba(255,255,255,0.25);text-align:right;padding:0.5rem 0.75rem 0.75rem;}
-.sec{padding:5rem 6%;}
-.sec-alt{background:var(--offwhite);}
-.sec-label{font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--gold-dark);font-weight:600;margin-bottom:0.6rem;}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:var(--charcoal);margin-bottom:0.75rem;}
-.sec-sub{color:var(--text-mid);max-width:540px;font-size:0.95rem;}
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.stat-cell{text-align:center;padding:2rem 1rem;border-right:1px solid var(--border);}
-.stat-cell:last-child{border-right:none;}
-.stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--navy);font-weight:700;}
-.stat-label{font-size:13px;color:var(--text-light);margin-top:4px;}
-.feat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.25rem;margin-top:2.5rem;}
-.feat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;transition:box-shadow 0.2s,border-color 0.2s;}
-.feat-card:hover{box-shadow:0 4px 20px rgba(7,27,73,0.08);border-color:#cbd5e0;}
-.feat-icon-box{width:46px;height:46px;border-radius:10px;background:rgba(7,27,73,0.06);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1rem;}
-.feat-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
-.feat-desc{font-size:13px;color:var(--text-mid);line-height:1.65;}
-.soon-tag{font-size:10px;background:#FEF3C7;color:#92400E;padding:2px 7px;border-radius:999px;margin-left:6px;font-weight:600;vertical-align:middle;}
-.modules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.65rem;margin-top:2rem;}
-.mod-pill{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:9px;padding:0.8rem 1rem;transition:border-color 0.2s;}
-.mod-pill:hover{border-color:#94a3b8;}
-.mod-dot{width:8px;height:8px;border-radius:50%;background:var(--gold-dark);flex-shrink:0;}
-.mod-name{font-size:14px;font-weight:500;color:var(--charcoal);}
-.mod-tag{margin-left:auto;font-size:11px;background:var(--offwhite);color:var(--text-light);padding:2px 8px;border-radius:999px;border:1px solid var(--border);}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem;}
-.step-card{text-align:center;padding:1.5rem;}
-.step-num{width:52px;height:52px;border-radius:50%;background:var(--navy);color:var(--gold);font-size:1.2rem;font-weight:700;font-family:'Playfair Display',serif;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
-.step-title{font-size:1rem;font-weight:600;color:var(--charcoal);margin-bottom:0.4rem;}
-.step-desc{font-size:13px;color:var(--text-mid);line-height:1.65;}
-.price-box{background:var(--navy);border-radius:var(--radius-lg);padding:2.5rem;text-align:center;max-width:420px;margin:2rem auto 0;}
-.price-amount{font-family:'Playfair Display',serif;font-size:3rem;color:var(--gold);font-weight:700;}
-.price-period{font-size:14px;color:rgba(255,255,255,0.5);margin-top:4px;}
-.price-includes{list-style:none;margin:1.5rem 0;text-align:left;}
-.price-includes li{font-size:14px;color:rgba(255,255,255,0.7);padding:0.4rem 0;display:flex;gap:8px;}
-.price-includes li::before{content:'✓';color:var(--gold);font-weight:700;}
-footer{background:var(--charcoal);padding:3rem 6% 0;display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;}
-.foot-desc{font-size:13px;color:rgba(255,255,255,0.4);margin-top:0.75rem;line-height:1.7;}
-.foot-col h4{font-size:12px;font-weight:600;color:rgba(255,255,255,0.5);margin-bottom:0.75rem;letter-spacing:1px;text-transform:uppercase;}
-.foot-col a{display:block;font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:0.4rem;transition:color 0.2s;}
-.foot-col a:hover{color:var(--gold);}
-.foot-bottom{grid-column:1/-1;border-top:1px solid rgba(255,255,255,0.08);margin-top:2rem;padding:1.25rem 0;display:flex;justify-content:space-between;align-items:center;font-size:12px;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:0.5rem;}
-.foot-bottom a{color:rgba(255,255,255,0.3);transition:color 0.2s;}
-.foot-bottom a:hover{color:var(--gold);}
-.wa-fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 16px rgba(0,0,0,0.2);z-index:999;transition:transform 0.2s;}
-.wa-fab:hover{transform:scale(1.08);}
-@media(max-width:768px){
-  .hero{grid-template-columns:1fr;}
-  .hero-visual{display:none;}
-  .nav-links{display:none;}
-  .stats-row{grid-template-columns:1fr 1fr;}
-  .steps-grid{grid-template-columns:1fr;}
-  footer{grid-template-columns:1fr;}
-  .foot-bottom{flex-direction:column;align-items:flex-start;}
-}
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MUNIM — Offline accounting, GST & tax software for India</title>
+<meta name="description" content="MUNIM Books: offline accounting, GST billing and returns for small businesses. MUNIM Pro: Tax, GST and TDS software for CAs and tax consultants. Your data stays on your computer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 </head>
-<body>
+<body data-nav="home">
+<div id="site-header"></div>
 
-<!-- WhatsApp FAB -->
-<a href="https://wa.me/918427651580" target="_blank" class="wa-fab" title="WhatsApp Support">💬</a>
+<main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow">Made in Ludhiana · for Indian businesses &amp; tax professionals</span>
+      <h1 style="margin-top:18px;max-width:900px">Your digital <span class="dev">मुनीम</span> — books, GST and tax, done right.</h1>
+      <p class="lead">Desktop software that works fully offline and keeps every rupee of your data on your own computer. Pick the one made for you.</p>
 
-<!-- NAV -->
-<nav>
-  <a href="index.html" class="logo">
-    <div class="logo-icon">म</div>
-    <div class="logo-name">MUNIM<span>.</span></div>
-  </a>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="how-to-use.html">How to Use</a>
-    <a href="story.html">Our Story</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Support</a>
-    <a href="download.html">Download</a>
-  </div>
-  <a href="download.html" class="nav-dl">⬇ Download</a>
-</nav>
+      <div class="products">
+        <article class="prod reveal">
+          <span class="tag tag-live">Available now</span>
+          <h3>MUNIM Books</h3>
+          <p>Accounting, GST billing and GST returns for traders, shops and small businesses.</p>
+          <ul class="ticks">
+            <li>GST invoices with PDF, auto CGST / SGST / IGST</li>
+            <li>Ledger, Trial Balance, P&amp;L, Balance Sheet — instantly</li>
+            <li>GSTR-1 &amp; GSTR-3B with JSON for the GST portal</li>
+            <li>Bill on your phone, import into your books</li>
+          </ul>
+          <div class="prod-foot">
+            <div class="price-line"><b>₹2,499</b><span>per year · 7-day free trial</span></div>
+            <div class="btns">
+              <a class="btn btn-gold" href="download.html">Download</a>
+              <a class="btn btn-line" href="books.html">Explore</a>
+            </div>
+          </div>
+        </article>
 
-<!-- HERO -->
-<section class="hero">
-  <div>
-    <div class="hero-badge">🇮🇳 Built for Indian Small Businesses</div>
-    <h1>Your Digital<br/><em>मुनीम</em> —<br/>Complete Accounting</h1>
-    <p class="hero-sub">Sales, Purchase, Journal, Ledger, Trial Balance, Balance Sheet and more. Works fully offline. All data saved on your own computer.</p>
-    <div class="hero-btns">
-      <a href="download.html" class="btn-gold">⬇ Download MUNIM</a>
-      <a href="features.html" class="btn-outline">See all features →</a>
+        <article class="prod dark reveal">
+          <span class="tag tag-soon">Launching soon</span>
+          <h3>MUNIM Pro</h3>
+          <p>Tax Pro · GST Pro · TDS Pro for CAs and tax consultants — one client list for all three.</p>
+          <ul class="ticks">
+            <li>Built for the new Income-tax Act 2025</li>
+            <li>Every client's GST filing status on one screen</li>
+            <li>TDS statements in the new form numbers, FVU-checked</li>
+            <li>Reads your clients' MUNIM Books data — no retyping</li>
+          </ul>
+          <div class="prod-foot">
+            <div class="price-line"><b>from ₹3,999</b><span>per module per year · all 3 for ₹9,999</span></div>
+            <div class="btns">
+              <a class="btn btn-pro" href="pro.html">Explore Pro</a>
+              <a class="btn btn-light" data-wa="Hi, I want early access to MUNIM Pro">Early access</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </div>
-    <p class="hero-note">Windows 10/11 · ~15 MB · No internet needed · ₹2,499/year</p>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="strip">
+    <div><b>100% offline</b><span>Internet needed only to activate</span></div>
+    <div><b>C:\MUNIM\</b><span>Your data stays on your PC</span></div>
+    <div><b>Keyboard-first</b><span>Every screen works without a mouse</span></div>
+    <div><b>Real support</b><span>WhatsApp the person who built it</span></div>
   </div>
-  <div class="hero-visual">
-    <div class="mock-bar">
-      <div class="mock-dot" style="background:#ff5f56"></div>
-      <div class="mock-dot" style="background:#ffbd2e"></div>
-      <div class="mock-dot" style="background:#27c93f"></div>
-      <span style="font-size:12px;color:rgba(255,255,255,0.4);margin-left:8px;">MUNIM — Gateway</span>
-    </div>
-    <div class="mock-content">
-      <div class="mock-row">📋 Sales Invoice<span>Posted ✓</span></div>
-      <div class="mock-row">🛒 Purchase Bill<span>Posted ✓</span></div>
-      <div class="mock-row">📔 Journal Voucher<span>Balanced ✓</span></div>
-      <div class="mock-row">📊 Trial Balance<span>Balanced ✓</span></div>
-      <div class="mock-stat-row">
-        <div class="mock-stat">
-          <div class="mock-stat-num">Dr = Cr</div>
-          <div class="mock-stat-label">Double entry</div>
+
+  <!-- SHOWCASE -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">See MUNIM Books</span>
+        <h2>Clean screens. Fast keys. No clutter.</h2>
+        <p class="lead">Designed so a shop owner can use it on day one — and an accountant can fly through it with the keyboard.</p>
+      </div>
+      <div data-tabs>
+        <div class="tabbar" role="tablist">
+          <button data-tab="gateway">Gateway</button>
+          <button data-tab="invoice">Sales invoice</button>
+          <button data-tab="gst">GST returns</button>
         </div>
-        <div class="mock-stat">
-          <div class="mock-stat-num">GST ✓</div>
-          <div class="mock-stat-label">Auto split</div>
+        <div data-panel="gateway">
+          <div class="show">
+            <div class="window"><div class="bar"><i></i><i></i><i></i><span>MUNIM Books — Gateway</span></div>
+              <img src="shot-gateway.png" alt="MUNIM Books Gateway screen with Masters, Transactions, Reports and Utilities" loading="lazy"></div>
+            <div>
+              <h3>Everything one key away</h3>
+              <p>Four workspaces — Masters, Transactions, Reports and Utilities — with today's sales, outstanding, cash and bank at a glance.</p>
+              <ul class="ticks">
+                <li>Arrow keys or the letter shown (M, T, R, U)</li>
+                <li>Quick Actions you can customise</li>
+                <li>Help any time with Alt+1</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div data-panel="invoice">
+          <div class="show">
+            <div class="window"><div class="bar"><i></i><i></i><i></i><span>MUNIM Books — New Sales Invoice</span></div>
+              <img src="shot-invoice.png" alt="MUNIM Books sales invoice entry screen" loading="lazy"></div>
+            <div>
+              <h3>A GST invoice in seconds</h3>
+              <p>Pick the customer, add items with HSN/SAC, quantity, rate and GST %. Tax splits itself.</p>
+              <ul class="ticks">
+                <li>CGST / SGST or IGST — automatic</li>
+                <li>Several GST rates on one bill</li>
+                <li>Ctrl+S saves · Ctrl+P makes the PDF</li>
+                <li>Posts to ledger and registers instantly</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div data-panel="gst">
+          <div class="show">
+            <div class="window"><div class="bar"><i></i><i></i><i></i><span>MUNIM Books — Reports › GST</span></div>
+              <img src="shot-gst.png" alt="MUNIM Books GST reports with GSTR-1 and GSTR-3B" loading="lazy"></div>
+            <div>
+              <h3>GST returns, ready every month</h3>
+              <p>GSTR-1 and GSTR-3B are built from your entries — export the JSON and upload it on the GST portal.</p>
+              <ul class="ticks">
+                <li>GSTR-1 outward supplies</li>
+                <li>GSTR-3B summary</li>
+                <li>Live figures for the month before you open</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="mock-sample-note">Sample data for illustration</div>
-  </div>
-</section>
+  </section>
 
-<!-- STATS -->
-<div class="stats-row">
-  <div class="stat-cell"><div class="stat-num">100%</div><div class="stat-label">Offline — no internet needed</div></div>
-  <div class="stat-cell"><div class="stat-num">₹2,499</div><div class="stat-label">Per year, all features included</div></div>
-  <div class="stat-cell"><div class="stat-num">9+</div><div class="stat-label">Accounting modules built-in</div></div>
-  <div class="stat-cell"><div class="stat-num">1-Click</div><div class="stat-label">Setup and start in minutes</div></div>
-</div>
+  <!-- MOBILE INVOICES -->
+  <section class="sec sec-alt ruled">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">New · Mobile invoicing</span>
+        <h2>Bill on your phone. Your books update on the PC.</h2>
+        <p class="lead">Out at a customer's shop or at the counter? Make the invoice on the MUNIM mobile app — then bring it into MUNIM Books with one click. No retyping.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <h3>Connect the app</h3>
+          <p>Export your company's settings from MUNIM Books and load them in the mobile app.</p>
+          <span class="where">Utilities › Import &amp; Export › E</span>
+        </div>
+        <div class="step reveal">
+          <h3>Make invoices on the go</h3>
+          <p>Create GST invoices on your phone with your parties and items — wherever you are.</p>
+          <span class="where">MUNIM mobile app</span>
+        </div>
+        <div class="step reveal">
+          <h3>Import into your books</h3>
+          <p>Bring the mobile invoices into MUNIM Books. Ledger, GST and registers update automatically.</p>
+          <span class="where">Utilities › Import &amp; Export › V</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<!-- FEATURES -->
-<section class="sec">
-  <div class="sec-label">Why MUNIM</div>
-  <div class="sec-title">Built for the way you work</div>
-  <p class="sec-sub">Not a demo app — real accounting features that small Indian businesses actually need.</p>
-  <div class="feat-grid">
-    <div class="feat-card">
-      <div class="feat-icon-box">📋</div>
-      <div class="feat-title">Auto-posting vouchers</div>
-      <div class="feat-desc">Every sales bill automatically flows into the Sales Register, Ledger, and Trial Balance. No manual journal needed.</div>
+  <!-- WHY -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow">Why MUNIM</span>
+        <h2>The things we will never compromise on</h2>
+      </div>
+      <div class="grid g3">
+        <div class="card reveal"><span class="key gold">O</span><h3>Works offline</h3><p>Power cut, no Wi-Fi, travelling — MUNIM keeps working. Internet is needed only once to activate.</p></div>
+        <div class="card reveal"><span class="key gold">D</span><h3>Your data is yours</h3><p>Everything is saved at C:\MUNIM\ on your computer. No cloud upload. We never see your books.</p></div>
+        <div class="card reveal"><span class="key gold">K</span><h3>Keyboard-first</h3><p>Letter keys, arrows, Enter and Esc on every screen. Fast for accountants, simple for owners.</p></div>
+        <div class="card reveal"><span class="key gold">₹</span><h3>Built for India</h3><p>GST invoices and returns, April–March financial year, rupee formatting and the new Income-tax Act.</p></div>
+        <div class="card reveal"><span class="key gold">P</span><h3>Honest pricing</h3><p>One yearly price with every update included. No hidden charges, no "upgrade to unlock" tricks.</p></div>
+        <div class="card reveal"><span class="key gold">S</span><h3>Human support</h3><p>WhatsApp us and talk to the person who built MUNIM — not a chatbot or a ticket system.</p></div>
+      </div>
     </div>
-    <div class="feat-card">
-      <div class="feat-icon-box">📊</div>
-      <div class="feat-title">Complete financial reports</div>
-      <div class="feat-desc">Generate Trial Balance, Trading & P&L, and Balance Sheet instantly. Export to Excel in one click.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-box">💾</div>
-      <div class="feat-title">Your data stays with you</div>
-      <div class="feat-desc">Everything saves locally at C:\MUNIM\ on your computer. No cloud, no server, complete privacy.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-box">🧾</div>
-      <div class="feat-title">GST-ready billing</div>
-      <div class="feat-desc">CGST/SGST/IGST split auto-detected from GSTIN state code. Daily Sales Summary for counter sales. <span class="soon-tag">PDF invoice coming soon</span></div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-box">🔐</div>
-      <div class="feat-title">Multi-user login</div>
-      <div class="feat-desc">Set up separate admin and staff logins with passwords. Full audit log of every change made.</div>
-    </div>
-    <div class="feat-card">
-      <div class="feat-icon-box">⚡</div>
-      <div class="feat-title">Fast and lightweight</div>
-      <div class="feat-desc">No browser, no loading screens. Runs smoothly on older Windows PCs. About 15 MB download.</div>
-    </div>
-  </div>
-  <div style="margin-top:1.5rem;text-align:center;">
-    <a href="features.html" style="font-size:14px;color:var(--navy);font-weight:600;border-bottom:2px solid var(--gold);padding-bottom:2px;">See all features in detail →</a>
-  </div>
-</section>
+  </section>
 
-<!-- MODULES -->
-<section class="sec sec-alt">
-  <div class="sec-label">What's Inside</div>
-  <div class="sec-title">Everything in one place</div>
-  <p class="sec-sub">Fully integrated accounting modules. No add-ons, no upgrades needed.</p>
-  <div class="modules-grid">
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Sales Invoice</div><div class="mod-tag">Core</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Purchase Bill</div><div class="mod-tag">Core</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Voucher Entry</div><div class="mod-tag">Core</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Ledger View</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Trial Balance</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Balance Sheet</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Trading & P&L</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Cash Book</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Day Book</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Outstanding / Ageing</div><div class="mod-tag">Reports</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">Party Master</div><div class="mod-tag">Master</div></div>
-    <div class="mod-pill"><div class="mod-dot"></div><div class="mod-name">GST Invoice PDF</div><div class="mod-tag">Coming soon</div></div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="sec">
-  <div class="sec-label">Setup</div>
-  <div class="sec-title">Get started in 3 steps</div>
-  <div class="steps-grid">
-    <div class="step-card">
-      <div class="step-num">1</div>
-      <div class="step-title">Download MUNIM.exe</div>
-      <div class="step-desc">One file, no installation wizard. Double-click to open. Data folder created automatically at C:\MUNIM\ on first launch.</div>
+  <!-- PRO TEASER -->
+  <section class="sec sec-ink">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="eyebrow light">Coming soon · MUNIM Pro</span>
+        <h2>For CAs and tax consultants: three tools, one client list.</h2>
+        <p class="lead">Enter a client once and use them in Tax Pro, GST Pro and TDS Pro. Switch between modules from the top bar — no restart, no retyping.</p>
+      </div>
+      <div class="grid g3">
+        <a class="card reveal" href="pro.html#tax"><span class="key">TX</span><h3>Tax Pro</h3><p>Computation under the new Income-tax Act, old vs new regime, advance tax and the right return form — from AIS / TIS data.</p></a>
+        <a class="card reveal" href="pro.html#gst"><span class="key">GS</span><h3>GST Pro</h3><p>Every client's filing status on one screen. GSTR-1, IMS &amp; GSTR-2B reconciliation, GSTR-3B, CMP-08 and more.</p></a>
+        <a class="card reveal" href="pro.html#tds"><span class="key">TD</span><h3>TDS Pro</h3><p>Quarterly statements in the new form numbers (138 / 140 / 144 / 143), FVU validation, challans and certificates.</p></a>
+      </div>
+      <div class="btns" style="margin-top:30px">
+        <a class="btn btn-pro" href="pro.html">See everything in MUNIM Pro</a>
+        <a class="btn btn-light" data-wa="Hi, I want early access to MUNIM Pro">Get early access on WhatsApp</a>
+      </div>
     </div>
-    <div class="step-card">
-      <div class="step-num">2</div>
-      <div class="step-title">Activate your copy</div>
-      <div class="step-desc">Enter the username, password and licence key provided when you purchase. Takes 30 seconds. Works fully offline after that.</div>
+  </section>
+
+  <!-- PRICING TEASER -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head center">
+        <span class="eyebrow">Pricing</span>
+        <h2>One yearly price. Everything included.</h2>
+        <p class="lead">Updates and WhatsApp support are always included. Pay for 2, 3 or 5 years and save up to 25%.</p>
+      </div>
+      <div class="grid g2" style="max-width:900px;margin:0 auto">
+        <div class="plan best-gold reveal">
+          <span class="ribbon gold">Available now</span>
+          <h3>MUNIM Books</h3>
+          <p class="desc">Complete accounting, GST billing and returns.</p>
+          <div class="price"><span class="amt">₹2,499</span><span class="per">per year</span></div>
+          <a class="btn btn-gold" href="pricing.html" style="margin-top:22px">See Books pricing</a>
+        </div>
+        <div class="plan best reveal">
+          <span class="ribbon">Launch price</span>
+          <h3>MUNIM Pro Complete</h3>
+          <p class="desc">Tax Pro + GST Pro + TDS Pro — or buy any module alone from ₹3,999.</p>
+          <div class="price"><span class="amt">₹9,999</span><span class="per">per year</span></div>
+          <a class="btn btn-pro" href="pricing.html#pro" style="margin-top:22px">See Pro pricing</a>
+        </div>
+      </div>
     </div>
-    <div class="step-card">
-      <div class="step-num">3</div>
-      <div class="step-title">Start your books</div>
-      <div class="step-desc">Set up your company, add customers and suppliers, and record your first sale. The ledger, registers and reports update automatically.</div>
+  </section>
+
+  <!-- STORY TEASER -->
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="quote reveal" style="max-width:860px;margin:0 auto">
+        <div class="big">मुनीम</div>
+        <blockquote>"In every traditional Indian business, the munim was the trusted person who kept every account with care. MUNIM does the same job — on your computer."</blockquote>
+        <a href="story.html" class="btn btn-line btn-sm">Read our story →</a>
+      </div>
     </div>
-  </div>
-  <div style="text-align:center;margin-top:2rem;">
-    <a href="how-to-use.html" class="btn-gold" style="display:inline-flex;">Read the full guide →</a>
-  </div>
-</section>
+  </section>
 
-<!-- PRICING -->
-<section class="sec sec-alt">
-  <div class="sec-label">Pricing</div>
-  <div class="sec-title">Simple, honest pricing</div>
-  <p class="sec-sub">One price. All features included. Renew every year to keep receiving updates and support.</p>
-  <div class="price-box">
-    <div class="price-amount">₹2,499</div>
-    <div class="price-period">per year · includes all updates and WhatsApp support</div>
-    <ul class="price-includes">
-      <li>All accounting modules — Sales, Purchase, Journal, Reports</li>
-      <li>Unlimited vouchers and parties</li>
-      <li>Works 100% offline on your PC</li>
-      <li>Your data stays on your computer always</li>
-      <li>WhatsApp support from a real person</li>
-      <li>Free updates throughout the year</li>
-    </ul>
-    <a href="download.html" class="btn-gold" style="width:100%;justify-content:center;">Get MUNIM →</a>
-    <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:12px;">7-day free trial available · No credit card needed to try</p>
-  </div>
-</section>
+  <!-- FINAL CTA -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="cta">
+        <span class="eyebrow light">Get started</span>
+        <h2 style="margin-top:12px">Try MUNIM Books free for 7 days</h2>
+        <p>Download, activate with a free trial licence and start your books today. No payment needed to try.</p>
+        <div class="btns">
+          <a class="btn btn-gold btn-lg" href="download.html">Download MUNIM Books</a>
+          <a class="btn btn-light btn-lg" data-wa="Hi, I want a free 7-day trial of MUNIM Books">Get a free trial licence</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
 
-<!-- DOWNLOAD CTA -->
-<section style="background:var(--navy);padding:4.5rem 6%;text-align:center;">
-  <div class="sec-label" style="color:var(--gold);">Download</div>
-  <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);color:#fff;margin-bottom:0.75rem;">Start using MUNIM today</h2>
-  <p style="color:rgba(255,255,255,0.55);margin:0.75rem auto 2rem;max-width:480px;font-size:0.95rem;">One .exe file. No installation, no internet. Just download, activate and start.</p>
-  <a href="download.html" class="btn-gold" style="font-size:1rem;padding:0.9rem 2.25rem;display:inline-flex;">⬇ Download MUNIM</a>
-  <div style="display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:1.5rem;">
-    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ Windows 10/11</span>
-    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ ~15 MB download</span>
-    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ No internet required</span>
-    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ Data saved to C:\MUNIM\</span>
-    <span style="font-size:12px;color:rgba(255,255,255,0.35);">✓ ₹2,499/year</span>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <a href="index.html" class="logo" style="display:inline-flex;margin-bottom:0.75rem;">
-      <div class="logo-icon">म</div>
-      <div class="logo-name" style="font-size:17px;">MUNIM<span>.</span></div>
-    </a>
-    <p class="foot-desc">Smart offline accounting software for Indian small businesses. ₹2,499/year.</p>
-    <p class="foot-desc" style="margin-top:0.5rem;">A companion tool on <a href="https://catoolskit.runs.on.dev/ca-tools-hub" style="color:var(--gold);text-decoration:none;">CA Toolkit</a></p>
-  </div>
-  <div class="foot-col">
-    <h4>Pages</h4>
-    <a href="index.html">Home</a>
-    <a href="features.html">Features</a>
-    <a href="how-to-use.html">How to Use</a>
-    <a href="about.html">About</a>
-    <a href="download.html">Download</a>
-  </div>
-  <div class="foot-col">
-    <h4>Support</h4>
-    <a href="contact.html">Contact Us</a>
-    <a href="https://wa.me/918427651580" target="_blank">WhatsApp Support</a>
-    <a href="https://catoolskit.runs.on.dev" target="_blank">CA Toolkit</a>
-  </div>
-  <div class="foot-bottom">
-    <span>© 2026 MUNIM. Built with ❤️ in India by Sumit Verma.</span>
-    <span>Data stays on your computer — always. &nbsp;<a href="admin-panel.html">Admin</a></span>
-  </div>
-</footer>
-
+<div id="site-footer"></div>
+<script src="site.js"></script>
 </body>
 </html>
