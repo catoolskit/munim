@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to use MUNIM Books — step-by-step guide</title>
+<meta name="description" content="Step-by-step guide to MUNIM Books: activation, company setup, daily entries, monthly GST returns, mobile invoices and keyboard shortcuts.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head>
+<body data-nav="books">
+<div id="site-header"></div>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <span class="eyebrow light">MUNIM Books · Guide</span>
+      <h1>How to use <em>MUNIM Books</em></h1>
+      <p class="lead">From first launch to monthly GST returns — follow these steps in order. Stuck anywhere? WhatsApp us and we'll walk you through it.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">First day</span><h2>Setting up MUNIM Books</h2></div>
+      <div class="grid g2 steps" style="grid-template-columns:repeat(2,1fr)">
+        <div class="step"><h3>Download and open</h3><p>Keep MUNIM.exe in a permanent folder (for example D:\MUNIM App\) and double-click it. If Windows shows a blue warning, click <b>More info → Run anyway</b>. Accept the desktop shortcut — it updates itself if you move the file.</p></div>
+        <div class="step"><h3>Activate (internet once)</h3><p>Open or create your company. Enter the <b>username, password and licence key</b> we sent you on WhatsApp. After this, MUNIM works offline.</p></div>
+        <div class="step"><h3>Set your own password</h3><p>MUNIM asks you to choose a new password (8+ characters). Write it down somewhere safe.</p></div>
+        <div class="step"><h3>Company details</h3><p>Enter your business name, GSTIN, address and state. Not GST registered? Untick GST — tax fields hide automatically.</p><span class="where">Utilities › Company Details</span></div>
+        <div class="step"><h3>Customers and suppliers</h3><p>Add each party with GSTIN, opening balance and credit days. You can also add a party later from the invoice screen with <b>+ New</b>.</p><span class="where">Masters › Party Master</span></div>
+        <div class="step"><h3>Opening balances</h3><p>Starting mid-year? Open any account and set its opening balance. For cash in hand, a Journal: Dr Cash, Cr Capital.</p><span class="where">Masters › Ledger Accounts</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Every day</span><h2>Recording your business</h2></div>
+      <div class="grid g2 steps" style="grid-template-columns:repeat(2,1fr)">
+        <div class="step"><h3>A sale</h3><p>Pick the customer, add items with quantity, rate and GST %. If paid now, fill <b>Received now</b>. Ctrl+S saves; Ctrl+P makes the PDF.</p><span class="where">Transactions › Sales Invoice</span></div>
+        <div class="step"><h3>Counter sales for the day</h3><p>Many small cash sales without separate bills? Enter the day's total per GST rate in one go. Tick <b>Amounts include GST</b> if prices are tax-inclusive.</p><span class="where">Transactions › Daily Sales Summary</span></div>
+        <div class="step"><h3>A purchase</h3><p>Pick the supplier and enter items with GST %. Input GST is posted automatically. If paid now, fill <b>Paid now</b>.</p><span class="where">Transactions › Purchase Bill</span></div>
+        <div class="step"><h3>Money received or paid later</h3><p>Choose receipt or payment, pick the party and amount. The oldest open bill is settled first; any extra stays as advance.</p><span class="where">Transactions › Receipt / Payment</span></div>
+        <div class="step"><h3>An expense</h3><p>Create the account once (e.g. Electricity under Indirect Expenses). Then a Payment voucher: Dr Electricity, Cr Cash.</p><span class="where">Transactions › Voucher Entry</span></div>
+        <div class="step"><h3>Fixing a mistake</h3><p>Find the entry and open it to edit or delete. Every change is saved in the audit log.</p><span class="where">Reports › Day Book</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Every month</span><h2>GST returns and checks</h2></div>
+      <div class="steps">
+        <div class="step"><h3>Check the Trial Balance</h3><p>Debit equals credit means your entries are complete. Do this before filing.</p><span class="where">Reports › Financial</span></div>
+        <div class="step"><h3>Make GSTR-1 and GSTR-3B</h3><p>Open each return for the month, review the figures and export the JSON file.</p><span class="where">Reports › GST › G / 3</span></div>
+        <div class="step"><h3>Upload and back up</h3><p>Upload the JSON on the GST portal (or send it to your CA). Then take a backup to a USB drive.</p><span class="where">Utilities › Backup</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Mobile invoices</span><h2>Billing from your phone</h2>
+        <p class="lead">Need the mobile app? <a data-wa="Hi, I want the MUNIM mobile app" style="color:var(--gold-d);font-weight:600">Ask us on WhatsApp →</a></p></div>
+      <div class="steps">
+        <div class="step"><h3>Export settings</h3><p>Creates a settings file with your company, parties and items for the mobile app.</p><span class="where">Utilities › Import &amp; Export › E</span></div>
+        <div class="step"><h3>Bill on the phone</h3><p>Load the file in the MUNIM mobile app and make invoices wherever you are.</p><span class="where">MUNIM mobile app</span></div>
+        <div class="step"><h3>Import invoices</h3><p>Bring the phone invoices into your books. Everything posts automatically.</p><span class="where">Utilities › Import &amp; Export › V</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Keyboard shortcuts</span><h2>Work faster without the mouse</h2></div>
+      <div class="grid g4">
+        <div class="kbd"><span class="key">Enter</span>Next field / open</div>
+        <div class="kbd"><span class="key">Esc</span>Go back one screen</div>
+        <div class="kbd"><span class="key">↑ ↓ ← →</span>Move in menus</div>
+        <div class="kbd"><span class="key">A–Z</span>Jump to the item with that letter</div>
+        <div class="kbd"><span class="key">Ctrl+S</span>Save the entry</div>
+        <div class="kbd"><span class="key">Ctrl+P</span>PDF of a saved invoice</div>
+        <div class="kbd"><span class="key">F2</span>Jump to the date field</div>
+        <div class="kbd"><span class="key">Alt+G</span>Go to any screen</div>
+        <div class="kbd"><span class="key">Alt+H</span>Back to the Gateway</div>
+        <div class="kbd"><span class="key">Alt+1</span>Help &amp; shortcuts</div>
+        <div class="kbd"><span class="key">t</span>Today's date (date field)</div>
+        <div class="kbd"><span class="key">1511</span>15 Nov this year (date field)</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec sec-alt">
+    <div class="wrap">
+      <div class="sec-head"><span class="eyebrow">Good to know</span><h2>Tips for clean books</h2></div>
+      <div class="grid g3">
+        <div class="card"><span class="key gold">B</span><h3>Back up weekly</h3><p>Save to a USB drive or cloud folder — not only on the same PC.</p></div>
+        <div class="card"><span class="key gold">G</span><h3>Invoice vs Daily Summary</h3><p>Use a Sales Invoice for every GST-registered buyer. Daily Summary is for small B2C counter sales only. Confirm with your CA.</p></div>
+        <div class="card"><span class="key gold">I</span><h3>Stay licensed</h3><p>Open MUNIM with internet at least once a month so it can re-check your licence quietly.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="cta">
+        <h2>Still have a question?</h2>
+        <p>WhatsApp us — we'll explain anything step by step, usually within a few hours.</p>
+        <div class="btns"><a class="btn btn-gold btn-lg" data-wa="Hi, I need help with MUNIM Books">WhatsApp support</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div id="site-footer"></div>
+<script src="site.js"></script>
+</body>
+</html>
